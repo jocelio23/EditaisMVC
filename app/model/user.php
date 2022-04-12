@@ -1,6 +1,6 @@
 <?php
 
-    use banco\bd\Connection;
+    use bd\Connetion;
 
     class User{
 
@@ -8,26 +8,27 @@
         private $usuario;
         private $senha;
 
-        public function validateLogin(){
+        public function validaLogin(){
 
             $conn = Connetion::getConn();
-            var_dump($conn);
-            //selecionar o usuario que tenha o mesmo email do informado
+            //var_dump($conn);
+            //selecionar o usuario que tenha o mesmo usuario do informado
             $sql = 'SELECT * FROM usuario WHERE usuario = :usuario';
 
             $stmt = $conn->prepare($sql);
             $stmt->bindValue(':usuario', $this->usuario);
             $stmt->execute();
 
+            //se achou usuario procure a senha e confira se bate
             if ($stmt->rowCount()) {
                 $result = $stmt->fetch();
 
+                //melhorar colocando hasheamento de senha
                 if ($result['senha'] === $this->senha) {
                     $_SESSION['usr'] = array(
                         'id_user' => $result['id'], 
                         'name_user' => $result['name']
                     );
-
                     return true;
                 }
             }

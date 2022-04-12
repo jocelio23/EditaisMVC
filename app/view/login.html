@@ -61,7 +61,7 @@
             <img id="identidade-govbr" src="img/logo/logoNova.png" />
         </aside>
         <main id="main-signin">
-            <form method="POST" action="http://localhost/EditalSecult-branch-001/">
+            <form method="POST" action="http://localhost/EditalSecult-branch-001/login/check">
                 <div class="card" id="login-cpf">
                     <div class="item-login-signup-ways" onclick="accordion('accordion-panel-id')">
                         <img src="img/logo/logoNova.png"><br>
@@ -69,10 +69,13 @@
                     </div>
                     <div class="accordion-panel" id="accordion-panel-id">
                         <p>Digite seu <strong>login</strong> e <strong>senha</strong> para acessar sua conta do editais culturais</p>
+                        
                         <label for="cpf">Usuário</label>
                         <input id="user" name="usuario" autocomplete="ON" tabindex="1" type="text" value="" placeholder="Digite seu login" aria-invalid="false">
+
                         <label for="cpf">Senha</label>
                         <input id="password" name="senha" autocomplete="OFF" tabindex="1" type="password" value="" placeholder="Digite sua senha" aria-invalid="false">
+                        
                         <div class="button-panel" id="login-button-panel">
                             <button name="action" value="enterAccountId" class="button-continuar" type="submit" tabindex="2">Acessar</button>
                         </div>

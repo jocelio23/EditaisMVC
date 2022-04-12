@@ -16,18 +16,18 @@ class LoginController{
     //recebe requisão do formulario POST,
     //usuario e senha
     public function check(){
-
         try {
-            $user = new User();
+            $user = new User;
             $user->setUsuario($_POST['usuario']);
             $user->setSenha($_POST['senha']);
-            $user->validateLogin();
+            $user->validaLogin();
 
-        } catch (\Exception $ex) {
-          header('Location:http://localhost/EditalSecult-branch-001/');
+            header('Location: http://localhost/EditalSecult-branch-001/postagem');
+        } catch (\Exception $e) {
+            $_SESSION['msg_error'] = array('msg' => $e->getMessage(), 'count' => 0);
+
+            header('Location: http://localhost/EditalSecult-branch-001/');
         }
-       
+        
     }
-
-
 }

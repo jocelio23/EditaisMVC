@@ -1,5 +1,5 @@
 <?php
-namespace banco\bd;
+namespace bd;
 
 
 abstract class Connetion{
@@ -8,7 +8,7 @@ abstract class Connetion{
 
     public static function getConn(){
         if(!self::$conn){
-            self::$conn = new \PDO('mysql: host = localhost; dbname = editais', 'root', '');
+            self::$conn = new \PDO('mysql: host=localhost; dbname=editais', 'root', '');
         }
         return self::$conn;
     }
