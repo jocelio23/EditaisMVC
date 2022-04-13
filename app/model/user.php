@@ -13,7 +13,7 @@
             $conn = Connetion::getConn();
             //var_dump($conn);
             //selecionar o usuario que tenha o mesmo usuario do informado
-            $sql = 'SELECT * FROM usuario WHERE usuario = :usuario';
+            $sql = 'SELECT * FROM usuario WHERE login = :usuario';
 
             $stmt = $conn->prepare($sql);
             $stmt->bindValue(':usuario', $this->usuario);
@@ -26,8 +26,8 @@
                 //melhorar colocando hasheamento de senha
                 if ($result['senha'] === $this->senha) {
                     $_SESSION['usr'] = array(
-                        'id_user' => $result['id'], 
-                        'name_user' => $result['name']
+                        'id' => $result['id'], 
+                        'usuario' => $result['login']
                     );
                     return true;
                 }

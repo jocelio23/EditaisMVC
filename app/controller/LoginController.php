@@ -24,7 +24,7 @@ class LoginController{
 
             header('Location: http://localhost/EditalSecult-branch-001/postagem');
         } catch (\Exception $e) {
-            $_SESSION['msg_error'] = array('msg' => $e->getMessage(), 'count' => 0);
+            //$_SESSION['msg_error'] = array('msg' => $e->getMessage(), 'count' => 0);
 
             header('Location: http://localhost/EditalSecult-branch-001/');
         }

@@ -7,8 +7,11 @@ class Core{
     private $method = 'index';
     private $params = array();
 
-    public function __construct(){
+    private $user;
 
+    public function __construct(){
+        //verifica se tem alguem logado
+        $this->user= $_SESSION['usr']  ?? null;
     }
 
     public function start($request){
@@ -27,13 +30,25 @@ class Core{
                 $this->params = $this->url;
              }
         }
-
-         
-    }else{
-        $this->controller = 'LoginController';
-        $this->method = 'index';
     }
-     return call_user_func(array(new $this->controller, $this->method), $this->params);
-    //var_dump($this->controller, $this->method, $this->params);
+
+    //se logou acessa dash
+    if($this->user){
+        $permissao = [ 'DashboardController'];
+        //se não é url permitida foça para dash
+        if(!isset($this->controller) || !in_array($this->controller, $permissao)){
+            $this->controller = 'DashboardController';
+            $this->method = 'index';
+        }
+    }else{
+        //se não volte para a index
+        $permissao = [ 'LoginController'];
+
+        if(!isset($this->controller) || !in_array($this->controller, $permissao)){
+            $this->controller = 'LoginController';
+            $this->method = 'index';
+        }
+    }
+    return call_user_func(array(new $this->controller, $this->method), $this->params);
     }
 }
