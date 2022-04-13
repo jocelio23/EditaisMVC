@@ -34,7 +34,8 @@ class Core{
 
     //se logou acessa dash
     if($this->user){
-        $permissao = [ 'DashboardController'];
+        //outras paginas podem ser adicionadas abaixo
+        $permissao = ['DashboardController'];
         //se não é url permitida foça para dash
         if(!isset($this->controller) || !in_array($this->controller, $permissao)){
             $this->controller = 'DashboardController';
@@ -42,7 +43,7 @@ class Core{
         }
     }else{
         //se não volte para a index
-        $permissao = [ 'LoginController'];
+        $permissao = ['LoginController'];
 
         if(!isset($this->controller) || !in_array($this->controller, $permissao)){
             $this->controller = 'LoginController';

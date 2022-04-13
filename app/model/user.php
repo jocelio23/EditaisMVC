@@ -18,6 +18,7 @@
             $stmt = $conn->prepare($sql);
             $stmt->bindValue(':usuario', $this->usuario);
             $stmt->execute();
+            
 
             //se achou usuario procure a senha e confira se bate
             if ($stmt->rowCount()) {
