@@ -80,7 +80,14 @@
                             <button name="action" value="enterAccountId" class="button-continuar" type="submit" tabindex="2">Acessar</button>
                         </div>
                     </div>
-                    <label id="title-outras-op">Para ter acesso ao editais culturais:</label>
+
+                    <div class="accordion-panel" id="accordion-panel-id">
+                        {% if error != '' %}
+				             <span class="msg_error"><i class="fa fa-key fa-fw" style="font-size: 16px; color: #FF6D6D; padding-right: 5px;"></i> <p>Usuário ou senha inválidos</p></span>
+			            {% endif %}
+                    </div>
+
+                   
                     <hr id="hr-outras-op" style="margin: 0 0 0">
 
                     <div class="item-login-signup-ways">

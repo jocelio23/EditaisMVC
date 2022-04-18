@@ -8,6 +8,7 @@
         private $usuario;
         private $senha;
 
+        
         public function validaLogin(){
 
             $conn = Connetion::getConn();
@@ -15,11 +16,12 @@
             //selecionar o usuario que tenha o mesmo usuario do informado
             $sql = 'SELECT * FROM usuario WHERE login = :usuario';
 
+            global $senha;
             $stmt = $conn->prepare($sql);
             $stmt->bindValue(':usuario', $this->usuario);
+            //$stmt->bindValue(':senha', md5($senha));
             $stmt->execute();
-            
-
+        
             //se achou usuario procure a senha e confira se bate
             if ($stmt->rowCount()) {
                 $result = $stmt->fetch();

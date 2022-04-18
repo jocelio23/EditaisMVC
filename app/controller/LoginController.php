@@ -9,7 +9,10 @@ class LoginController{
             'auto_reload' => true,
         ]);
         $template = $twig->load('login.html');
-        return $template->render();
+
+        //pega valor e verifica se existe
+        $parameters['error'] = $_SESSION['msg_error']  ?? null;
+        return $template->render($parameters);
     }
 
 
@@ -24,8 +27,7 @@ class LoginController{
 
             header('Location: http://localhost/EditalSecult-branch-001/postagem');
         } catch (\Exception $e) {
-            //$_SESSION['msg_error'] = array('msg' => $e->getMessage(), 'count' => 0);
-
+            $_SESSION['msg_error'] = array('msg'=>$e->getMessage(), 'count'=> 0);
             header('Location: http://localhost/EditalSecult-branch-001/');
         }
         
