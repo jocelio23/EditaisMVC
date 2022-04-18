@@ -12,3 +12,4 @@ class DashboardController{
         header('Location: http://localhost/EditalSecult-branch-001');
     }
 }
+
