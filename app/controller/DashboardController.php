@@ -19,7 +19,7 @@ class DashboardController{
         session_start();
         unset($_SESSION['usr']);
         session_destroy();
-        header('Location: http://localhost/EditalSecult-branch-001');
+        header('Location: http://localhost/EditaisMVC');
     }
 }
 
