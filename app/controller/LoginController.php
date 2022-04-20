@@ -25,10 +25,10 @@ class LoginController{
             $user->setSenha($_POST['senha']);
             $user->validaLogin();
 
-            header('Location: http://localhost/EditalSecult-branch-001/postagem');
+            header('Location: http://localhost/EditaisMVC/postagem');
         } catch (\Exception $e) {
             $_SESSION['msg_error'] = array('msg'=>$e->getMessage(), 'count'=> 0);
-            header('Location: http://localhost/EditalSecult-branch-001/');
+            header('Location: http://localhost/EditaisMVC/');
         }
         
     }
