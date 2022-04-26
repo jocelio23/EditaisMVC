@@ -1,6 +1,6 @@
 <?php
 
-    use bd\Connetion;
+    use bd\Connection;
 
     class User{
 
@@ -8,21 +8,18 @@
         private $usuario;
         private $senha;
 
-        
         public function validaLogin(){
 
-            $conn = Connetion::getConn();
-            //var_dump($conn);
-            //selecionar o usuario que tenha o mesmo usuario do informado
+            $conn = Connection::getConn();
+            //selecionar o usuario que tenha o mesmo login do informado
             $sql = 'SELECT * FROM usuario WHERE login = :usuario';
-
-            global $senha;
+            
             $stmt = $conn->prepare($sql);
             $stmt->bindValue(':usuario', $this->usuario);
             //$stmt->bindValue(':senha', md5($senha));
             $stmt->execute();
         
-            //se achou usuario procure a senha e confira se bate
+            //se achou usuario procure a senha e confira se confere
             if ($stmt->rowCount()) {
                 $result = $stmt->fetch();
 
@@ -35,11 +32,8 @@
                     return true;
                 }
             }
-
             throw new \Exception('Login Inválido');
         }
-
-       
         public function setUsuario($usuario)
         {
             $this->usuario = $usuario;

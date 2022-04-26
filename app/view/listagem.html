@@ -35,8 +35,6 @@
 
 <body>
    
-
-
     <!-- Topbar Start -->
     <div class="container-fluid bg-secondary px-5 d-none d-lg-block">
         <div class="row gx-0">
@@ -67,77 +65,73 @@
                     <a href="http://localhost/EditaisCulturais/listagem/listaNova" class="nav-item nav-link active"><b>Listagem</b></a>
                     <a href="http://localhost/EditaisCulturais/postagem/logout" class="nav-item nav-link active"><b>Sair</b></a>
                 </div>
-               
             </div>
         </nav>
 
     </div>
     <!-- Navbar & Carousel End -->
 
-     <!-- Contact Start -->
+    <!-- Features Start -->
+    <br>
+    <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+        {{nome_usuario}}
+        <h5 class="fw-bold text-primary text-uppercase">XXII EDITAL CEARÁ JUNINO PARA QUADRILHAS JUNINAS - 2022</h5>
+    </div>
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Cadastros</h5>
-            </div>
-            
+        <div class="container py-5">           
             <div class="row g-5">
-                <div class="col-lg-6 wow slideInUp" data-wow-delay="0.3s">
-                    <iframe class="position-relative rounded w-100 h-100"
-                        src="img/logo/Secretaria-da-Cultura-INVERTIDA-WEB-branca-2.png" width="120"
-                        frameborder="0" style="min-height: 30px; border:0;" aria-hidden="false"
-                        tabindex="0">  
-                    </iframe>
+                <div class="col-lg-4  wow zoomIn" data-wow-delay="0.9s" style="min-height: 350px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 rounded wow zoomIn" data-wow-delay="0.1s" src="img/edital/edital-cinema-video.jpeg" style="object-fit: cover;">
+                    </div>
                 </div>
-
-                <div class="col-lg-6 wow slideInUp" data-wow-delay="0.6s">
-                     <form>
-                        <div class="row g-3">
-                            <div class="col-12">
-                                <input type="text" class="form-control border-1 bg-light px-4" placeholder="Nome do edital" style="height: 55px;" required>
-                            </div>
-
-                            <div class="col-12">
-                                <textarea class="form-control border-1 bg-light px-4 py-4" rows="4" placeholder="Quais as etapas de execução?" required></textarea>
-                            </div>
-
-                             <div class="col-12">
-                                <input type="text" class="form-control border-1 bg-light px-4" placeholder="R$: Valor do edital" style="height: 55px;" required>
-                            </div>
-
-                             <div class="col-12">
-                                <input type="email" class="form-control border-1 bg-light px-4" placeholder="Contatos" style="height: 55px;" required>
-                            </div>
-                            <div class="col-12">
-                                <label>Selecione uma categoria: </label><br/>
-                                    <select name="categorias" class="form-control border-1 bg-light px-4" required style="opacity: calc(1)">
-                                        <p required style="opacity: calc(0.5)"><option value="" disable selected hidden>Nenhuma categoria selecionada</option></p>
-                                        <option value="1" class="form-control border-1 bg-light px-4">Inscrições abertas</option>
-                                        <option value="2">Conhecimento público</option>
-                                        <option value="3">Processo de seleção</option>
-                                    </select>
-                            </div>
-                            <div class="col-12">
-                                <input type="file" name="arquivos[]" multiple accept="application/pdf,application/doc,application/docx" class="form-control border-1 bg-light px-4" required><br/>
-                                Adicione todos os anexos dessa publicação</textarea>
-                            </div>
-
-                            <div class="col-12">
-                                <input type="file" name="imagem"  accept="image/png,image/jpg, image/jpeg" class="form-control border-1 bg-light px-4" required><br/>
-                                Selecione uma imagem para o edital</textarea>
-                            </div>
-
-                            <div class="col-12">
-                                <button class="btn btn-secondary w-100 py-3" type="submit">Adicionar edital</button>
-                            </div>
+                <div class="col-lg-4">
+                    <div class="row g-5">
+                        <div class="col-12 wow zoomIn" data-wow-delay="0.2s">
+                            <h4>Etapas de Execução</h4>
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Inscrições | 13/04/2022 a 24/04/2022</p>
                         </div>
-                    </form>
-                    <br>
+                        <div class="col-12 wow zoomIn" data-wow-delay="0.6s">
+                            <h4>Valor do Edital</h4>
+                            <p class="mb-0">R$ 3.373.920,00</p>
+                        </div>
+                        <div class="col-lg-12 mb-20">
+                            <h4>Contato sobre o Edital</h4>
+                            <p class="mb-0">Mais informações poderão ser obtidas prioritariamente pelo e-mail:
+                                editaljunino@secult.ce.gov.br e 
+                                contato telefônico (85) 3101-6770</p>
+                        </div>
+                    </div>
                 </div>
+                
+                <div class="col-lg-4">
+                    <div class="row g-5">
+                        <div class="col-12 wow zoomIn" data-wow-delay="0.4s">
+                            <h4>Publicações do Edital</h4>
+                            <p class="mb-0"><li id="file-3625034" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/oportunidade/3753/"><span>Ficha de inscrição no Mapa</span></a></li></p>
+                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/edital_xxii_edital_ceara_junino_para_quadrilhas_juninas_2022.pdf"><span>Edital </span></a></li></p>
+                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_i_plano_de_acao.xlsx "><span>Anexo I plano de ação</span></a></li></p>
+                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_ii_formulario_de_recurso.docx "><span>Anexo II  formulario de recurso</span></a></li></p>
+                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_iii_termo_de_execucao_cultural.pdf"><span>Anexo III minuta de termo execução cultural</span></a></li></p>
+                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_iv_dotacoes_orcamentarias.pdf"><span>Anexo IV dotação orçamentária</span></a></li></p>
+                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_v_formulario_de_acoes_para_acessibilidade.docx"><span>Anexo V formulario de ações para acessibilidade</span></a></li></p>
+                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_vi_carta_coletiva_de_anuencia_dos_grupos.docx"><span>Anexo VI carta coletiva de anuência dos grupos</span></a></li></p>
+                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_vii_dados_bancarios.docx"><span>Anexo VII dados bancários </span></a></li></p>
+                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_viii_regulamento_dos_festivais_regionais_e_quadrilhas_juninas.pdf"><span>Anexo VIII regulamento dos festivais regionais e quadrilhas juninas</span></a></li></p>
+                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_ix_nova_regionalizacao.pdf"><span>Anexo IX nova regionalização</span></a></li></p>
+                        </div>
+                    </div>
+                    <div id="login-button-panel" class="col-lg-12">
+                        <button name="action" value="enterAccountId" class="button-continuar" type="submit" tabindex="1">Alterar</button>
+                        <button name="action" value="enterAccountId" class="button-continuar" type="submit" tabindex="1" style="background: rgb(251, 138, 8);">Desativar</button>                
+                    </div>
+                </div>               
             </div>
         </div>
+        
     </div>
-    <!-- Contact End -->
+    <hr>
+    <!-- Features Start -->
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
