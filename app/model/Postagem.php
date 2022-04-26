@@ -4,14 +4,18 @@
 
     class postagem{
 
-        //private $nome = $_POST["nome"];
-        //private $etapas= $_POST["etapas"];
-        //private $valor= $_POST["valor"];
-        //private $contatos= $_POST["contatos"];
-        //private $categoria= $_POST["categoria"];
+        private $nome;
+        private $etapas;
+        private $valor;
+        private $contatos;
+        private $categoria;
+        private $flag = TRUE;
+
         //private $img;
         //private $anexos = array();
 
+
+        //função para listar todos os posts no banco
         public static function selecionaTodos()
 		{
 			$con =  Connection::getConn();
@@ -32,22 +36,28 @@
 			return $resultado;
 		}
 
-        public function inserirEdital(){
+        public function inserirEdital($nome, $etapas, $valor, $contatos, $categoria){
             $con =  Connection::getConn();
 
 			$sql = "INSERT INTO mensagens (nome, etapas, valor, contatos, categoria), ('?','?','?','?','?')"; 
             $sql = $con->prepare($sql);
 			$sql->execute();
 
+            //verificações a serem feitas
            
         }
 
-        public function EditarEdital(){
-          
+
+        public function EditarEdital($id){
+            $con =  Connection::getConn();
+
+			$sql = "UPDATE mensagens WHERE id= $id"; 
+            $sql = $con->prepare($sql);
+			$sql->execute();
         }
 
         public function desativarEdital(){
-
+            //para desativar uma postagem o controle deve ser feito atraves da flag
         }
 
         //seters
