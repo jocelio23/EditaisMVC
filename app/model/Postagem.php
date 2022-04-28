@@ -9,7 +9,7 @@
         private $valor;
         private $contatos;
         private $categoria;
-        private $flag = TRUE;
+        private $flag;
 
         //private $img;
         //private $anexos = array();
@@ -36,29 +36,33 @@
 			return $resultado;
 		}
 
-        public function inserirEdital($nome, $etapas, $valor, $contatos, $categoria){
-            $con =  Connection::getConn();
-
-			$sql = "INSERT INTO mensagens (nome, etapas, valor, contatos, categoria), ('?','?','?','?','?')"; 
-            $sql = $con->prepare($sql);
-			$sql->execute();
-
-            //verificações a serem feitas
-           
-        }
-
-
-        public function EditarEdital($id){
-            $con =  Connection::getConn();
-
-			$sql = "UPDATE mensagens WHERE id= $id"; 
-            $sql = $con->prepare($sql);
-			$sql->execute();
-        }
 
         public function desativarEdital(){
             //para desativar uma postagem o controle deve ser feito atraves da flag
         }
+
+        public static function insert($dadosPost)
+		{
+			$con = Connection::getConn();
+
+			$sql = $con->prepare('INSERT INTO aux (nome, etapas, valor, contatos, categoria, flag) VALUES (:n, :e, :v, :co, :ca, :f)');
+			$sql->bindValue(':n', $dadosPost['nome']); 
+            $sql->bindValue(':e', $dadosPost['etapas']);
+            $sql->bindValue(':v', $dadosPost['valor']);
+            $sql->bindValue(':co', $dadosPost['contatos']);
+            $sql->bindValue(':ca', $dadosPost['categorias']);            
+			$sql->bindValue(':f', $dadosPost['flags']);
+			$res = $sql->execute();
+              
+			if ($res == 0) {
+				throw new Exception("Falha ao inserir publicação");
+                
+
+				return false;
+			}            
+
+			return true;
+		}
 
         //seters
         public function setNome($nome){
@@ -76,6 +80,9 @@
         public function setCategoria($categoria){
             $this->categoria = $categoria;
         }
+        public function setFlag($flag){
+            $this->flag = $flag;
+        }
 
         //getters
         public function getNome(){
@@ -92,5 +99,8 @@
         }
         public function getCategoria(){
             return $this->categoria;
+        }
+        public function getFlag(){
+            return $this->flag;
         }
     }

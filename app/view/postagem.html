@@ -63,9 +63,9 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     
-                    <a href="http://localhost/EditaisCulturais/postagem.html" class="nav-item nav-link active"><b>Home</b></a>
-                    <a href="http://localhost/EditaisCulturais/listagem/listaNova" class="nav-item nav-link active"><b>Listagem</b></a>
-                    <a href="http://localhost/EditaisCulturais/postagem/logout" class="nav-item nav-link active"><b>Sair</b></a>
+                    <a href="http://localhost/EditaisMVC/postagem.html" class="nav-item nav-link active"><b>Home</b></a>
+                    <a href="http://localhost/EditaisMVC/listagem/listaNova" class="nav-item nav-link active"><b>Listagem</b></a>
+                    <a href="http://localhost/EditaisMVC/postagem/logout" class="nav-item nav-link active"><b>Sair</b></a>
                 </div>
                
             </div>
@@ -91,44 +91,54 @@
                 </div>
 
                 <div class="col-lg-6 wow slideInUp" data-wow-delay="0.6s">
-                     <form>
+                     <form method="POST" action="http://localhost/EditaisMVC/postagem/insert">
                         <div class="row g-3">
                             <div class="col-12">
-                                <input type="text" class="form-control border-1 bg-light px-4" placeholder="Nome do edital" style="height: 55px;" required>
+                                <input type="text" name="nome" class="form-control border-1 bg-light px-4" placeholder="Nome do edital" style="height: 55px;" required>
                             </div>
 
                             <div class="col-12">
-                                <textarea class="form-control border-1 bg-light px-4 py-4" rows="4" placeholder="Quais as etapas de execução?" required></textarea>
+                                <textarea name="etapas" class="form-control border-1 bg-light px-4 py-4" rows="4" placeholder="Quais as etapas de execução?" required></textarea>
                             </div>
 
                              <div class="col-12">
-                                <input type="text" class="form-control border-1 bg-light px-4" placeholder="R$: Valor do edital" style="height: 55px;" required>
+                                <input type="text" name="valor" class="form-control border-1 bg-light px-4" placeholder="R$: Valor do edital" style="height: 55px;" >
                             </div>
 
                              <div class="col-12">
-                                <input type="email" class="form-control border-1 bg-light px-4" placeholder="Contatos" style="height: 55px;" required>
+                                <input type="email" name="contatos" class="form-control border-1 bg-light px-4" placeholder="Contatos" style="height: 55px;" >
                             </div>
                             <div class="col-12">
                                 <label>Selecione uma categoria: </label><br/>
-                                    <select name="categorias" class="form-control border-1 bg-light px-4" required style="opacity: calc(1)">
-                                        <p required style="opacity: calc(0.5)"><option value="" disable selected hidden>Nenhuma categoria selecionada</option></p>
-                                        <option value="1" class="form-control border-1 bg-light px-4">Inscrições abertas</option>
+                                    <select name="categorias" class="form-control border-1 bg-light px-4"  style="opacity: calc(1)">
+                                        <p  style="opacity: calc(0.5)"><option value="" disable selected hidden>Escolha uma categoria</option></p>
+                                        <option value="1" >Inscrições abertas</option>
                                         <option value="2">Conhecimento público</option>
                                         <option value="3">Processo de seleção</option>
                                     </select>
                             </div>
                             <div class="col-12">
-                                <input type="file" name="arquivos[]" multiple accept="application/pdf,application/doc,application/docx" class="form-control border-1 bg-light px-4" required><br/>
-                                Adicione todos os anexos dessa publicação</textarea>
+                                <label>Status do Edital: </label><br/>
+                                    <select name="flags" class="form-control border-1 bg-light px-4"  style="opacity: calc(1)">
+                                        <p  style="opacity: calc(0.5)"><option value="" disable selected hidden>Escolha o status do edital</option></p>
+                                        <option value="1">Ativado</option>
+                                        <option value="2">Desativado</option>                                        
+                                    </select>
+                            </div>
+                            <div class="col-12">
+                                Adicione todos os anexos dessa publicação
+                                <input type="file" name="arquivos[]" multiple accept="application/pdf,application/doc,application/docx" class="form-control border-1 bg-light px-4" >
+                                
                             </div>
 
                             <div class="col-12">
-                                <input type="file" name="imagem"  accept="image/png,image/jpg, image/jpeg" class="form-control border-1 bg-light px-4" required><br/>
-                                Selecione uma imagem para o edital</textarea>
+                                Selecione uma imagem para o edital
+                                <input type="file" name="imagem"  accept="image/png,image/jpg, image/jpeg" class="form-control border-1 bg-light px-4" ><br/>
+                                
                             </div>
 
                             <div class="col-12">
-                                <button class="btn btn-secondary w-100 py-3" type="submit">Adicionar edital</button>
+                                <button class="btn btn-secondary w-100 py-3" type="submit" name="submit">Adicionar edital</button>
                             </div>
                         </div>
                     </form>

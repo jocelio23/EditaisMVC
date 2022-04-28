@@ -18,6 +18,20 @@ class ListagemController{
        return $template->render($parameters);
     }
     public function listaNova(){
-        header('Location: http://localhost/EditaisCulturais/listagem');  
+        header('Location: http://localhost/EditaisMVC/listagem');  
     }
+
+
+    public function update()
+		{
+			try {
+				Listagem::update($_POST);
+
+				echo '<script>alert("Publicação alterada com sucesso!");</script>';
+				echo '<script>location.href="http://localhost/EditaisMVC"</script>';
+			} catch (Exception $e) {
+				echo '<script>alert("'.$e->getMessage().'");</script>';
+				echo '<script>location.href="http://localhost/EditaisMVC'.$_POST['id'].'"</script>';
+			}
+		}
 }
