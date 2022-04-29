@@ -26,41 +26,41 @@ class Core{
     }
 
     public function start($request){
-    if(isset($request['url'])){
-        $this->url = explode('/', $request['url']);
+        if(isset($request['url'])){
+            $this->url = explode('/', $request['url']);
 
-        $this->controller = ucfirst($this->url[0]).'Controller';
-        array_shift($this->url); 
-        
-        //controlando inserção na url se não existir
-        if(isset($this->url[0]) && $this->url != ''){
-            $this->method = $this->url[0];
-             array_shift($this->url);
+            $this->controller = ucfirst($this->url[0]).'Controller';
+            array_shift($this->url); 
+            
+            //controlando inserção na url se não existir
+            if(isset($this->url[0]) && $this->url != ''){
+                $this->method = $this->url[0];
+                array_shift($this->url);
 
-             if(isset($this->url[0]) && $this->url != ''){
-                $this->params = $this->url;
-             }
+                if(isset($this->url[0]) && $this->url != ''){
+                    $this->params = $this->url;
+                }
+            }
         }
-    }
 
-    //se logou usuário realizou login
-    if($this->user){
-        //outras paginas podem ser adicionadas abaixo
-        $permissao = ['PostagemController', 'ListagemController'];
-        //se não é url permitida foça para dash
-        if(!isset($this->controller) || !in_array($this->controller, $permissao)){
-            $this->controller = 'PostagemController';
-            $this->method = 'index';
-        }
-    }else{
-        //se não volte para a index
-        $permissao = ['LoginController'];
+        //se logou usuário realizou login
+        if($this->user){
+            //outras paginas podem ser adicionadas abaixo
+            $permissao = ['PostagemController', 'ListagemController'];
+            //se não é url permitida foça para dash
+            if(!isset($this->controller) || !in_array($this->controller, $permissao)){
+                $this->controller = 'PostagemController';
+                $this->method = 'index';
+            }
+        }else{
+            //se não volte para a index
+            $permissao = ['LoginController'];
 
-        if(!isset($this->controller) || !in_array($this->controller, $permissao)){
-            $this->controller = 'LoginController';
-            $this->method = 'index';
+            if(!isset($this->controller) || !in_array($this->controller, $permissao)){
+                $this->controller = 'LoginController';
+                $this->method = 'index';
+            }
         }
-    }
-    return call_user_func(array(new $this->controller, $this->method), $this->params);
+        return call_user_func(array(new $this->controller, $this->method), $this->params);
     }
 }

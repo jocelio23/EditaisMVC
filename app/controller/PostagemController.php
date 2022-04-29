@@ -34,6 +34,22 @@ class PostagemController{
 			}
 			
 		}
+
+        public function update()
+		{
+			try {
+				postagem::update($_POST);
+
+				echo '<script>alert("Publicação alterada com sucesso!");</script>';
+				echo '<script>location.href="http://localhost/EditaisMVC"</script>';
+			} catch (Exception $e) {
+				echo '<script>alert("'.$e->getMessage().'");</script>';
+				echo '<script>location.href="http://localhost/EditaisMVC'.$_POST['id'].'"</script>';
+			}
+		}
+
+
+       
    
 }
 

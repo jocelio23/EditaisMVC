@@ -5,25 +5,24 @@ use bd\Connection;
 
 class Listagem{
 
+    //função para listar todos os posts no banco
+    public static function selectAll() {
+        $con =  Connection::getConn();
 
-    public static function update($params)
-    {
-        $con = Connection::getConn();
-
-        $sql = "UPDATE postagem SET titsulo = :tit, conteudo = :cont WHERE id = :id";
+        $sql = "SELECT * FROM postag ORDER BY id DESC";
         $sql = $con->prepare($sql);
-        $sql->bindValue(':tit', $params['titulo']);
-        $sql->bindValue(':cont', $params['conteudo']);
-        $sql->bindValue(':id', $params['id']);
-        $resultado = $sql->execute();
+        $sql->execute();
 
-        if ($resultado == 0) {
-            throw new Exception("Falha ao alterar publicação");
+        $resultado = array();
 
-            return false;
+        while ($row = $sql->fetchObject('Postagem')) {
+            $resultado[] = $row;
         }
 
-        return true;
+        if (!$resultado) {
+            throw new Exception("Não foi encontrado nenhum registro no banco");		
+        }
+        return $resultado;
     }
 
 

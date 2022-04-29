@@ -15,37 +15,10 @@
         //private $anexos = array();
 
 
-        //função para listar todos os posts no banco
-        public static function selecionaTodos()
-		{
-			$con =  Connection::getConn();
-
-			$sql = "SELECT * FROM mensagens ORDER BY id DESC";
-			$sql = $con->prepare($sql);
-			$sql->execute();
-
-			$resultado = array();
-
-			while ($row = $sql->fetchObject('Postagem')) {
-				$resultado[] = $row;
-			}
-
-			if (!$resultado) {
-				throw new Exception("Não foi encontrado nenhum registro no banco");		
-			}
-			return $resultado;
-		}
-
-
-        public function desativarEdital(){
-            //para desativar uma postagem o controle deve ser feito atraves da flag
-        }
-
-        public static function insert($dadosPost)
-		{
+        public static function insert($dadosPost){
 			$con = Connection::getConn();
 
-			$sql = $con->prepare('INSERT INTO aux (nome, etapas, valor, contatos, categoria, flag) VALUES (:n, :e, :v, :co, :ca, :f)');
+			$sql = $con->prepare('INSERT INTO postagem (nome, etapas, valor, contatos, categoria, flag) VALUES (:n, :e, :v, :co, :ca, :f)');
 			$sql->bindValue(':n', $dadosPost['nome']); 
             $sql->bindValue(':e', $dadosPost['etapas']);
             $sql->bindValue(':v', $dadosPost['valor']);
@@ -54,15 +27,36 @@
 			$sql->bindValue(':f', $dadosPost['flags']);
 			$res = $sql->execute();
               
+           
 			if ($res == 0) {
 				throw new Exception("Falha ao inserir publicação");
                 
-
 				return false;
 			}            
-
 			return true;
 		}
+
+        public static function update($params){
+            $con = Connection::getConn();
+    
+            $sql = "UPDATE postagem SET titsulo = :tit, conteudo = :cont WHERE id = :id";
+            $sql = $con->prepare($sql);
+            $sql->bindValue(':tit', $params['titulo']);
+            $sql->bindValue(':cont', $params['conteudo']);
+            $sql->bindValue(':id', $params['id']);
+            $resultado = $sql->execute();
+    
+            if ($resultado == 0) {
+                throw new Exception("Falha ao alterar publicação");
+                
+                return false;
+            }
+            return true;
+        }
+
+        public function desativarEdital(){
+            //para desativar uma postagem o controle deve ser feito atraves da flag
+        }
 
         //seters
         public function setNome($nome){
