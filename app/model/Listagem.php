@@ -9,7 +9,7 @@ class Listagem{
     public static function selectAll() {
         $con =  Connection::getConn();
 
-        $sql = "SELECT * FROM postag ORDER BY id DESC";
+        $sql = "SELECT * FROM postagem ORDER BY id ";
         $sql = $con->prepare($sql);
         $sql->execute();
 
@@ -22,7 +22,13 @@ class Listagem{
         if (!$resultado) {
             throw new Exception("Não foi encontrado nenhum registro no banco");		
         }
+        
         return $resultado;
+    }
+
+    public function disable(){
+        //para desativar uma postagem o controle deve ser feito atraves da flag
+        
     }
 
 

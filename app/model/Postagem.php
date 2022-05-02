@@ -4,12 +4,12 @@
 
     class postagem{
 
-        private $nome;
+       /*  private $nome;
         private $etapas;
         private $valor;
         private $contatos;
         private $categoria;
-        private $flag;
+        private $flag; */
 
         //private $img;
         //private $anexos = array();
@@ -36,14 +36,64 @@
 			return true;
 		}
 
+        public static function insertNovo($dadosPost)
+		{
+			$con = Connection::getConn();
+            
+			if(file_exists("img/imagemEditais/".$_FILES['arquivo']['name']))
+            {
+                $store = $_FILES['arquivo']['name'];
+               $_SESSION['status'] = "A imagem já existe. '.$store.'";
+                header("Location: http://localhost/EditaisFinal/EditaisMVC/");
+            }
+            else
+            {
+                $sql = $con->prepare('INSERT INTO aux (nome, etapas, valor, contatos, categoria, flag, arquivo) VALUES (:n, :e, :v, :co, :ca, :f, :ar)');
+            
+			$sql->bindValue(':n', $dadosPost['nome']); 
+            $sql->bindValue(':e', $dadosPost['etapas']);
+            $sql->bindValue(':v', $dadosPost['valor']);
+            $sql->bindValue(':co', $dadosPost['contatos']);
+            $sql->bindValue(':ca', $dadosPost['categorias']);            
+			$sql->bindValue(':f', $dadosPost['flags']);
+            $sql->bindValue(':ar', $dadosPost['arquivo']);
+            
+            $res = $sql->execute();
+                if ($res == 0)
+                {
+                    //throw new Exception("Falha ao inserir publicação");
+                    return false;
+                }
+                if($res)
+                {
+                    move_uploaded_file($_FILES['arquivo']['tmp_name'], "img/imagensEditais/".$_FILES['arquivo']['tmp_name']);
+                    $_SESSION['success'] = "Imagem enviada com sucesso.";
+                    //header('Location: http://localhost/EditaisFinal/EditaisMVC/');
+                }
+                else
+                {
+                   // $_SESSION['success'] = "Imagem não enviada, tente novamente.";
+                    header('Location: http://localhost/EditaisFinal/EditaisMVC/');
+                }              
+			
+			return true;
+            }            
+		}
+
+
         public static function update($params){
             $con = Connection::getConn();
     
-            $sql = "UPDATE postagem SET titsulo = :tit, conteudo = :cont WHERE id = :id";
+            $sql = "UPDATE aux SET nome = :n, etapas = :e, valor = :v, contatos = :co, categoria = :ca, flag = :f WHERE id = :id";
             $sql = $con->prepare($sql);
-            $sql->bindValue(':tit', $params['titulo']);
-            $sql->bindValue(':cont', $params['conteudo']);
-            $sql->bindValue(':id', $params['id']);
+            $sql->bindValue(':n', $params['nome']);
+            $sql->bindValue(':e', $params['etapas']);
+            $sql->bindValue(':v', $params['valor']);
+            $sql->bindValue(':co', $params['contatos']);
+            $sql->bindValue(':ca', $params['categorias']);
+            $sql->bindValue(':f', $params['flags']);
+
+        
             $resultado = $sql->execute();
     
             if ($resultado == 0) {
@@ -54,11 +104,9 @@
             return true;
         }
 
-        public function desativarEdital(){
-            //para desativar uma postagem o controle deve ser feito atraves da flag
-        }
+     
 
-        //seters
+   /*      //seters
         public function setNome($nome){
             $this->nome = $nome;
         }
@@ -96,5 +144,5 @@
         }
         public function getFlag(){
             return $this->flag;
-        }
+        } */
     }

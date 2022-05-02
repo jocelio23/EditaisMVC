@@ -46,7 +46,7 @@ class Core{
         //se logou usuário realizou login
         if($this->user){
             //outras paginas podem ser adicionadas abaixo
-            $permissao = ['PostagemController', 'ListagemController'];
+            $permissao = ['PostagemController', 'ListagemController', 'AtualizacaoController'];
             //se não é url permitida foça para dash
             if(!isset($this->controller) || !in_array($this->controller, $permissao)){
                 $this->controller = 'PostagemController';

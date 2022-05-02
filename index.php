@@ -13,7 +13,11 @@
     require_once 'app/controller/LoginController.php';
     require_once 'app/controller/PostagemController.php';
     require_once 'app/controller/ListagemController.php';
+    require_once 'app/controller/AtualizacaoController.php';
 
 
     $core = new Core();
     echo $core -> start($_GET);
+
+
+    
