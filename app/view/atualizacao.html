@@ -42,7 +42,7 @@
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <small class="me-3 text-light"></i>Governo Do Estado Do Ceará -> Acesso restrito para: <b style="text-transform: uppercase;">{{nome_usuario}}</b></small>
+                    <small class="me-3 text-light"></i>Governo Do Estado Do Ceará -> Acesso restrito para:{{nome_usuario}} <b style="text-transform: uppercase;">{{nome_usuario}}</b></small>
                 </div>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
@@ -63,8 +63,8 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     
-                    <a href="http://localhost/EditaisMVC/" class="nav-item nav-link active"><b>Home</b></a>
-                    <a href="http://localhost/EditaisMVC/listagem/listaNova" class="nav-item nav-link active"><b>Listagem</b></a>
+                    <a href="http://localhost/EditaisMVC/" class="nav-item nav-link active"><b>Início</b></a>
+                    <a href="http://localhost/EditaisMVC/listagem/listaNova" class="nav-item nav-link active"><b>Editais</b></a>
                     <a href="http://localhost/EditaisMVC/atualizacao/Alterar" class="nav-item nav-link active"><b>Atualizações</b></a>
                     <a href="http://localhost/EditaisMVC/postagem/logout" class="nav-item nav-link active"><b>Sair</b></a>
                 </div>
@@ -95,27 +95,31 @@
                 </div>
 
                 <div class="col-lg-6 wow slideInUp" data-wow-delay="0.6s">
-                     <form method="POST" action="http://localhost/EditaisMVC/postagem/insert">
+                     <form method="POST" action="http://localhost/EditaisMVC/atualizacao/update">
                         <div class="row g-3">
                             <div class="col-12">
-                                <input type="text" name="nome" class="form-control border-1 bg-light px-4" placeholder="Nome do edital" style="height: 55px;" required>
+                                Nome:
+                                <input type="text" name="nome" class="form-control border-1 bg-light px-4" value="{{nome}}" style="height: 55px;" required>
                             </div>
 
                             <div class="col-12">
-                                <textarea name="etapas" class="form-control border-1 bg-light px-4 py-4" rows="4" placeholder="Quais as etapas de execução?" required></textarea>
+                                Etapas:
+                                <textarea name="etapas" class="form-control border-1 bg-light px-4 py-4" rows="4" required>{{etapas}}</textarea>
                             </div>
 
                              <div class="col-12">
-                                <input type="text" name="valor" class="form-control border-1 bg-light px-4" placeholder="R$: Valor do edital" style="height: 55px;" >
+                                 Valor:
+                                <input type="text" name="valor" class="form-control border-1 bg-light px-4" value="{{valor}}" style="height: 55px;" >
                             </div>
 
                              <div class="col-12">
-                                <input type="email" name="contatos" class="form-control border-1 bg-light px-4" placeholder="Contatos" style="height: 55px;" >
+                                 Contato:
+                                <input type="email" name="contatos" class="form-control border-1 bg-light px-4" value="{{contatos}}" style="height: 55px;" >
                             </div>
                             <div class="col-12">
                                 <label>Selecione uma categoria: </label><br/>
-                                    <select name="categorias" class="form-control border-1 bg-light px-4"  style="opacity: calc(1)">
-                                        <p  style="opacity: calc(0.5)"><option value="" disable selected hidden>Escolha uma categoria</option></p>
+                                    <select name="categorias" class="form-control border-1 bg-light px-4" style="opacity: calc(1)">
+                                        <p  style="opacity: calc(0.5)"><option  disable selected hidden>{{categoria}}</option></p>
                                         <option value="1" >Inscrições abertas</option>
                                         <option value="2">Conhecimento público</option>
                                         <option value="3">Processo de seleção</option>
@@ -123,8 +127,8 @@
                             </div>
                             <div class="col-12">
                                 <label>Status do Edital: </label><br/>
-                                    <select name="flags" class="form-control border-1 bg-light px-4"  style="opacity: calc(1)">
-                                        <p  style="opacity: calc(0.5)"><option value="" disable selected hidden>Escolha o status do edital</option></p>
+                                    <select name="flags" class="form-control border-1 bg-light px-4" style="opacity: calc(1)">
+                                        <p  style="opacity: calc(0.5)"><option disable selected hidden>{{flag}}</option></p>
                                         <option value="1">Ativado</option>
                                         <option value="2">Desativado</option>                                        
                                     </select>

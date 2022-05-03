@@ -21,21 +21,17 @@ class PostagemController{
         session_destroy();
         header('Location: http://localhost/EditaisMVC/');
     }
-    public function insert()
-		{
-			try {
-				Postagem::insert($_POST);
+    public function insert(){
+		try {
+			Postagem::insert($_POST);
 
-				echo '<script>alert("Publicação inserida com sucesso!");</script>';
-				echo '<script>location.href="http://localhost/EditaisMVC/"</script>';
-			} catch(Exception $e) {
-				echo '<script>alert("'.$e->getMessage().'");</script>';
-				echo '<script>location.href="http://localhost/EditaisMVC"</script>';
-			}
-			
+			echo '<script>alert("Publicação inserida com sucesso!");</script>';
+			echo '<script>location.href="http://localhost/EditaisMVC/"</script>';
+		} catch(Exception $e) {
+			echo '<script>alert("'.$e->getMessage().'");</script>';
+			echo '<script>location.href="http://localhost/EditaisMVC"</script>';
 		}
-
-      
-   
-}
+			
+	}  
+ }
 

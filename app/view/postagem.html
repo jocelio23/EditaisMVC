@@ -63,8 +63,8 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     
-                    <a href="http://localhost/EditaisMVC/" class="nav-item nav-link active"><b>Home</b></a>
-                    <a href="http://localhost/EditaisMVC/listagem/listaNova" class="nav-item nav-link active"><b>Listagem</b></a>
+                    <a href="http://localhost/EditaisMVC/" class="nav-item nav-link active"><b>Início</b></a>
+                    <a href="http://localhost/EditaisMVC/listagem/listaNova" class="nav-item nav-link active"><b>Editais</b></a>
                     <a href="http://localhost/EditaisMVC/atualizacao/Alterar" class="nav-item nav-link active"><b>Atualizações</b></a>
                     <a href="http://localhost/EditaisMVC/postagem/logout" class="nav-item nav-link active"><b>Sair</b></a>
                 </div>
@@ -98,35 +98,39 @@
                      <form method="POST" action="http://localhost/EditaisMVC/postagem/insert">
                         <div class="row g-3">
                             <div class="col-12">
-                                <input type="text" name="nome" class="form-control border-1 bg-light px-4" placeholder="Nome do edital" style="height: 55px;" required>
+                                Nome:
+                                <input type="text" name="nome" class="form-control border-1 bg-light px-4" placeholder="Edital exemplo" style="height: 55px;" required>
                             </div>
 
                             <div class="col-12">
-                                <textarea name="etapas" class="form-control border-1 bg-light px-4 py-4" rows="4" placeholder="Quais as etapas de execução?" required></textarea>
+                                Etapas:
+                                <textarea name="etapas" class="form-control border-1 bg-light px-4 py-4" rows="4" placeholder="Inscrições de 00/00/000 até 00/00/0000" required></textarea>
                             </div>
 
                              <div class="col-12">
-                                <input type="text" name="valor" class="form-control border-1 bg-light px-4" placeholder="R$: Valor do edital" style="height: 55px;" >
+                                Valor:
+                                <input type="text" name="valor" class="form-control border-1 bg-light px-4" placeholder="R$: 00.00,00" style="height: 55px;" >
                             </div>
 
                              <div class="col-12">
-                                <input type="email" name="contatos" class="form-control border-1 bg-light px-4" placeholder="Contatos" style="height: 55px;" >
+                                 Contato:
+                                <input type="email" name="contatos" class="form-control border-1 bg-light px-4" placeholder="editais@gmail.com" style="height: 55px;" >
                             </div>
                             <div class="col-12">
                                 <label>Selecione uma categoria: </label><br/>
                                     <select name="categorias" class="form-control border-1 bg-light px-4"  style="opacity: calc(1)">
                                         <p  style="opacity: calc(0.5)"><option value="" disable selected hidden>Escolha uma categoria</option></p>
-                                        <option value="1" >Inscrições abertas</option>
-                                        <option value="2">Conhecimento público</option>
-                                        <option value="3">Processo de seleção</option>
+                                        <option value="Aberto" >Inscrições abertas</option>
+                                        <option value="Público">Conhecimento público</option>
+                                        <option value="selecao">Processo de seleção</option>
                                     </select>
                             </div>
                             <div class="col-12">
                                 <label>Status do Edital: </label><br/>
                                     <select name="flags" class="form-control border-1 bg-light px-4"  style="opacity: calc(1)">
                                         <p  style="opacity: calc(0.5)"><option value="" disable selected hidden>Escolha o status do edital</option></p>
-                                        <option value="1">Ativado</option>
-                                        <option value="2">Desativado</option>                                        
+                                        <option value="Ativado">Ativado</option>
+                                        <option value="Desativado">Desativado</option>                                        
                                     </select>
                             </div>
                             <div class="col-12">

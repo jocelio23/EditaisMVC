@@ -61,6 +61,14 @@ class Core{
                 $this->method = 'index';
             }
         }
-        return call_user_func(array(new $this->controller, $this->method), $this->params);
+
+        //pegar o id por requisição get
+        if(isset($urlGet['id']) && $urlGet['id'] != null){
+            $id = $urlGet['id'];
+        }else{
+            $id = null;
+        }
+
+        return call_user_func(array(new $this->controller, $this->method), array('id' => $id));
     }
 }

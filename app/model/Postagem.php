@@ -4,17 +4,6 @@
 
     class postagem{
 
-       /*  private $nome;
-        private $etapas;
-        private $valor;
-        private $contatos;
-        private $categoria;
-        private $flag; */
-
-        //private $img;
-        //private $anexos = array();
-
-
         public static function insert($dadosPost){
 			$con = Connection::getConn();
 
@@ -27,7 +16,6 @@
 			$sql->bindValue(':f', $dadosPost['flags']);
 			$res = $sql->execute();
               
-           
 			if ($res == 0) {
 				throw new Exception("Falha ao inserir publicação");
                 
@@ -36,7 +24,49 @@
 			return true;
 		}
 
-        public static function insertNovo($dadosPost)
+        public static function update($params){
+            $con = Connection::getConn();
+    
+            $sql = "UPDATE postagem SET nome = :n, etapas = :e, valor = :v, contatos = :co, categoria = :ca, flag = :f WHERE id = :id";
+            $sql = $con->prepare($sql);
+            $sql->bindValue(':n', $params['nome']);
+            $sql->bindValue(':e', $params['etapas']);
+            $sql->bindValue(':v', $params['valor']);
+            $sql->bindValue(':co', $params['contatos']);
+            $sql->bindValue(':ca', $params['categorias']);
+            $sql->bindValue(':f', $params['flags']);
+        
+            $resultado = $sql->execute();
+    
+            if ($resultado == 0) {
+                throw new Exception("Falha ao alterar publicação");
+                
+                return false;
+            }
+            return true;
+        }
+
+        public static function selecionarPostagem($idPost){
+		    $con = Connection::getConn();
+
+			$sql = "SELECT * FROM postagem WHERE id = :id";
+			$sql = $con->prepare($sql);
+			$sql->bindValue(':id', $idPost, PDO::PARAM_INT);
+			$sql->execute();
+
+			$resultado = array();
+
+			while ($row = $sql->fetchObject('postagem')) {
+				$resultado[] = $row;
+			}
+
+			return $resultado;
+		}
+
+    }
+
+     //essa função precisa ser completada com as imagens e anexos
+       /*  public static function insertNovo($dadosPost)
 		{
 			$con = Connection::getConn();
             
@@ -79,70 +109,4 @@
 			return true;
             }            
 		}
-
-
-        public static function update($params){
-            $con = Connection::getConn();
-    
-            $sql = "UPDATE aux SET nome = :n, etapas = :e, valor = :v, contatos = :co, categoria = :ca, flag = :f WHERE id = :id";
-            $sql = $con->prepare($sql);
-            $sql->bindValue(':n', $params['nome']);
-            $sql->bindValue(':e', $params['etapas']);
-            $sql->bindValue(':v', $params['valor']);
-            $sql->bindValue(':co', $params['contatos']);
-            $sql->bindValue(':ca', $params['categorias']);
-            $sql->bindValue(':f', $params['flags']);
-
-        
-            $resultado = $sql->execute();
-    
-            if ($resultado == 0) {
-                throw new Exception("Falha ao alterar publicação");
-                
-                return false;
-            }
-            return true;
-        }
-
-     
-
-   /*      //seters
-        public function setNome($nome){
-            $this->nome = $nome;
-        }
-        public function setEtapas($etapas){
-            $this->etapas = $etapas;
-        }
-        public function setValor($valor){
-            $this->valor = $valor;
-        }
-        public function setContatos($contatos){
-            $this->contatos = $contatos;
-        }
-        public function setCategoria($categoria){
-            $this->categoria = $categoria;
-        }
-        public function setFlag($flag){
-            $this->flag = $flag;
-        }
-
-        //getters
-        public function getNome(){
-            return $this->nome;
-        }
-        public function getEtapas(){
-            return $this->etapas;
-        }
-        public function getValor(){
-            return $this->valor;
-        }
-        public function getContatos(){
-            return $this->contatos;
-        }
-        public function getCategoria(){
-            return $this->categoria;
-        }
-        public function getFlag(){
-            return $this->flag;
-        } */
-    }
+ */
