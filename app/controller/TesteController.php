@@ -1,9 +1,11 @@
 <?php
 
-class AtualizacaoController{
+class TesteController{
     public function index(){
 
         try{
+            $colecao =  Listagem::selectAll();
+            
             $loader = new \Twig\Loader\FilesystemLoader('app/view/');
             $twig = new \Twig\Environment($loader, [
                 'cache' => '/path/to/compilation_cache',
@@ -12,30 +14,17 @@ class AtualizacaoController{
             ]);
 
             $template = $twig->load('atualizacao.html');
-    
-            $parameters['nome_usuario'] = $_SESSION['usr']['usuario'];
-            return $template->render($parameters);
+            //pega valor e verifica se existe
+            //$parameters['nome_usuario'] = $_SESSION['usr']['usuario'];
+
+            $parametros = array();
+            $parametros['postagens'] = $colecao;
+            
+            return $template->render($parametros);
 
         }catch(Exception $e){
             echo $e->getMessage();
         }
-    }
-    
-    public function update()
-    {
-        try {
-            Postagem::update($_POST);
-
-            echo '<script>alert("Publicação alterada com sucesso!");</script>';
-            echo '<script>location.href="http://localhost/EditaisMVC/postagem.php"</script>';
-        } catch (Exception $e) {
-            echo '<script>alert("'.$e->getMessage().'");</script>';
-            echo '<script>location.href="http://localhost/EditaisMVC/postagem.php"</script>';
-        }
-    }
-
-    public function alterar(){
-        header('Location: http://localhost/EditaisMVC/atualizacao');  
     }
 
     public function change($paramId){
@@ -65,6 +54,12 @@ class AtualizacaoController{
             echo $e->getMessage();
         }
     }
-} 
 
-       
+    public function listaNova(){
+        header('Location: http://localhost/EditaisMVC/listagem');  
+    }  
+
+    public function atualiza(){
+        header('Location: http://localhost/EditaisMVC/atualizacao');  
+    }  
+}

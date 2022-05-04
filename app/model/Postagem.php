@@ -4,30 +4,43 @@
 
     class postagem{
 
-        public static function insert($dadosPost){
-			$con = Connection::getConn();
+    public static function insert($dadosPost){
+        $con = Connection::getConn();
 
-			$sql = $con->prepare('INSERT INTO postagem (nome, etapas, valor, contatos, categoria, flag) VALUES (:n, :e, :v, :co, :ca, :f)');
-			$sql->bindValue(':n', $dadosPost['nome']); 
-            $sql->bindValue(':e', $dadosPost['etapas']);
-            $sql->bindValue(':v', $dadosPost['valor']);
-            $sql->bindValue(':co', $dadosPost['contatos']);
-            $sql->bindValue(':ca', $dadosPost['categorias']);            
-			$sql->bindValue(':f', $dadosPost['flags']);
-			$res = $sql->execute();
-              
-			if ($res == 0) {
-				throw new Exception("Falha ao inserir publicação");
-                
-				return false;
-			}            
-			return true;
-		}
+        if (isset($_FILES['arquivo'])) {
+        $shity_file = $_FILES['arquivo']['name']; 
+        $extensao = strtolower(pathinfo($shity_file, PATHINFO_EXTENSION));
+        $novo_nome = md5(time()).".".$extensao; // gerando algoritmo md5.extensão capturada acima
+        $diretorio = "img/imagensEditais/"; // desinstalar extensão que instalei para path, pois esse é o caminho correto e não o que é apresentado na extensão
+
+        move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome); // realizando upload, o arquivo será salvo com um nome equivalente a um algoritmo md5.png, exemplo: b92a24cb7adc1fb2b2f2da78cb11c0a0.png.
+
+        $sql = $con->prepare('INSERT INTO postagem (nome, etapas, valor, contatos, categoria, flag, arquivo) VALUES (:n, :e, :v, :co, :ca, :f, :ar)');
+        $sql->bindValue(':n', $dadosPost['nome']);
+        $sql->bindValue(':e', $dadosPost['etapas']);
+        $sql->bindValue(':v', $dadosPost['valor']);
+        $sql->bindValue(':co', $dadosPost['contatos']);
+        $sql->bindValue(':ca', $dadosPost['categorias']);
+        $sql->bindValue(':f', $dadosPost['flags']);
+        $sql->bindValue(':ar', $dadosPost['arquivo'] = $novo_nome);  // atribuindo o valor do banco equivalente ao nome com hash md5 de acordo com a imagem upada
+
+        // DICA: macha, minha dica é que já que a intenção é receber apenas imagens, então criar um tipo de filtro em um if para que sejam carregadas apenas imagens, a partir do que o PATHINFO_EXTENSION capturar
+        
+
+        $res = $sql->execute();
+
+        if ($res == 0) {
+            throw new Exception("Falha ao inserir publicação");
+            return false;
+        }
+        }
+        return true;
+    }
 
         public static function update($params){
             $con = Connection::getConn();
     
-            $sql = "UPDATE postagem SET nome = :n, etapas = :e, valor = :v, contatos = :co, categoria = :ca, flag = :f WHERE id = :id";
+            $sql = "UPDATE postagem SET nome = :n, etapas = :e, valor = :v, contatos = :co, categoria = :ca, flag = :f, arquivo = :a WHERE id = :id";
             $sql = $con->prepare($sql);
             $sql->bindValue(':n', $params['nome']);
             $sql->bindValue(':e', $params['etapas']);
@@ -35,6 +48,7 @@
             $sql->bindValue(':co', $params['contatos']);
             $sql->bindValue(':ca', $params['categorias']);
             $sql->bindValue(':f', $params['flags']);
+            $sql->bindValue(':a', $params['arquivo']);
         
             $resultado = $sql->execute();
     
@@ -109,4 +123,24 @@
 			return true;
             }            
 		}
- */
+
+            /* public static function insert($dadosPost){
+			$con = Connection::getConn();
+
+			$sql = $con->prepare('INSERT INTO postagem (nome, etapas, valor, contatos, categoria, flag) VALUES (:n, :e, :v, :co, :ca, :f)');
+			$sql->bindValue(':n', $dadosPost['nome']); 
+            $sql->bindValue(':e', $dadosPost['etapas']);
+            $sql->bindValue(':v', $dadosPost['valor']);
+            $sql->bindValue(':co', $dadosPost['contatos']);
+            $sql->bindValue(':ca', $dadosPost['categorias']);            
+			$sql->bindValue(':f', $dadosPost['flags']);
+			$res = $sql->execute();
+              
+			if ($res == 0) {
+				throw new Exception("Falha ao inserir publicação");
+                
+				return false;
+			}            
+			return true;
+		} */
+ 

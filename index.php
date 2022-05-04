@@ -13,7 +13,8 @@
     require_once 'app/controller/LoginController.php';
     require_once 'app/controller/PostagemController.php';
     require_once 'app/controller/ListagemController.php';
-    require_once 'app/controller/AtualizacaoController.php';
+    require_once 'app/controller/PostController.php';
+    require_once 'app/controller/TesteController.php';
 
 
     $core = new Core();

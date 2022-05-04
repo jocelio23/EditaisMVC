@@ -44,9 +44,9 @@ class Listagem{
 
 			if (!$resultado) {
 				throw new Exception("Não foi encontrado nenhum registro no banco");	
-			} else {
+			} /* else {
 				$resultado->comentarios = Postagem::selecionarPostagem($resultado->id);
-			}
+			} */
 
 			return $resultado;
 		}

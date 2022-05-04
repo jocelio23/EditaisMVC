@@ -30,8 +30,20 @@ class PostagemController{
 		} catch(Exception $e) {
 			echo '<script>alert("'.$e->getMessage().'");</script>';
 			echo '<script>location.href="http://localhost/EditaisMVC"</script>';
-		}
-			
+		}	
 	}  
+
+    public function update(){
+        try {
+            Postagem::update($_POST);
+
+            echo '<script>alert("Publicação alterada com sucesso!");</script>';
+            echo '<script>location.href="http://localhost/EditaisMVC/postagem.php"</script>';
+        } catch (Exception $e) {
+            echo '<script>alert("'.$e->getMessage().'");</script>';
+            echo '<script>location.href="http://localhost/EditaisMVC/postagem.php"</script>';
+        }
+    }
+    
  }
 
