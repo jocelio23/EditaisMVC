@@ -2,9 +2,7 @@
 
 class AtualizacaoController
 {
-    public function index()
-    {
-
+    public function index(){
         try {
             $loader = new \Twig\Loader\FilesystemLoader('app/view/');
             $twig = new \Twig\Environment($loader, [
@@ -22,9 +20,7 @@ class AtualizacaoController
         }
     }
 
-    public function update()
-    {
-
+    public function update(){
         try {
             Postagem::update($_POST);
             

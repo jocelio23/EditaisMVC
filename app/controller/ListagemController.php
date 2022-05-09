@@ -2,7 +2,6 @@
 
 class ListagemController{
     public function index(){
-
         try{
             $colecao =  Listagem::selectAll();
             $loader = new \Twig\Loader\FilesystemLoader('app/view/');

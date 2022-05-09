@@ -25,10 +25,7 @@ class postagem{
       $sql->bindValue(':ar', $dadosPost['arquivo'] = $novo_nome);  // atribuindo o valor do banco equivalente ao nome com hash md5 de acordo com a imagem upada
 
       // DICA: macha, minha dica é que já que a intenção é receber apenas imagens, então criar um tipo de filtro em um if para que sejam carregadas apenas imagens, a partir do que o PATHINFO_EXTENSION capturar
-      
-
       $res = $sql->execute();
-
       if ($res == 0) {
         throw new Exception("Falha ao inserir publicação");
         return false;

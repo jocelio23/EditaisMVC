@@ -2,7 +2,6 @@
 
 class Core{
     private $url; 
-    
     private $controller;
     private $method = 'index';
     private $params = array();
@@ -68,7 +67,6 @@ class Core{
         }else{
             $id = null;
         }
-
         return call_user_func(array(new $this->controller, $this->method), array('id' => $id));
     }
 }

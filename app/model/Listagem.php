@@ -22,15 +22,12 @@ class Listagem{
         if (!$resultado) {
             echo '<script>location.href="http://localhost/EditaisMVC/single/single"</script>';	
            // throw new Exception("Não foi encontrado nenhum registro no banco");	
-            
         }
-        
         return $resultado;
     }
 
     public static function selecionaPorId($idPost){
 		$con = Connection::getConn();
-            
 		//$sql = "SELECT * FROM postagem WHERE id = 4";
         $sql = "SELECT * FROM postagem WHERE id = $idPost";
 		$sql = $con->prepare($sql);
@@ -44,7 +41,6 @@ class Listagem{
 		} else {
 			$resultado->comentarios = Postagem::selecionarPostagem($resultado->id);
 		}
-
 		return $resultado;
 	}
 }
