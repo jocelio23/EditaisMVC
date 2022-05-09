@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Listagem</title>
+    <title>Editais culturais</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Governo Do Estado Do Ceará" name="keywords">
     <meta content="Governo Do Estado Do Ceará" name="description">
@@ -35,12 +35,14 @@
 
 <body>
    
+
+
     <!-- Topo -->
     <div class="container-fluid bg-secondary px-5 d-none d-lg-block">
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <small class="me-3 text-light"></i>Governo Do Estado Do Ceará</small>
+                    <small class="me-3 text-light"></i>Governo Do Estado Do Ceará -> Acesso restrito para:{{nome_usuario}} <b style="text-transform: uppercase;">{{nome_usuario}}</b></small>
                 </div>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
@@ -50,7 +52,7 @@
             </div>
         </div>
     </div>
-    <!-- Top fim -->
+    <!-- Topo fim -->
 
     <!-- Menu de navegação -->
     <div class="container-fluid position-relative p-0">
@@ -60,84 +62,39 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
+                    
                     <a href="http://localhost/EditaisMVC/" class="nav-item nav-link active"><b>Início</b></a>
                     <a href="http://localhost/EditaisMVC/listagem/listaNova" class="nav-item nav-link active"><b>Editais</b></a>
                     <a href="http://localhost/EditaisMVC/postagem/logout" class="nav-item nav-link active"><b>Sair</b></a>
                 </div>
+               
             </div>
         </nav>
 
     </div>
-    <!-- Menu de naegação Fim -->
+    <!-- Menu de nagação Fim -->
     <br>
 
-  <!-- Conteúdo central -->
+     <!-- Conteúdo central -->
     <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-        <h5 class="fw-bold text-primary text-uppercase">Editais lançados</h5>
+        <h5 class="fw-bold text-primary text-uppercase">Nenhum registro foi encontrado no banco!</h5>
     </div>
-    <br>
-       {% for post in postagens %} 
-       <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">           
-            <div class="row g-5">
-                <div class="col-lg-4  wow zoomIn" data-wow-delay="0.9s" style="min-height: 350px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 rounded wow zoomIn" data-wow-delay="0.1s" src="img/imagensEditais/{{post.arquivo}}" width="200" height="390" style="object-fit: cover;">
-                    </div>
-                </div>
-          
-              <div class="col-lg-4">
-                    <div class="row g-5">
-                        <div class="col-12 wow zoomIn" data-wow-delay="0.2s">
-                            <h4>{{post.nome}}</h4>
-                           
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Etapas: {{post.etapas}}</p>
-                        </div>
-                            <div class="col-12 wow zoomIn" data-wow-delay="0.6s">
-                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Nº:{{post.id}}</p>
-                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Nome:{{post.nome}}</p>
-                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Valor R$:{{post.valor}}</p>
-                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Contato:{{post.contatos}}</p>
-                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Categoria:{{post.categoria}}</p>
-                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>status:{{post.flag}}</p>
-                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Imagem:{{post.arquivo}}</p>
 
-                
-                                <div id="login-button-panel" class="col-lg-12">
-                                    <a href="http://localhost/EditaisMVC/atualizacao/change/{{post.id}}"> <button name="action" value="enterAccountId" class="button-continuar" type="submit" tabindex="1">Alterar</button></a>
-                                    <a href="#"> <button name="action" value="enterAccountId" class="button-continuar" type="submit" tabindex="1" style="background: rgb(251, 138, 8);">Desativar</button>    </a>    
-                                </div>
-                            </div> 
-                    </div>
-                </div>
-                
-               <div class="col-lg-4">
-                    <div class="row g-5">
-                        <div class="col-12 wow zoomIn" data-wow-delay="0.4s">
-                            <h4>Publicações do Edital</h4>
-                            <p class="mb-0"><li id="file-3625034" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/oportunidade/3753/"><span>Ficha de inscrição no Mapa</span></a></li></p>
-                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/edital_xxii_edital_ceara_junino_para_quadrilhas_juninas_2022.pdf"><span>Edital </span></a></li></p>
-                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_i_plano_de_acao.xlsx "><span>Anexo I plano de ação</span></a></li></p>
-                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_ii_formulario_de_recurso.docx "><span>Anexo II  formulario de recurso</span></a></li></p>
-                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_iii_termo_de_execucao_cultural.pdf"><span>Anexo III minuta de termo execução cultural</span></a></li></p>
-                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_iv_dotacoes_orcamentarias.pdf"><span>Anexo IV dotação orçamentária</span></a></li></p>
-                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_v_formulario_de_acoes_para_acessibilidade.docx"><span>Anexo V formulario de ações para acessibilidade</span></a></li></p>
-                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_vi_carta_coletiva_de_anuencia_dos_grupos.docx"><span>Anexo VI carta coletiva de anuência dos grupos</span></a></li></p>
-                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_vii_dados_bancarios.docx"><span>Anexo VII dados bancários </span></a></li></p>
-                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_viii_regulamento_dos_festivais_regionais_e_quadrilhas_juninas.pdf"><span>Anexo VIII regulamento dos festivais regionais e quadrilhas juninas</span></a></li></p>
-                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_ix_nova_regionalizacao.pdf"><span>Anexo IX nova regionalização</span></a></li></p>
-                        </div>
-                    </div>
-                </div> 
-                <hr>          
-            </div>
-        </div>
-        
+    <br><br>
+    <br><br>
+    
+    <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+        <img src="img/logo/erro.png" width="180">
     </div>
-  
-{% endfor %}
 
-    <!-- Conteudo central Fim -->
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    
+     <!--Conteúdo central fim-->
 
     <!--acesso rapido start-->
 <!--
@@ -162,9 +119,8 @@
         </div>
     </section>
     -->
-    <!--acesso rapido end-->
 
-    <!-- Rodapé -->
+    <!-- Rodapé   -->
     <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
             <div class="row gx-10 ">
@@ -226,7 +182,7 @@
     <a href="#" class="btn btn-lg btn-secondary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
-    <!-- JavaScripts -->
+    <!-- JavaScrips -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="lib/wow/wow.min.js"></script>

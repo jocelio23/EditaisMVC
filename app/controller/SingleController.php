@@ -1,13 +1,10 @@
 <?php
 
-//essa controller será usada para criar sigles pages
-
-class PostController{
-    public function index($params){
+class SingleController{
+    public function index(){
 
         try{
-            $postagem =  Listagem::selecionaPorId($params);
-            
+            $colecao =  Listagem::selectAll();
             $loader = new \Twig\Loader\FilesystemLoader('app/view/');
             $twig = new \Twig\Environment($loader, [
                 'cache' => '/path/to/compilation_cache',
@@ -15,20 +12,22 @@ class PostController{
                 'auto_reload' => true,
             ]);
 
-            $template = $twig->load('atualizacao.html');
+            $template = $twig->load('single.html');
             //pega valor e verifica se existe
             //$parameters['nome_usuario'] = $_SESSION['usr']['usuario'];
 
             $parametros = array();
-            $parametros['nome'] = $postagem->nome;
-            $parametros['etapas'] = $postagem->etapas;
-            
+            $parametros['postagens'] = $colecao;
+
             return $template->render($parametros);
 
         }catch(Exception $e){
             echo $e->getMessage();
         }
     }
-
+    
+    public function single(){
+        header('Location: http://localhost/EditaisMVC/single');  
+    }
     
 }

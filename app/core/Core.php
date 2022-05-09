@@ -14,7 +14,6 @@ class Core{
         //verifica se tem alguem logado
         $this->user= $_SESSION['usr']  ?? null;
         $this->error = $_SESSION['msg_error'] ?? null;
-
         if(isset($this->error)){
             if($this->error['count'] === 0){
                 $_SESSION['msg_error'] ['count'] ++;
@@ -46,7 +45,7 @@ class Core{
         //se logou usuário realizou login
         if($this->user){
             //outras paginas podem ser adicionadas abaixo
-            $permissao = ['PostagemController', 'ListagemController', 'PostController'];
+            $permissao = ['PostagemController', 'ListagemController', 'AtualizacaoController', 'SingleController'];
             //se não é url permitida foça para dash
             if(!isset($this->controller) || !in_array($this->controller, $permissao)){
                 $this->controller = 'PostagemController';
@@ -63,8 +62,9 @@ class Core{
         }
 
         //pegar o id por requisição get
-        if(isset($urlGet['id']) && $urlGet['id'] != null){
-            $id = $urlGet['id'];
+        
+        if(isset($this->params) && $this->params !== null){
+            $id = $this->params;
         }else{
             $id = null;
         }

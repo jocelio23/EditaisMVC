@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Editais culturais</title>
+    <title>Atualizações</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Governo Do Estado Do Ceará" name="keywords">
     <meta content="Governo Do Estado Do Ceará" name="description">
@@ -21,50 +21,46 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="../../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../../lib/animate/animate.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
 
-    <link rel="shortcut icon" type="imagex/png" href="img/logo/iconCe.ico">
+    <link rel="shortcut icon" type="imagex/png" href="../../img/logo/iconCe.ico">
 </head>
 
 <body>
-   
-
-
-    <!-- Topbar Start -->
+    <!-- Topo-->
     <div class="container-fluid bg-secondary px-5 d-none d-lg-block">
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <small class="me-3 text-light"></i>Governo Do Estado Do Ceará -> Acesso restrito para:{{nome_usuario}} <b style="text-transform: uppercase;">{{nome_usuario}}</b></small>
+                    <small class="me-3 text-light"></i>Governo Do Estado Do Ceará</small>
                 </div>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <img src="img/logo/secult-escura.png" width="180">
+                    <img src="../../img/logo/secult-escura.png" width="180">
                 </div>
             </div>
         </div>
     </div>
-    <!-- Topbar End -->
+    <!-- Topo fim -->
 
-    <!-- Navbar & Carousel Start -->
+    <!-- Menu de navegação -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0">
+                <div class="navbar-nav ms-auto py-0">           
                     <a href="http://localhost/EditaisMVC/" class="nav-item nav-link active"><b>Início</b></a>
                     <a href="http://localhost/EditaisMVC/listagem/listaNova" class="nav-item nav-link active"><b>Editais</b></a>
-                    <a href="http://localhost/EditaisMVC/listagem/atualiza" class="nav-item nav-link active"><b>Atualizações</b></a>
                     <a href="http://localhost/EditaisMVC/postagem/logout" class="nav-item nav-link active"><b>Sair</b></a>
                 </div>
                
@@ -72,31 +68,30 @@
         </nav>
 
     </div>
-    <!-- Navbar & Carousel End -->
+    <!-- Menu de nagevação fim -->
     <br>
 
+  <!-- Conteúdo central -->
     <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-        <h5 class="fw-bold text-primary text-uppercase">Atualizações</h5>
+        <h5 class="fw-bold text-primary text-uppercase">Alterar</h5>
     </div>
-     <!-- Contact Start -->
+
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
-           
-            
             <br>
             <div class="row g-5">
                 <div class="col-lg-6 wow slideInUp" data-wow-delay="0.3s">
                     <iframe class="position-relative rounded w-100 h-100"
-                        src="img/logo/Secretaria-da-Cultura-INVERTIDA-WEB-branca-2.png" width="120"
+                        src="../../img/logo/Secretaria-da-Cultura-INVERTIDA-WEB-branca-2.png" width="120"
                         frameborder="0" style="min-height: 30px; border:0;" aria-hidden="false"
                         tabindex="0">  
                     </iframe>
                 </div>
-
                 <div class="col-lg-6 wow slideInUp" data-wow-delay="0.6s">
-                     <form method="POST" action="http://localhost/EditaisMVC/postagem/update">
+                     <form method="POST" action="http://localhost/EditaisMVC/atualizacao/update">
                         <div class="row g-3">
-                            <div class="col-12">
+                            <div class="col-12"> 
+                                <input type="hidden" name="id" value="{{id}}">
                                 Nome:
                                 <input type="text" name="nome" class="form-control border-1 bg-light px-4" value="{{nome}}" style="height: 55px;" required>
                             </div>
@@ -119,34 +114,31 @@
                                 <label>Selecione uma categoria: </label><br/>
                                     <select name="categorias" class="form-control border-1 bg-light px-4" style="opacity: calc(1)">
                                         <p  style="opacity: calc(0.5)"><option  disable selected hidden>{{categoria}}</option></p>
-                                        <option value="1" >Inscrições abertas</option>
-                                        <option value="2">Conhecimento público</option>
-                                        <option value="3">Processo de seleção</option>
+                                        <option value="Aberto" >Inscrições abertas</option>
+                                        <option value="Público">Conhecimento público</option>
+                                        <option value="Em seleção">Processo de seleção</option>
                                     </select>
                             </div>
                             <div class="col-12">
                                 <label>Status do Edital: </label><br/>
                                     <select name="flags" class="form-control border-1 bg-light px-4" style="opacity: calc(1)">
-                                        <p  style="opacity: calc(0.5)"><option disable selected hidden>{{flag}}</option></p>
-                                        <option value="1">Ativado</option>
-                                        <option value="2">Desativado</option>                                        
+                                        <p  style="opacity: calc(0.5)">
+                                            <option disable selected hidden>{{flag}}</option></p>
+                                        <option value="Ativado">Ativado</option>
+                                        <option value="Desativado">Desativado</option>                                        
                                     </select>
                             </div>
-                            <div class="col-12">
-                                Adicione todos os anexos dessa publicação
-                                <input type="file" name="arquivos[]" multiple accept="application/pdf,application/doc,application/docx" class="form-control border-1 bg-light px-4" >
-                                
-                            </div>
 
-                            <div class="col-12">
+                             <div class="col-12">
                                 Selecione uma imagem para o edital
-                                <input type="file" name="imagem"  accept="image/png,image/jpg, image/jpeg" class="form-control border-1 bg-light px-4" ><br/>
+                                <input type="file" name="arquivo" accept="image/png,image/jpg, image/jpeg" class="form-control border-1 bg-light px-4" > {{arquivo}}<br/>
                                 
                             </div>
-
+                           
                             <div class="col-12">
                                 <button class="btn btn-secondary w-100 py-3" type="submit" name="submit">Salvar Mudanças</button>
                             </div>
+                        
                         </div>
                     </form>
                     <br>
@@ -154,9 +146,35 @@
             </div>
         </div>
     </div>
-    <!-- Contact End -->
+    <!-- Conteúdo central FIM -->
 
-    <!-- Footer Start -->
+    <!--acesso rapido start-->
+
+    <!--    <section class="AcessoRapido">
+        <div class="wrapper">
+            <div class="row">
+                <h4 class="mb-1">Acesso Rápido</h4>
+                <nav class="MenuAcessos">
+                    <div class="acesso-rapido">
+                        <ul id="menu-acesso-rapido-footer" class="menu">
+                            <li id="menu-item-870" class="portal menu-item menu-item-type-custom menu-item-object-custom menu-item-870"><a href="https://cearatransparente.ce.gov.br" target="_blank"><i class="PortalTransparencia"></i>Ceará<br> Transparente</a></li>
+                            <li id="menu-item-871" class="acesso menu-item menu-item-type-custom menu-item-object-custom menu-item-871"><a href="http://cartadeservicos.ce.gov.br/" target="_blank"><i class="AcessoCidadao"></i>Carta de Serviços<br>do Cidadão</a></li>
+                            <li id="menu-item-872" class="lei menu-item menu-item-type-custom menu-item-object-custom menu-item-872"><a href="https://cearatransparente.ce.gov.br/portal-da-transparencia/acesso-a-informacao?locale=pt-BR" target="_blank"><i class="AcessoInformacao"></i>Lei geral de<br> acesso à informação</a></li>
+                            <li id="menu-item-873" class="diario menu-item menu-item-type-custom menu-item-object-custom menu-item-873"><a href="http://pesquisa.doe.seplag.ce.gov.br/" target="_blank"><i class="DiarioOficial"></i>Diário<br> Oficial</a></li>
+                            <li id="menu-item-874" class="legislacao menu-item menu-item-type-custom menu-item-object-custom menu-item-874"><a href="https://www.al.ce.gov.br/" target="_blank"><i class="Legislacao"></i>Legislação<br> Estadual</a></li>
+                            <li id="menu-item-61919" class="acoes menu-item menu-item-type-post_type menu-item-object-page menu-item-61919"><a href="http://www.ceara.gov.br/governo/"><i class="AcoesGoverno"></i>Ações de<br> Governo</a></li>
+                        </ul>
+                    </div>                    
+                </nav>
+    
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!--acesso rapido end-->
+
+    <!-- Rodapé -->
     <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
             <div class="row gx-10 ">
@@ -211,24 +229,23 @@
             </div>
         </div>
     </div>
-    <!-- Footer End -->
+    <!-- Rodapé fim -->
 
-
-    <!-- Back to Top -->
+    <!-- Botao topo -->
     <a href="#" class="btn btn-lg btn-secondary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
-    <!-- JavaScript Libraries -->
+    <!-- JavaScripts -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="../../lib/wow/wow.min.js"></script>
+    <script src="../../lib/easing/easing.min.js"></script>
+    <script src="../../lib/waypoints/waypoints.min.js"></script>
+    <script src="../../lib/counterup/counterup.min.js"></script>
+    <script src="../../lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="../../js/main.js"></script>
 </body>
 
 </html>

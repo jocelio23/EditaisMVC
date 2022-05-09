@@ -2,7 +2,7 @@
 
 class PostagemController{
     public function index(){
-       //echo 'Login foi realizado! <a href="http://localhost/Edital/EditaisMVC/dashboard/logout">logout</a>';
+       
        $loader = new \Twig\Loader\FilesystemLoader('app/view/');
        $twig = new \Twig\Environment($loader, [
            'cache' => '/path/to/compilation_cache',
@@ -30,20 +30,8 @@ class PostagemController{
 		} catch(Exception $e) {
 			echo '<script>alert("'.$e->getMessage().'");</script>';
 			echo '<script>location.href="http://localhost/EditaisMVC"</script>';
-		}	
+		}
+			
 	}  
-
-    public function update(){
-        try {
-            Postagem::update($_POST);
-
-            echo '<script>alert("Publicação alterada com sucesso!");</script>';
-            echo '<script>location.href="http://localhost/EditaisMVC/postagem.php"</script>';
-        } catch (Exception $e) {
-            echo '<script>alert("'.$e->getMessage().'");</script>';
-            echo '<script>location.href="http://localhost/EditaisMVC/postagem.php"</script>';
-        }
-    }
-    
  }
 
