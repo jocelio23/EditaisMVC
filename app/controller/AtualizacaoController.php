@@ -32,12 +32,6 @@ class AtualizacaoController
 		}
     }
 
-    public function alterar()
-    {
-        header('Location: http://localhost/EditaisMVC/atualizacao');
-       
-    }
-
     public function change($paramId){
         $paramId = intval($paramId['id'][0]);
         $loader = new \Twig\Loader\FilesystemLoader('app/View');
@@ -62,4 +56,9 @@ class AtualizacaoController
         //$conteudo = $template->render($parameters);
         return $template->render($parameters);
     }
+     public function alterar(){
+        header('Location: http://localhost/EditaisMVC/atualizacao');   
+    }
+
+    
 }

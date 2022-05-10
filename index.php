@@ -16,6 +16,9 @@
     require_once 'app/controller/PostagemController.php';
     require_once 'app/controller/ListagemController.php';
     require_once 'app/controller/AtualizacaoController.php';
+    require_once 'app/controller/FaqController.php';
+    require_once 'app/controller/EditaisController.php';
+
 
 
     $core = new Core();

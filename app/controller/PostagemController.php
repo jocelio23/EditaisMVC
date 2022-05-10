@@ -21,6 +21,7 @@ class PostagemController{
         session_destroy();
         header('Location: http://localhost/EditaisMVC/');
     }
+
     public function insert(){
 		try {
 			Postagem::insert($_POST);
@@ -30,8 +31,21 @@ class PostagemController{
 		} catch(Exception $e) {
 			echo '<script>alert("'.$e->getMessage().'");</script>';
 			echo '<script>location.href="http://localhost/EditaisMVC"</script>';
-		}
-			
+		}	
 	}  
+
+    public function del($paramId){
+		try {
+
+            $paramId = intval($paramId['id'][0]);
+			Postagem::delete($paramId);
+            
+            echo '<script>alert("Publicação deletada com sucesso!");</script>';
+			echo '<script>location.href="http://localhost/EditaisMVC/listagem"</script>';
+		} catch (Exception $e) {
+			echo '<script>alert("'.$e->getMessage().'");</script>';
+			echo '<script>location.href="http://localhost/EditaisMVC"</script>';
+		}
+    }
  }
 

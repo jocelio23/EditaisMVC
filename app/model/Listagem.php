@@ -26,6 +26,8 @@ class Listagem{
         return $resultado;
     }
 
+    
+
     public static function selecionaPorId($idPost){
 		$con = Connection::getConn();
 		//$sql = "SELECT * FROM postagem WHERE id = 4";

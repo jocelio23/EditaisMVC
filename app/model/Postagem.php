@@ -4,7 +4,7 @@ use bd\Connection;
 
 class postagem{
 
-  public static function insert($dadosPost){
+    public static function insert($dadosPost){
     $con = Connection::getConn();
 
     if (isset($_FILES['arquivo'])) {
@@ -75,6 +75,23 @@ class postagem{
     return $resultado;
   }
 
+  public static function delete($id){
+		$con = Connection::getConn();
+
+		$sql = "DELETE FROM postagem WHERE id = :id";
+		$sql = $con->prepare($sql);
+		$sql->bindValue(':id', $id);
+		$resultado = $sql->execute();
+
+
+   
+		if ($resultado == 0) {
+		  throw new Exception("Falha ao deletar publicação");
+				return false;
+		}
+
+		return true;
+	}
    
 
 }
