@@ -32,49 +32,26 @@
 
     <link rel="shortcut icon" type="imagex/png" href="img/logo/iconCe.ico">
     <!-- inicio do javascript botão + "para ser colocado na pasta js"-->
-    
-        <!-- fim do javascript botão + -->
-
-        <script type="text/javascript">
-            var qtdeCampos = 0;
-            var qtdeCampos2 = 0;
+    <!-- fim do javascript botão + -->
+    <script>
+        function duplicarCampos(){
+            var clone = document.getElementById('origem').cloneNode(true);
+            var destino = document.getElementById('destino');
+            destino.appendChild (clone);
             
-            function addCampos() {
-            var objPai = document.getElementById("campoPai");
-            //Criando o elemento DIV;
-            var objFilho = document.createElement("div");
-            var objFilho2 = document.createElement("div");
-            //Definindo atributos ao objFilho:
-            objFilho.setAttribute("id","filho"+qtdeCampos);
-            objFilho2.setAttribute("id","filho2"+qtdeCampos);
+            var camposClonados = clone.getElementsByTagName('input');
             
-            //Inserindo o elemento no pai:
-            objPai.appendChild(objFilho);
-            objPai.appendChild(objFilho2);
-            
-            //Escrevendo algo no filho recém-criado:
-            document.getElementById("filho"+qtdeCampos).innerHTML = "<input type='text' class='border-1 bg-light px-4' id='campo"+qtdeCampos+"' name='campo[]' placeholder=' digite aqui seu Link: '><br><br>";
-            document.getElementById("filho2"+qtdeCampos2).innerHTML = "<input type='text' class='border-1 bg-light px-4' id='campo"+qtdeCampos2+"' name='campo[]' placeholder=' digite aqui seu texto: '><br><br>";
-            
-            
-            qtdeCampos++;
-            qtdeCampos2++;
+            for(i=0; i<camposClonados.length;i++){
+                camposClonados[i].value = '';
             }
-            
-            function removerCampo(id) {
-            var objPai = document.getElementById("campoPai");
-            var objFilho = document.getElementById("filho"+id);
-            var objFilho2 = document.getElementById("filho2"+id);
-            
-            //Removendo o DIV com id específico do nó-pai:
-            var removido = objPai.removeChild(objFilho);
-            var removido = objPai.removeChild(objFilho2);
-            qtdeCampos--;
-            qtdeCampos2--;
-            }
-            </script>
-            <!-- fim do javascript botão + -->
+        }
+        
+        function removerCampos(id){
+            var node1 = document.getElementById('destino');
+            node1.removeChild(node1.childNodes[0]);
+        }
         </script>
+        <!--fim do javascript botão + -->
 </head>
 
 <body>
@@ -184,19 +161,24 @@
                                 <input type="file" name="arquivo"  accept="image/png,image/jpg, image/jpeg" class="form-control border-1 bg-light px-4" >                                
                             </div>
 
-                             <div class="col-lg-12">
-                                Link:
-                                <input type="text" name="link" placeholder="www.cultura/documento.PDF" class=" border-1 bg-light px-4" >    
+                            <div id="origem">
+                                <div class="col-lg-12">
+                                    Link:
+                                    <input type="text" name="link" placeholder="www.cultura/documento.PDF" class=" border-1 bg-light px-4" >    
+                                </div>
+                                <div class="col-lg-12">
+                                    Texto:
+                                    <input type="text" name="texto" placeholder="Documento da secretaria" class='border-1 bg-light px-4'>                        
+                                </div>
                             </div>
-                            <div class="col-lg-12">
-                                Texto:
-                                <input type="text" name="texto" placeholder="Documento da secretaria" class='border-1 bg-light px-4'>   
-                                                     
+                            <div id="destino">
+
                             </div>
+                             
 <br>        
                             <div id="campoPai" ></div>
-                            <button class="col-lg-1" type="button" style="background-color: rgb(52, 173, 84);" onclick="addCampos()">+</button>&nbsp
-                            <button class="col-lg-1" type="button" style="background-color: rgb(177, 21, 21);" onclick="removerCampo()">-</button>
+                            <button class="col-lg-1" placeholder="www.cultura/documento.PDF" type="button" style="background-color: rgb(52, 173, 84);" onclick="duplicarCampos()">+</button>&nbsp;
+                            <button class="col-lg-1" type="button" style="background-color: rgb(191, 14, 14);" onclick="removerCampos(this)">-</button>
                        
 
                              <button class="btn btn-secondary w-100 py-3" type="submit" name="submit" >Adicionar edital</button>
@@ -204,6 +186,7 @@
                     </form>
                     <br>
                 </div>
+
             </div>
         </div>
     </div>
