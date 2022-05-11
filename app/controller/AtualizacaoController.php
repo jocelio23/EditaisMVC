@@ -22,7 +22,7 @@ class AtualizacaoController
 
     public function update(){
         try {
-            Postagem::update($_POST);
+            Postagem::updateComLinks($_POST);
             
             echo '<script>alert("Publicação alterada com sucesso!");</script>';
 			echo '<script>location.href="http://localhost/EditaisMVC/listagem"</script>';
@@ -51,6 +51,8 @@ class AtualizacaoController
         $parameters['contatos'] = $post->contatos;
         $parameters['categoria'] = $post->categoria;
         $parameters['flag'] = $post->flag;
+        $parameters['link'] = $post->link;
+        $parameters['texto'] = $post->texto;
         //$parameters['arquivo'] = $post->arquivo;
 
         //$conteudo = $template->render($parameters);

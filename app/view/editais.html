@@ -65,15 +65,16 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
+            <!-- <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
+                    
                     <a href="index.html" class="nav-item nav-link active">Editais</a>
                     <a href="equipamentos.html" class="nav-item nav-link">Equipamentos</a>
                     <a href="service.html" class="nav-item nav-link">Serviços</a>
                     <a href="edital-mecenas_antigos.html" class="nav-item nav-link">Cefic</a>
                 </div>
                
-            </div>
+            </div> -->
         </nav>
 
         <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -150,69 +151,34 @@
                 <h5 class="fw-bold text-dark text-uppercase">Disponíveis</h5>
                 <h1 class="mb-0">Editais com Inscrições Abertas</h1>
             </div>
-           <div class="row g-5">
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
-                    <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/edital/edital-junino.jpeg" alt="">
-                            <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4" href="edital-junino-ce.html">Edital aberto</div>
-                        </div>
-                        <div class="p-4">
-                            <a class="text-width-g " href="edital-junino-ce.html">Inscreva-se<i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
-                    <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/edital/edital-cinema-video-pesquisa.jpeg" alt="">
-                            <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4" href="edital-cinema-e-video-ce -difusaopesquisa.html">Edital aberto</div>
-                        </div>
-                        <div class="p-4">
-                            <a class="text-width-g " href="edital-cinema-e-video-ce -difusaopesquisa.html">Inscreva-se<i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
+            <div class="row g-5">
+                  {% for post in postagens %} 
+                    {% if post.categoria == 'Aberto' %}
+                        <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
+                            <div class="blog-item bg-light rounded overflow-hidden">
+                                <div class="blog-img position-relative overflow-hidden">
+                                    <img class="img-fluid" src="img/imagensEditais/{{post.arquivo}}" alt="">
+                                    <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4" href="edital-junino-ce.html">Edital aberto</div>
+                                </div>
+                                <div class="p-4">
+                                    <a class="text-width-g " href="{{post.link}}">Inscreva-se<i class="bi bi-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>  
+                        {% endif %}
+                 {% endfor %}
+                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
                     <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/edital/edital-cinema-video.jpeg" alt="">
-                            <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4" href="edital-cinema-e-video-ce.html">Edital aberto</div>
-                        </div>
-                        <div class="p-4">
-                            <a class="text-width-g " href="edital-cinema-e-video-ce.html" >Inscreva-se<i class="bi bi-arrow-right"></i></a>
-                        </div>
                     </div>
                 </div>
-                
+                    
+            </div>
+           
                 
             </div>
         </div>
     </div>
-
-     <!-- Conhecimento Público MROSC
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h1 class="mb-0">Editais em Conhecimento Público MROSC</h1>
-            </div>
-            <div class="row g-5">
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
-                    <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/edital/edital-junino.jpeg" alt="">
-                            <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4" href="edital-junino-ce.html">Conhecimento Público</div>
-                        </div>
-                        <div class="p-4">
-                            <a class="text-width-g " href="edital-junino-ce.html">Acessar<i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
     
       <!-- Editais em Processo de Seleção  -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -222,115 +188,24 @@
                 <h1 class="mb-0">Editais em Processo de Seleção  </h1>
             </div>
             <div class="row g-5">
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
-                    <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/edital/edital-mecenas.png" alt="">
-                            <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4" href="edital-mecenas-ce.html">Edital em processo</div>
-                        </div>
-                        <div class="p-4">
-                            <a class="text-width-g " href="edital-mecenas-ce.html">Acessar<i class="bi bi-arrow-right"></i></a>
+                {% for post in postagens %} 
+                    {% if post.categoria == 'Seleção' %}
+                    <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
+                        <div class="blog-item bg-light rounded overflow-hidden">
+                            <div class="blog-img position-relative overflow-hidden">
+                                <img class="img-fluid" src="img/imagensEditais/{{post.arquivo}}" alt="">
+                                <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4" href="edital-junino-ce.html">Edital aberto</div>
+                            </div>
+                            <div class="p-4">
+                                <a class="text-width-g " href="{{post.link}}">Inscreva-se<i class="bi bi-arrow-right"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    {% endif %}
+                 {% endfor %}
+                
                 <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
-                    <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/edital/edital-cultura-viva.jpeg" alt="">
-                            <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4" href="edital-cultura-viva-ce.html">Edital em processo</div>
-                        </div>
-                        <div class="p-4">
-                            <a class="text-width-g " href="edital-cultura-viva-ce.html" >Acessar<i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
-                    <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/edital/edital-junino-quadrilhas.jpeg" alt="">
-                            <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4" href="edital-junino-quadrihas-ce.html">Edital em processo</div>
-                        </div>
-                        <div class="p-4">
-                            <a class="text-width-g " href="edital-junino-quadrihas-ce.html">Acessar<i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
-                    <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/edital/edital-musical.jpeg" alt="">
-                            <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4" href="edital-nepomuceno-ce.html">Edital em processo</div>
-                        </div>
-                        <div class="p-4">
-                            <a class="text-width-g " href="edital-nepomuceno-ce.html" >Acessar<i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
-                    <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/edital/edital-escolalivres.jpeg" alt="">
-                            <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4" href="edital-escolas-livres-ce.html">Edital em processo</div>
-                        </div>
-                        <div class="p-4">
-                            <a href="edital-escolas-livres-ce.html" class="text-width-g ">Acessar<i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
-                    <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/edital/edital-patativa.png" alt="">
-                            <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4" href="edital-patativa-ce.html">Edital em processo</div>
-                        </div>
-                        <div class="p-4">
-                            <a class="text-width-g " href="edital-patativa-ce.html">Acessar<i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
-                    <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/edital-seleção/carnavalesodapaixao.jpeg" alt="">
-                            <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4" href="edital-carnavalescos-ce.html">Edital em processo</div>
-                        </div>
-                        <div class="p-4">
-                            <a class="text-width-g " href="edital-carnavalescos-ce.html" >Acessar<i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
-                    <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/edital-seleção/cidadania_ diversidade.jpg" alt="">
-                            <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4">Edital em processo</div>
-                        </div>
-                        <div class="p-4">
-                            <a href="edital-cidadania_ diversidade.html" class="text-width-g ">Acessar<i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
-                    <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/edital-seleção/cultura_infância.jpeg" alt="">
-                            <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4">Edital em processo</div>
-                        </div>
-                        <div class="p-4">
-                            <a class="text-width-g " href="edital-cultura_infância.html">Acessar<i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
-                    <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/edital-seleção/incentivo as artes.jpg" alt="">
-                            <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4">Edital em processo</div>
-                        </div>
-                        <div class="p-4">
-                            <a class="text-width-g " href="edital-incentivo-artes.html" >Acessar<i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
+                    
                 </div>           
             </div>
         </div>

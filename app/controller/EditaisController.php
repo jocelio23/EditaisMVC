@@ -11,7 +11,7 @@ class EditaisController{
                 'auto_reload' => true,
             ]);
 
-            $template = $twig->load('listagem.html');
+            $template = $twig->load('editais.html');
             //pega valor e verifica se existe
             //$parameters['nome_usuario'] = $_SESSION['usr']['usuario'];
 
@@ -25,7 +25,7 @@ class EditaisController{
         }
     }
     
-    public function edita(){
+    public function teste(){
         header('Location: http://localhost/EditaisMVC/editais');  
     }
     

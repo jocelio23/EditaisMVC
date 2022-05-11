@@ -116,7 +116,7 @@
                                         <p  style="opacity: calc(0.5)"><option  disable selected hidden>{{categoria}}</option></p>
                                         <option value="Aberto" >Inscrições abertas</option>
                                         <option value="Público">Conhecimento público</option>
-                                        <option value="Em seleção">Processo de seleção</option>
+                                        <option value="Seleção">Processo de seleção</option>
                                     </select>
                             </div>
                             <div class="col-12">
@@ -133,6 +133,16 @@
                                 Selecione uma imagem para o edital
                                 <input type="file" name="arquivo" accept="image/png,image/jpg, image/jpeg" class="form-control border-1 bg-light px-4" > {{arquivo}}<br/>
                                 
+                            </div>
+
+                            <div class="col-lg-12">
+                                Link:
+                                <input type="text" name="link" placeholder="www.cultura/documento.PDF" class=" border-1 bg-light px-4" value="{{link}}">    
+                            </div>
+                            <div class="col-lg-12">
+                                Texto:
+                                <input type="text" name="texto" placeholder="Documento da secretaria" class='border-1 bg-light px-4' value="{{texto}}">   
+                                                     
                             </div>
                            
                             <div class="col-12">

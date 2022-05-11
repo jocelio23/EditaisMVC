@@ -3,7 +3,6 @@
 class SingleController{
     public function index(){
         try{
-            $colecao =  Listagem::selectAll();
             $loader = new \Twig\Loader\FilesystemLoader('app/view/');
             $twig = new \Twig\Environment($loader, [
                 'cache' => '/path/to/compilation_cache',
@@ -16,8 +15,6 @@ class SingleController{
             //$parameters['nome_usuario'] = $_SESSION['usr']['usuario'];
 
             $parametros = array();
-            $parametros['postagens'] = $colecao;
-
             return $template->render($parametros);
 
         }catch(Exception $e){

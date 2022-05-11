@@ -24,7 +24,7 @@ class PostagemController{
 
     public function insert(){
 		try {
-			Postagem::insert($_POST);
+			Postagem::insertComLinks($_POST);
 
 			echo '<script>alert("Publicação inserida com sucesso!");</script>';
 			echo '<script>location.href="http://localhost/EditaisMVC/"</script>';

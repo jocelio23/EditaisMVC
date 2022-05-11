@@ -82,7 +82,7 @@
             <div class="row g-5">
                 <div class="col-lg-4  wow zoomIn" data-wow-delay="0.9s" style="min-height: 350px;">
                     <div class="position-relative h-100">
-                        <img class="position-absolute w-100 rounded wow zoomIn" data-wow-delay="0.1s" src="img/imagensEditais/{{post.arquivo}}" width="200" height="390" style="object-fit: cover;">
+                        <img class="position-absolute w-100 rounded wow zoomIn" data-wow-delay="0.1s" src="img/imagensEditais/{{post.arquivo}}" width="500" height="320" style="object-fit: cover;">
                     </div>
                 </div>
           
@@ -100,9 +100,10 @@
                                 <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Contato:{{post.contatos}}</p>
                                 <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Categoria:{{post.categoria}}</p>
                                 <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>status:{{post.flag}}</p>
-                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Imagem:{{post.arquivo}}</p>
+                                <p class="mb-0"><li id="file-3625034" class="widget-list-item"><a title="" href="{{post.link}}" target="_blank"><span>Link de inscrições</span></a></li></p>
 
-                
+
+                                <br>
                                 <div id="login-button-panel" class="col-lg-12">
                                     <a href="http://localhost/EditaisMVC/atualizacao/change/{{post.id}}"> <button name="action" value="enterAccountId" class="button-continuar" type="submit" tabindex="1">Alterar</button></a>
                                     <a href="http://localhost/EditaisMVC/postagem/del/{{post.id}}"> <button name="action" value="enterAccountId" class="button-continuar" type="submit" tabindex="1" style="background: rgb(251, 138, 8);">Desativar</button>    </a>    
@@ -115,17 +116,8 @@
                     <div class="row g-5">
                         <div class="col-12 wow zoomIn" data-wow-delay="0.4s">
                             <h4>Publicações do Edital</h4>
-                            <p class="mb-0"><li id="file-3625034" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/oportunidade/3753/"><span>Ficha de inscrição no Mapa</span></a></li></p>
-                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/edital_xxii_edital_ceara_junino_para_quadrilhas_juninas_2022.pdf"><span>Edital </span></a></li></p>
-                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_i_plano_de_acao.xlsx "><span>Anexo I plano de ação</span></a></li></p>
-                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_ii_formulario_de_recurso.docx "><span>Anexo II  formulario de recurso</span></a></li></p>
-                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_iii_termo_de_execucao_cultural.pdf"><span>Anexo III minuta de termo execução cultural</span></a></li></p>
-                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_iv_dotacoes_orcamentarias.pdf"><span>Anexo IV dotação orçamentária</span></a></li></p>
-                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_v_formulario_de_acoes_para_acessibilidade.docx"><span>Anexo V formulario de ações para acessibilidade</span></a></li></p>
-                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_vi_carta_coletiva_de_anuencia_dos_grupos.docx"><span>Anexo VI carta coletiva de anuência dos grupos</span></a></li></p>
-                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_vii_dados_bancarios.docx"><span>Anexo VII dados bancários </span></a></li></p>
-                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_viii_regulamento_dos_festivais_regionais_e_quadrilhas_juninas.pdf"><span>Anexo VIII regulamento dos festivais regionais e quadrilhas juninas</span></a></li></p>
-                            <p class="mb-0"><li id="file-3625041" class="widget-list-item"><a title="" href="https://mapacultural.secult.ce.gov.br/files/opportunity/3753/anexo_ix_nova_regionalizacao.pdf"><span>Anexo IX nova regionalização</span></a></li></p>
+                            <p class="mb-0"><li id="file-3625034" class="widget-list-item"><a title="" href="{{post.link}}" target="_blank"><span>Link de inscrições</span></a></li></p>
+                            <p class="mb-0"><li id="0" class="widget-list-item"><span>Novos links poderão ser adicionados</span></li></p>
                         </div>
                     </div>
                 </div> 
@@ -134,8 +126,44 @@
         </div>
         
     </div>
+</div>
   
 {% endfor %}
+
+<!--
+
+<h2>Teste para listagem de editais que estão ativos</h2>
+{% for post in postagens %} 
+    {% if post.flag == 'Ativado' %}
+    <div class="col-12 wow zoomIn" data-wow-delay="0.6s">
+        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Nº:{{post.id}}</p>
+        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Nome:{{post.nome}}</p>
+        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Valor R$:{{post.valor}}</p>
+        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Contato:{{post.contatos}}</p>
+        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Categoria:{{post.categoria}}</p>
+        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>status:{{post.flag}}</p>
+        <h3>--------</h3>
+    </div> 
+    {% endif %}
+{% endfor %}
+<hr>
+
+<h2>Teste para listagem de editais por categoria</h2>
+{% for post in postagens %} 
+    {% if post.categoria == 'Público' %}
+    <div class="col-12 wow zoomIn" data-wow-delay="0.6s">
+        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Nº:{{post.id}}</p>
+        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Nome:{{post.nome}}</p>
+        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Valor R$:{{post.valor}}</p>
+        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Contato:{{post.contatos}}</p>
+        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Categoria:{{post.categoria}}</p>
+        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>status:{{post.flag}}</p>
+
+    </div> 
+    <h3>--------</h3>
+    {% endif %}
+{% endfor %}
+-->
 
     <!-- Conteudo central Fim -->
 

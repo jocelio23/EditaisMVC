@@ -54,7 +54,8 @@
             
             //Escrevendo algo no filho recém-criado:
             document.getElementById("filho"+qtdeCampos).innerHTML = "<input type='text' class='border-1 bg-light px-4' id='campo"+qtdeCampos+"' name='campo[]' placeholder=' digite aqui seu Link: '><br><br>";
-            document.getElementById("filho2"+qtdeCampos2).innerHTML = "<input type='text' class='border-1 bg-light px-4' id='campo"+qtdeCampos2+"' name='campo[]' placeholder=' digite aqui seu texto: '><br><br><input type='button' style='width: 3px;height:2'onclick='removerCampo("+qtdeCampos2+")' value=' - '><br><br>";
+            document.getElementById("filho2"+qtdeCampos2).innerHTML = "<input type='text' class='border-1 bg-light px-4' id='campo"+qtdeCampos2+"' name='campo[]' placeholder=' digite aqui seu texto: '><br><br>";
+            
             
             qtdeCampos++;
             qtdeCampos2++;
@@ -108,14 +109,17 @@
                     <a href="http://localhost/EditaisMVC/" class="nav-item nav-link active"><b>Início</b></a>
                     <a href="http://localhost/EditaisMVC/listagem/listaNova" class="nav-item nav-link active"><b>Editais</b></a>
                     <a href="http://localhost/EditaisMVC/postagem/logout" class="nav-item nav-link active"><b>Sair</b></a>
+                   <!-- <a href="http://localhost/EditaisMVC/Faq/rota" class="nav-item nav-link active" target="_blank"><b>Faq</b></a>-->
+                   <a href="http://localhost/EditaisMVC/editais/teste" class="nav-item nav-link active"><b>Página inicial</b></a>
+
+
                 </div>
                
             </div>
         </nav>
-        <!--<a href="http://localhost/EditaisMVC/Faq/rota" class="nav-item nav-link active"><b>Faq</b></a>-->
+       
     </div>
     <!-- Menu de nageção fim -->
-
     <br>
 
      <!-- Conteúdo central -->
@@ -163,7 +167,7 @@
                                         <p  style="opacity: calc(0.5)"><option value="" disable selected hidden>Escolha uma categoria</option></p>
                                         <option value="Aberto" >Inscrições abertas</option>
                                         <option value="Público">Conhecimento público</option>
-                                        <option value="selecao">Processo de seleção</option>
+                                        <option value="Selecao">Processo de seleção</option>
                                     </select>
                             </div>
 
@@ -191,9 +195,10 @@
                             </div>
 <br>        
                             <div id="campoPai" ></div>
-                            <button class="col-lg-1" type="button" style="background-color: rgb(52, 173, 84);" onclick="addCampos()">+</button>
+                            <button class="col-lg-1" type="button" style="background-color: rgb(52, 173, 84);" onclick="addCampos()">+</button>&nbsp
+                            <button class="col-lg-1" type="button" style="background-color: rgb(177, 21, 21);" onclick="removerCampo()">-</button>
+                       
 
-                            
                              <button class="btn btn-secondary w-100 py-3" type="submit" name="submit" >Adicionar edital</button>
                         </div>
                     </form>
