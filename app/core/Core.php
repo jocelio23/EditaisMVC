@@ -44,7 +44,7 @@ class Core{
         //se logou usuário realizou login
         if($this->user){
             //outras paginas podem ser adicionadas abaixo
-            $permissao = ['PostagemController', 'ListagemController', 'AtualizacaoController', 'SingleController','FaqController','EditaisController'];
+            $permissao = ['PostagemController', 'ListagemController', 'AtualizacaoController', 'SingleController','FaqController'];
             //se não é url permitida foça para dash
             if(!isset($this->controller) || !in_array($this->controller, $permissao)){
                 $this->controller = 'PostagemController';
@@ -52,10 +52,10 @@ class Core{
             }
         }else{
             //se não volte para a index
-            $permissao = ['LoginController'];
+            $permissao = ['LoginController','UnicoController','EditaisController'];
 
             if(!isset($this->controller) || !in_array($this->controller, $permissao)){
-                $this->controller = 'LoginController';
+                $this->controller = 'EditaisController';
                 $this->method = 'index';
             }
         }

@@ -16,10 +16,12 @@ class PostagemController{
     }
 
     public function logout(){
+
+        
         session_start();
         unset($_SESSION['usr']);
         session_destroy();
-        header('Location: http://localhost/EditaisMVC/');
+        header('Location: http://localhost/EditaisMVC/login');
     }
 
     public function insert(){
@@ -45,6 +47,19 @@ class PostagemController{
 		} catch (Exception $e) {
 			echo '<script>alert("'.$e->getMessage().'");</script>';
 			echo '<script>location.href="http://localhost/EditaisMVC"</script>';
+		}
+    }
+
+    public function desativa($paramId){
+        try {
+            $paramId = intval($paramId['id'][0]);
+            Postagem::DesativarPostagem($_POST);
+            
+            echo '<script>alert("Publicação desativada com sucesso!");</script>';
+			echo '<script>location.href="http://localhost/EditaisMVC/listagem"</script>';
+		} catch(Exception $e) {
+			echo '<script>alert("'.$e->getMessage().'");</script>';
+			//echo '<script>location.href="http://localhost/EditaisMVC"</script>';
 		}
     }
  }

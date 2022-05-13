@@ -84,8 +84,6 @@ class postagem{
 		$sql->bindValue(':id', $id);
 		$resultado = $sql->execute();
 
-
-   
 		if ($resultado == 0) {
 		  throw new Exception("Falha ao deletar publicação");
 				return false;
@@ -93,6 +91,7 @@ class postagem{
 
 		return true;
 	}
+
 
   public static function insertComLinks($dadosPost){
     $con = Connection::getConn();
@@ -152,6 +151,26 @@ class postagem{
     }
     return true;
   }
+
+  public static function DesativarPostagem($id){
+      $con = Connection::getConn();
+  
+      $sql = "UPDATE FROM teste  SET flag = :f WHERE id = :id";
+      $sql = $con->prepare($sql);
+
+      $sql->bindValue(':id', $id);
+      $sql->bindValue(':f', ['Desativado']);
+
+
+      $resultado = $sql->execute();
+  
+      if ($resultado == 0) {
+        throw new Exception("Falha ao desativar publicação");
+          return false;
+      }
+  
+      return true;
+    }
    
 
 }
