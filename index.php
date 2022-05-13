@@ -19,6 +19,9 @@
     require_once 'app/controller/FaqController.php';
     require_once 'app/controller/EditaisController.php';
     require_once 'app/controller/UnicoController.php';
+    require_once 'app/controller/EquipamentosController.php';
+    require_once 'app/controller/ServicoController.php';
+
 
 
 
