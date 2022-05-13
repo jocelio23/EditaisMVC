@@ -97,6 +97,7 @@ class postagem{
   public static function insertComLinks($dadosPost){
     $con = Connection::getConn();
 
+    
     if (isset($_FILES['arquivo'])) {
       $shity_file = $_FILES['arquivo']['name']; 
       $extensao = strtolower(pathinfo($shity_file, PATHINFO_EXTENSION));

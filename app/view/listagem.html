@@ -80,9 +80,9 @@
        <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">           
             <div class="row g-5">
-                <div class="col-lg-4  wow zoomIn" data-wow-delay="0.9s" style="min-height: 350px;">
+                <div class="col-lg-3  wow zoomIn" data-wow-delay="0.9s" style="min-height: 350px;">
                     <div class="position-relative h-100">
-                        <img class="position-absolute w-100 rounded wow zoomIn" data-wow-delay="0.1s" src="img/imagensEditais/{{post.arquivo}}" width="500" height="320" style="object-fit: cover;">
+                        <img class="position-absolute w-100 rounded wow zoomIn" data-wow-delay="0.1s" src="img/imagensEditais/{{post.arquivo}}" width="500" height="250" style="object-fit: cover;">
                     </div>
                 </div>
           
@@ -100,14 +100,9 @@
                                 <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Contato:{{post.contatos}}</p>
                                 <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Categoria:{{post.categoria}}</p>
                                 <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>status:{{post.flag}}</p>
-                                <p class="mb-0"><li id="file-3625034" class="widget-list-item"><a title="" href="{{post.link}}" target="_blank"><span>Link de inscrições</span></a></li></p>
-
 
                                 <br>
-                                <div id="login-button-panel" class="col-lg-12">
-                                    <a href="http://localhost/EditaisMVC/atualizacao/change/{{post.id}}"> <button name="action" value="enterAccountId" class="button-continuar" type="submit" tabindex="1">Alterar</button></a>
-                                    <a href="http://localhost/EditaisMVC/postagem/del/{{post.id}}"> <button name="action" value="enterAccountId" class="button-continuar" type="submit" tabindex="1" style="background: rgb(251, 138, 8);">Desativar</button>    </a>    
-                                </div>
+                               
                             </div> 
                     </div>
                 </div>
@@ -116,8 +111,13 @@
                     <div class="row g-5">
                         <div class="col-12 wow zoomIn" data-wow-delay="0.4s">
                             <h4>Publicações do Edital</h4>
-                            <p class="mb-0"><li id="file-3625034" class="widget-list-item"><a title="" href="{{post.link}}" target="_blank"><span>Link de inscrições</span></a></li></p>
+                            <p class="mb-0"><li id="file-3625034" class="widget-list-item"><a title="" href="{{post.link}}" target="_blank"><span>{{post.texto}}</span></a></li></p>
                             <p class="mb-0"><li id="0" class="widget-list-item"><span>Novos links poderão ser adicionados</span></li></p>
+                        </div>
+                        
+                        <div id="login-button-panel" class="col-lg-12">
+                            <a href="http://localhost/EditaisMVC/atualizacao/change/{{post.id}}"> <button name="action" value="enterAccountId" class="button-continuar" type="submit" tabindex="1">Alterar</button></a>
+                            <a href="http://localhost/EditaisMVC/postagem/del/{{post.id}}"> <button name="action" value="enterAccountId" class="button-continuar" type="submit" tabindex="1" style="background: rgb(251, 138, 8);">Desativar</button>    </a>    
                         </div>
                     </div>
                 </div> 
