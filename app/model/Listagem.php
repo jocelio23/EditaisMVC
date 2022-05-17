@@ -26,30 +26,6 @@ class Listagem{
         return $resultado;
     }
 
-    public static function selectForCategories(){
-        $con =  Connection::getConn();
-
-        $sql = "SELECT * FROM teste WHERE flag = 'Ativado'";
-        $sql = $con->prepare($sql);
-        $sql->execute();
-
-        $resultado = array();
-        var_dump($resultado);
-                die();
-        while ($row = $sql->fetchObject('Postagem')) {
-            $resultado[] = $row;
-        }
-
-        if (!$resultado) {
-            echo '<script>location.href="http://localhost/EditaisMVC/single/single"</script>';	
-           // throw new Exception("Não foi encontrado nenhum registro no banco");	
-        }
-        return $resultado;
-    }
-
-
-    
-
     public static function selecionaPorId($idPost){
 		$con = Connection::getConn();
 		//$sql = "SELECT * FROM postagem WHERE id = 4";

@@ -20,6 +20,7 @@
     require_once 'app/controller/EditaisController.php';
     require_once 'app/controller/UnicoController.php';
     require_once 'app/controller/EquipamentosController.php';
+    require_once 'app/controller/CeficController.php';
     require_once 'app/controller/ServicoController.php';
 
 

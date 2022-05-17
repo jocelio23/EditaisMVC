@@ -58,8 +58,7 @@ class postagem{
     return true;
   }
 
-  public static function selecionarPostagem($idPost)
-  {
+  public static function selecionarPostagem($idPost){
     $con = Connection::getConn();
 
     $sql = "SELECT * FROM postagem WHERE id = :id";

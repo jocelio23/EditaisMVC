@@ -10,7 +10,7 @@ class ServicoController{
                 'auto_reload' => true,
             ]);
 
-            $template = $twig->load('service.html');
+            $template = $twig->load('servico.html');
             //pega valor e verifica se existe
             //$parameters['nome_usuario'] = $_SESSION['usr']['usuario'];
 
@@ -21,9 +21,11 @@ class ServicoController{
             echo $e->getMessage();
         }
     }
+
     
-    public function servico(){
-        header('Location: http://localhost/EditaisMVC/service');  
+    
+    public function service(){
+        header('Location: http://localhost/EditaisMVC/servico');  
     }
     
 }

@@ -69,8 +69,8 @@
                 <div class="navbar-nav ms-auto py-0">
                     <a href="index.html" class="nav-item nav-link active">Editais</a>
                     <a href="http://localhost/EditaisMVC/equipamentos/equipamentos" class="nav-item nav-link">Equipamentos</a>
-                    <a href="http://localhost/EditaisMVC/servico/servico" class="nav-item nav-link">Serviços</a>
-                    <a href="edital-mecenas_antigos.html" class="nav-item nav-link">Cefic</a>
+                    <a href="http://localhost/EditaisMVC/servico/service" class="nav-item nav-link">Serviços</a>
+                    <a href="http://localhost/EditaisMVC/cefic/cefic" class="nav-item nav-link">Cefic</a>
                 </div>
                
             </div>
@@ -150,6 +150,7 @@
                 <h1 class="mb-0">Editais com inscrições abertas  </h1>
             </div>
             <div class="row g-5">
+                
                 {% for post in postagens %} 
                     {% if post.categoria == 'Aberto' %}
                         {% if post.flag == 'Ativado' %}
@@ -160,7 +161,7 @@
                                     <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4" href="edital-junino-ce.html">Edital aberto</div>
                                 </div>
                                 <div class="p-4">
-                                    <a class="text-width-g " href="http://localhost/EditaisMVC/unico/pagina">Inscreva-se<i class="bi bi-arrow-right"></i></a>
+                                    <a class="text-width-g " href="http://localhost/EditaisMVC/unico/listarUnico/{{post.id}}">Inscreva-se<i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
                             
@@ -195,7 +196,7 @@
                                     <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4" href="edital-junino-ce.html">Edital aberto</div>
                                 </div>
                                 <div class="p-4">
-                                    <a class="text-width-g " href="http://localhost/EditaisMVC/unico/pagina">Inscreva-se<i class="bi bi-arrow-right"></i></a>
+                                    <a class="text-width-g " href="http://localhost/EditaisMVC/listarUnico/{{post.id}}">Inscreva-se<i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
                             

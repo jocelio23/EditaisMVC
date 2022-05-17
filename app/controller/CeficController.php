@@ -1,6 +1,6 @@
 <?php
 
-class SingleController{
+class CeficController{
     public function index(){
         try{
             $loader = new \Twig\Loader\FilesystemLoader('app/view/');
@@ -10,7 +10,7 @@ class SingleController{
                 'auto_reload' => true,
             ]);
 
-            $template = $twig->load('single.html');
+            $template = $twig->load('cefic.html');
             //pega valor e verifica se existe
             //$parameters['nome_usuario'] = $_SESSION['usr']['usuario'];
 
@@ -21,11 +21,9 @@ class SingleController{
             echo $e->getMessage();
         }
     }
-
     
-    
-    public function single(){
-        header('Location: http://localhost/EditaisMVC/single');  
+    public function cefic(){
+        header('Location: http://localhost/EditaisMVC/cefic');  
     }
     
 }
