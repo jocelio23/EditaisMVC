@@ -50,10 +50,13 @@ class PostagemController{
 		}
     }
 
+    
+
     public function desativa($paramId){
         try {
             $paramId = intval($paramId['id'][0]);
-            Postagem::delete($_POST);
+            Postagem::DesativarPostagem($paramId);
+            //var_dump($paramId);die();
             
             echo '<script>alert("Publicação desativada com sucesso!");</script>';
 			echo '<script>location.href="http://localhost/EditaisMVC/listagem"</script>';

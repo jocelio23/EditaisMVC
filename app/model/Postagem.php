@@ -151,14 +151,22 @@ class postagem{
     return true;
   }
 
-  public static function DesativarPostagem($id){
+  public static function DesativarPostagem($params){
       $con = Connection::getConn();
+
+      var_dump($params); die();
   
-      $sql = "UPDATE FROM teste  SET flag = :f WHERE id = :id";
+      $sql = "UPDATE teste SET nome = :n, etapas = :e, valor = :v, contatos = :co, categoria = :ca, flag = :f  WHERE id = :id";
       $sql = $con->prepare($sql);
 
-      $sql->bindValue(':id', $id);
-      $sql->bindValue(':f', ['Desativado']);
+      $sql->bindValue(':id', $params['id']);
+      $sql->bindValue(':n', $params['nome']);
+      $sql->bindValue(':e', $params['etapas']);
+      $sql->bindValue(':v', $params['valor']);
+      $sql->bindValue(':co', $params['contatos']);
+      $sql->bindValue(':ca', $params['categorias']);
+      $sql->bindValue(':f', $params['flags']);
+     
 
 
       $resultado = $sql->execute();

@@ -20,7 +20,7 @@ class Listagem{
         }
 
         if (!$resultado) {
-            echo '<script>location.href="http://localhost/EditaisMVC/single/single"</script>';	
+           // echo '<script>location.href="http://localhost/EditaisMVC/single/single"</script>';	
            // throw new Exception("Não foi encontrado nenhum registro no banco");	
         }
         return $resultado;
