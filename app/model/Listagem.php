@@ -43,4 +43,14 @@ class Listagem{
 		}
 		return $resultado;
 	}
+
+
+    public function contarLinhas() {
+
+        $con = Connection::getConn();
+        $sql = "SELECT COUNT(*) FROM teste";
+        $sql = $con->prepare($sql);
+        $count = $sql->fetchColumn();
+        print $count;
+    }
 }

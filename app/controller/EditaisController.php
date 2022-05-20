@@ -25,7 +25,7 @@ class EditaisController{
         }
     }
     
-    public function teste(){
+    public function pagina(){
         header('Location: http://localhost/EditaisMVC/editais');  
     }
     

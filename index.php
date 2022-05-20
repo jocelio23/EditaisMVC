@@ -22,6 +22,7 @@
     require_once 'app/controller/EquipamentosController.php';
     require_once 'app/controller/CeficController.php';
     require_once 'app/controller/ServicoController.php';
+    require_once 'app/controller/DesativadosController.php';
 
 
 

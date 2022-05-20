@@ -151,34 +151,30 @@ class postagem{
     return true;
   }
 
-  public static function DesativarPostagem($params){
-      $con = Connection::getConn();
-
-      var_dump($params); die();
-  
-      $sql = "UPDATE teste SET nome = :n, etapas = :e, valor = :v, contatos = :co, categoria = :ca, flag = :f  WHERE id = :id";
-      $sql = $con->prepare($sql);
-
-      $sql->bindValue(':id', $params['id']);
-      $sql->bindValue(':n', $params['nome']);
-      $sql->bindValue(':e', $params['etapas']);
-      $sql->bindValue(':v', $params['valor']);
-      $sql->bindValue(':co', $params['contatos']);
-      $sql->bindValue(':ca', $params['categorias']);
-      $sql->bindValue(':f', $params['flags']);
-     
-
-
+  public static function DesativarPostagem($num){
+    $con = Connection::getConn();
+      $sql = "UPDATE teste SET  flag = 'Desativado' WHERE id = $num";
+      $sql = $con->prepare($sql);   
       $resultado = $sql->execute();
-  
       if ($resultado == 0) {
         throw new Exception("Falha ao desativar publicação");
           return false;
       }
-  
       return true;
     }
    
+    public static function AtivarPostagem($num){
+      $con = Connection::getConn();
+        $sql = "UPDATE teste SET  flag = 'Ativado' WHERE id = $num";
+        $sql = $con->prepare($sql);   
+        $resultado = $sql->execute();
+        if ($resultado == 0) {
+          throw new Exception("Falha ao desativar publicação");
+            return false;
+        }
+        return true;
+      }
+     
 
 }
 /*

@@ -102,8 +102,16 @@
                         </div>
                         <div class="ps-4">
                             <h5 class="text-white mb-0">Inscrições Abertas</h5>
-                            <h1 class="text-white mb-0" data-toggle="counter-up">3</h1>
+                                {% set val = 0 %}
+                                {% for post in postagens %}
+                                    {% if post.categoria == 'Aberto' %}
+                                        {% set val = val + 1 %}
+                                    {% endif %}
+                                {% endfor %}
+                            <h1 class="text-white mb-0" data-toggle="counter-up">{{val}}</h1>
                         </div>
+
+
                     </div>
                 </div>
                 <div class="col-lg-3 wow zoomIn" data-wow-delay="0.3s">
@@ -113,7 +121,13 @@
                         </div>
                         <div class="ps-4">
                             <h5 class="text-black mb-0">Conhecimento Público</h5>
-                            <h1 class="text-black mb-0" data-toggle="counter-up">1</h1>
+                            {% set val = 0 %}
+                                {% for post in postagens %}
+                                    {% if post.categoria == 'Público' %}
+                                        {% set val = val + 1 %}
+                                    {% endif %}
+                                {% endfor %}
+                            <h1 class="text-black mb-0" data-toggle="counter-up">{{val}}</h1>
                         </div>
                     </div>
                 </div>
@@ -124,7 +138,13 @@
                         </div>
                         <div class="ps-4">
                             <h5 class="text-black mb-0">Processo de Seleção</h5>
-                            <h1 class="text-black mb-0" data-toggle="counter-up">10</h1>
+                                {% set val = 0 %}
+                                {% for post in postagens %}
+                                    {% if post.categoria == 'Seleção' %}
+                                        {% set val = val + 1 %}
+                                    {% endif %}
+                                {% endfor %}
+                            <h1 class="text-black mb-0" data-toggle="counter-up">{{val}}</h1>
                         </div>
                     </div>
                 </div>
@@ -135,7 +155,13 @@
                         </div>
                         <div class="ps-4">
                             <h5 class="text-white mb-0">Inscrições encerradas</h5>
-                            <h1 class="text-white mb-0" data-toggle="counter-up">152</h1>
+                            {% set val = 0 %}
+                            {% for post in postagens %}
+                                {% if post.flag == 'Desativado' %}
+                                    {% set val = val + 1 %}
+                                {% endif %}
+                            {% endfor %}
+                            <h1 class="text-white mb-0" data-toggle="counter-up">{{val}}</h1>
                         </div>
                     </div>
                 </div>
@@ -191,7 +217,7 @@
                                     <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4" href="edital-junino-ce.html">Edital aberto</div>
                                 </div>
                                 <div class="p-4">
-                                    <a class="text-width-g " href="http://localhost/EditaisMVC/listarUnico/{{post.id}}">Inscreva-se<i class="bi bi-arrow-right"></i></a>
+                                    <a class="text-width-g " href="http://localhost/EditaisMVC/unico/listarUnico/{{post.id}}">Inscreva-se<i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
                             
@@ -227,10 +253,10 @@
                             <div class="blog-item bg-light rounded overflow-hidden">
                                 <div class="blog-img position-relative overflow-hidden">
                                     <img class="img-fluid" src="img/imagensEditais/{{post.arquivo}}" alt="">
-                                    <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4" href="edital-junino-ce.html">Edital aberto</div>
+                                    <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4" href="edital-junino-ce.html">Em seleção</div>
                                 </div>
                                 <div class="p-4">
-                                    <a class="text-width-g " href="http://localhost/EditaisMVC/listarUnico/{{post.id}}">Inscreva-se<i class="bi bi-arrow-right"></i></a>
+                                    <a class="text-width-g " href="http://localhost/EditaisMVC/unico/listarUnico/{{post.id}}">Inscreva-se<i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
