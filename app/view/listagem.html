@@ -33,6 +33,7 @@
     <link href="css/style.css" rel="stylesheet">
 
     <link rel="shortcut icon" type="imagex/png" href="img/logo/iconCe.ico">
+    
 </head>
 
 <body>
@@ -86,38 +87,44 @@
 
     {% if postagens == null %}
     <!-- Conteúdo central -->
-        <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-            <h5 class="fw-bold text-primary text-uppercase">Nenhum registro foi encontrado no banco!</h5>
-        </div>
+    <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+        <h5 class="fw-bold text-primary text-uppercase">Nenhum registro foi encontrado no banco!</h5>
+    </div>
 
-        <br><br>
-        <br><br>
+    <br><br>
+    <br><br>
 
-        <div class="text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-            <img src="img/logo/erro.png" width="180">
-        </div>
+    <div class="text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+        <img src="img/logo/erro.png" width="180">
+    </div>
 
-        <div class="section-title text-center position-relative pb-3 mb-5 mx-auto " style="max-width: 600px;">
-            <label>
-                <h2>Ops! pareçe que não foram registrados dados com postagens de editais.</h2>
-            </label>
-        </div>
+    <div class="section-title text-center position-relative pb-3 mb-5 mx-auto " style="max-width: 600px;">
+        <label>
+            <h2>Ops! pareçe que não foram registrados dados com postagens de editais.</h2>
+        </label>
+    </div>
 
-        <br>
+    <br>
     <!--Conteúdo central fim-->
 
     {% endif %}
 
-{% set break = false %}
-{% for post in postagens %} 
+    {% set valor = false %}
+    {% for post in postagens %}
     {% if post.flag == 'Desativado' %}
-         <div class=" text-center  pb-3 mb-5 mx-auto" style="max-width: 600px;">
-             <h5><a href="http://localhost/EditaisMVC/desativados/desativados">Existem algumas postagens que estão desativadas<img src="img/logo/indicador.png" width="40" > </a></h5>
-        </div>
-    {% endif %}
-{% endfor %}
     
-{% for post in postagens %}
+    {% set valor = true %}
+    {% endif %}
+    {% endfor %}
+
+    {% if valor == true %}
+    <div class=" text-center  pb-3 mb-5 mx-auto" style="max-width: 600px;">
+        <h5><a href="http://localhost/EditaisMVC/desativados/desativados">Existe(m) alguma(s) postagem(ens) que está(ão)
+                desativada(as)<img src="img/logo/indicador.png" width="40"> </a></h5>
+    </div>
+    {% endif %}
+
+    {% for post in postagens %}
     {% if post.flag == 'Ativado' %}
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
@@ -126,12 +133,14 @@
                     <div class="blog-item bg-light rounded overflow-hidden">
                         <div class="blog-img position-relative overflow-hidden">
                             <img class="img-fluid" src="img/imagensEditais/{{post.arquivo}}" alt="">
-                            <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4">Edital aberto</div>
+                            <div
+                                class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4">
+                                Edital aberto</div>
                         </div>
-                        
+
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4">
                     <div class="row g-5">
                         <div class="col-12 wow zoomIn" data-wow-delay="0.2s">
@@ -143,7 +152,8 @@
                         <div class="col-12 wow zoomIn" data-wow-delay="0.6s">
                             <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Nº:{{post.id}}</p>
                             <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Nome:{{post.nome}}</p>
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Valor R$:{{post.valor}}
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Valor
+                                R$:{{post.valor|number_format(2, '.', ',')}}
                             </p>
                             <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Contato:{{post.contatos}}
                             </p>
@@ -175,9 +185,9 @@
                             <a href="http://localhost/EditaisMVC/atualizacao/change/{{post.id}}"> <button name="action"
                                     value="enterAccountId" class="button-continuar" type="submit"
                                     tabindex="1">Alterar</button></a>
-                            <a href="http://localhost/EditaisMVC/desativados/desativa/{{post.id}}"> <button name="action"
-                                    value="enterAccountId" class="button-continuar" type="submit" tabindex="1"
-                                    style="background: rgb(251, 138, 8);">Desativar</button> </a>
+                            <a href="http://localhost/EditaisMVC/desativados/desativa/{{post.id}}"> <button
+                                    name="action" value="enterAccountId" class="button-continuar" type="submit"
+                                    tabindex="1" style="background: rgb(251, 138, 8);">Desativar</button> </a>
                         </div>
                     </div>
                 </div>
@@ -188,7 +198,7 @@
     </div>
     </div>
     {% endif %}
-{% endfor %}
+    {% endfor %}
 
 
     <!--

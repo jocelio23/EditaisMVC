@@ -45,8 +45,7 @@ class UnicoController{
         $parameters['contatos'] = $post->contatos;
         $parameters['categoria'] = $post->categoria;
         $parameters['flag'] = $post->flag;
-        $parameters['link'] = $post->link;
-        $parameters['texto'] = $post->texto;
+      
         $parameters['arquivo'] = $post->arquivo;
 
         //$conteudo = $template->render($parameters);

@@ -73,15 +73,21 @@
 
     </div>
     <!-- Menu de naegação Fim -->
-    <br>
-
+  
     <!-- Conteúdo central -->
     
 
     <!--Se não existir editais desativados mostre isso abaixo-->
-    
-    
-    {% if postagens != null %}
+
+{% set valor = false %}
+{% for post in postagens %} 
+    {% if post.flag == 'Desativado' %}
+         
+        {% set valor = true %}
+    {% endif %}
+{% endfor %}
+
+{% if valor == false %}
     <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
         <h5 class="fw-bold text-primary text-uppercase">Editais Desativados</h5>
         <br><br>
@@ -101,6 +107,7 @@
     <br><br>
     <br><br>
 {% endif %}
+
 
 {% for post in postagens %}
     {% if post.flag == 'Desativado' %}
@@ -128,7 +135,7 @@
                         <div class="col-12 wow zoomIn" data-wow-delay="0.6s">
                             <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Nº:{{post.id}}</p>
                             <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Nome:{{post.nome}}</p>
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Valor R$:{{post.valor}}
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Valor R$:{{post.valor|number_format(2, '.', ',')}}
                             </p>
                             <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Contato:{{post.contatos}}
                             </p>

@@ -48,6 +48,9 @@ class postagem{
     $sql->bindValue(':ca', $params['categorias']);
     $sql->bindValue(':f', $params['flags']);
     
+    
+    
+    
     $resultado = $sql->execute();
 
     if ($resultado == 0) {
@@ -78,7 +81,7 @@ class postagem{
   public static function delete($id){
 		$con = Connection::getConn();
 
-		$sql = "DELETE FROM teste WHERE id = :id";
+		$sql = "DELETE FROM postagem WHERE id = :id";
 		$sql = $con->prepare($sql);
 		$sql->bindValue(':id', $id);
 		$resultado = $sql->execute();
@@ -153,7 +156,7 @@ class postagem{
 
   public static function DesativarPostagem($num){
     $con = Connection::getConn();
-      $sql = "UPDATE teste SET  flag = 'Desativado' WHERE id = $num";
+      $sql = "UPDATE postagem SET  flag = 'Desativado' WHERE id = $num";
       $sql = $con->prepare($sql);   
       $resultado = $sql->execute();
       if ($resultado == 0) {
@@ -165,7 +168,7 @@ class postagem{
    
     public static function AtivarPostagem($num){
       $con = Connection::getConn();
-        $sql = "UPDATE teste SET  flag = 'Ativado' WHERE id = $num";
+        $sql = "UPDATE postagem SET  flag = 'Ativado' WHERE id = $num";
         $sql = $con->prepare($sql);   
         $resultado = $sql->execute();
         if ($resultado == 0) {

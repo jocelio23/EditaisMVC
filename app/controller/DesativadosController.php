@@ -3,7 +3,7 @@ class DesativadosController{
 
     public function index(){
         try{
-            $colecao =  Listagem::selectAll();
+            $colecao =  Listagem::selectDisabled();
             $loader = new \Twig\Loader\FilesystemLoader('app/view/');
             $twig = new \Twig\Environment($loader, [
                 'cache' => '/path/to/compilation_cache',
@@ -35,7 +35,7 @@ class DesativadosController{
 			echo '<script>location.href="http://localhost/EditaisMVC/listagem"</script>';
 		} catch(Exception $e) {
 			echo '<script>alert("'.$e->getMessage().'");</script>';
-			//echo '<script>location.href="http://localhost/EditaisMVC"</script>';
+			echo '<script>location.href="http://localhost/EditaisMVC"</script>';
 		}
     }
 
@@ -43,19 +43,14 @@ class DesativadosController{
         try {
             $paramId = intval($paramId['id'][0]);
             Postagem::AtivarPostagem($paramId);
-
-            
-            //var_dump($paramId);die();
-            
             if($paramId == ''){
                 echo '<script>location.href="http://localhost/EditaisMVC/editais"</script>';
-
             }
             echo '<script>alert("Publicação reativada com sucesso!");</script>';
 			echo '<script>location.href="http://localhost/EditaisMVC/desativados"</script>';
 		} catch(Exception $e) {
 			echo '<script>alert("'.$e->getMessage().'");</script>';
-			//echo '<script>location.href="http://localhost/EditaisMVC"</script>';
+			echo '<script>location.href="http://localhost/EditaisMVC"</script>';
 		}
     }
 
