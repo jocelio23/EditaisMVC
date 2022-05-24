@@ -95,7 +95,49 @@ class postagem{
 	}
 
 
-  public static function insertComLinks($dadosPost){
+  public static function insertComLinks($dadosPost)
+  {
+    $con = Connection::getConn();
+        
+    if (isset($_FILES['arquivo'])) 
+    {
+      $link = $dadosPost['link'];
+      $texto = $dadosPost['texto'];
+      $shity_file = $_FILES['arquivo']['name']; 
+      $extensao = strtolower(pathinfo($shity_file, PATHINFO_EXTENSION));
+      $novo_nome = md5(time()).".".$extensao; // gerando algoritmo md5.extensão capturada acima
+      $diretorio = "img/imagensEditais/"; // desinstalar extensão que instalei para path, pois esse é o caminho correto e não o que é apresentado na extensão
+
+      move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome); // realizando upload, o arquivo será salvo com um nome equivalente a um algoritmo md5.png, exemplo: b92a24cb7adc1fb2b2f2da78cb11c0a0.png.
+      
+      $sql = $con->prepare('INSERT INTO postagem (nome, etapas, valor, contatos, categoria, flag, arquivo) VALUES (:n, :e, :v, :co, :ca, :f, :ar)');
+      $link = $_POST['link'];
+      $texto = $_POST['texto'];      
+      $sql->bindValue(':n', $dadosPost['nome']);
+      $sql->bindValue(':e', $dadosPost['etapas']);
+      $sql->bindValue(':v', $dadosPost['valor']);
+      $sql->bindValue(':co', $dadosPost['contatos']);
+      $sql->bindValue(':ca', $dadosPost['categorias']);
+      $sql->bindValue(':f', $dadosPost['flags']);
+      $sql->bindValue(':ar', $dadosPost['arquivo'] = $novo_nome);
+      $sql->execute();
+
+      
+      for($i=0; $i<count($link);$i++)
+      {
+        $sql2 = $con->prepare('INSERT INTO anexos (id_anexo,link, texto) VALUES (LAST_INSERT_ID(), :li, :te)');     
+        $sql2->bindValue(':li', $link[$i]);
+        $sql2->bindValue(':te', $texto[$i]);
+        
+        $sql2->execute();
+      }    
+
+     
+    }    
+    return true;
+  }
+
+  /* public static function insertComLinks($dadosPost){
     $con = Connection::getConn();
 
     
@@ -127,7 +169,7 @@ class postagem{
     }
     return true;
   }
-
+ */
 
   public static function updateComLinks($params){
     $con = Connection::getConn();
@@ -141,14 +183,18 @@ class postagem{
     $sql->bindValue(':co', $params['contatos']);
     $sql->bindValue(':ca', $params['categorias']);
     $sql->bindValue(':f', $params['flags']);
-    $sql->bindValue(':li', $params['link']);
-    $sql->bindValue(':te', $params['texto']);
-    
     $resultado = $sql->execute();
 
-        if ($resultado == 0) {
-      throw new Exception("Falha ao alterar publicação");
+    $sql2 = "UPDATE anexos set link = :li, texto= :te WHERE id =:id"; 
+    $sql2 = $con->prepare($sql2); 
+    $sql->bindValue(':li', $params['link']);
+    $sql->bindValue(':te', $params['texto']);
+    $resultado2 = $sql2->execute();
 
+    
+
+    if ($resultado == 0 && $resultado2 == 0) {
+        throw new Exception("Falha ao alterar publicação");
       return false;
     }
     return true;
