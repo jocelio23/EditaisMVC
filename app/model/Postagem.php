@@ -111,8 +111,7 @@ class postagem{
       move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio . $novo_nome); // realizando upload, o arquivo será salvo com um nome equivalente a um algoritmo md5.png, exemplo: b92a24cb7adc1fb2b2f2da78cb11c0a0.png.
       
       $sql = $con->prepare('INSERT INTO postagem (nome, etapas, valor, contatos, categoria, flag, arquivo) VALUES (:n, :e, :v, :co, :ca, :f, :ar)');
-      $link = $_POST['link'];
-      $texto = $_POST['texto'];      
+            
       $sql->bindValue(':n', $dadosPost['nome']);
       $sql->bindValue(':e', $dadosPost['etapas']);
       $sql->bindValue(':v', $dadosPost['valor']);

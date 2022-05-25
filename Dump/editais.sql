@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 19-Maio-2022 às 19:24
+-- Generation Time: 25-Maio-2022 às 11:30
 -- Versão do servidor: 5.7.26
 -- versão do PHP: 7.2.18
 
@@ -25,6 +25,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `anexos`
+--
+
+DROP TABLE IF EXISTS `anexos`;
+CREATE TABLE IF NOT EXISTS `anexos` (
+  `id_anexo` int(11) NOT NULL AUTO_INCREMENT,
+  `link` varchar(220) NOT NULL,
+  `texto` varchar(120) NOT NULL,
+  `id_postagem` int(11) NOT NULL,
+  PRIMARY KEY (`id_anexo`),
+  KEY `fk_anexo_postagem` (`id_postagem`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `postagem`
 --
 
@@ -39,49 +55,19 @@ CREATE TABLE IF NOT EXISTS `postagem` (
   `flag` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `arquivo` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Extraindo dados da tabela `postagem`
 --
 
 INSERT INTO `postagem` (`id`, `nome`, `etapas`, `valor`, `contatos`, `categoria`, `flag`, `arquivo`) VALUES
-(7, 'Edital MercenÃ¡rios do vale', 'etapa de transiÃ§Ã£o ', 12000000, 'mani@festa', 'Aberto', 'Ativado', '225498d18e085f30c33488c4cee7a88b.png');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `teste`
---
-
-DROP TABLE IF EXISTS `teste`;
-CREATE TABLE IF NOT EXISTS `teste` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(120) NOT NULL,
-  `etapas` varchar(220) NOT NULL,
-  `valor` double NOT NULL,
-  `contatos` varchar(120) NOT NULL,
-  `categoria` varchar(10) NOT NULL,
-  `flag` varchar(10) NOT NULL,
-  `arquivo` varchar(320) NOT NULL,
-  `link` varchar(220) NOT NULL,
-  `texto` varchar(220) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `teste`
---
-
-INSERT INTO `teste` (`id`, `nome`, `etapas`, `valor`, `contatos`, `categoria`, `flag`, `arquivo`, `link`, `texto`) VALUES
-(9, 'Jota Novisk', 'teste43', 800000, 'digital@monetiza.com.br', 'SeleÃ§Ã£o', 'Ativado', 'd4cb08d5d9dee8febae93b42870ea675.jpg', '', ''),
-(8, 'Edital transformaÃ§Ã£o digital', 'teste 23', 780000, 'feiralivre@gmail.com', 'SeleÃ§Ã£o', 'Ativado', '1f533493731ac71939e8893a23f52853.jpg', '', ''),
-(7, 'Vale das capivaras', 'teste', 12000000, 'mani@festa', 'Aberto', 'Ativado', '047e909e765444fc1d49e73e6c39f53c.jpeg', '', ''),
-(10, 'Edital feira da madrugada', 'teste 56', 90000, 'mani@festa', 'Aberto', 'Ativado', '62817803c326c28885ed712bbb43e775.jpeg', '', ''),
-(11, 'Edital ForrÃ³ Brasil', 'tstre565', 780000, 'mani@festa', 'SeleÃ§Ã£o', 'Ativado', '6ee88b0055f803b712bed8239910711f.jpeg', '', ''),
-(12, 'Edital MercenÃ¡rios do vale', 'tsdt4565', 36999, 'feiralivre@gmail.com', 'Aberto', 'Ativado', 'bc8a08a8b92d609eaa208967099d377d.jpeg', '', ''),
-(13, 'Jota Novisk', 'testtegduywef', 90000, 'jotaNovisk@gmail.com', 'Aberto', 'Ativado', 'c4ccec7fcb4cc688edc8c3bed5fc4fad.jpeg', '', ''),
-(14, 'Edital transformaÃ§Ã£o digital', 'te6gwyugqYUD', 199, 'mani@festa', 'Aberto', 'Ativado', 'edffe70f5914662ecc3c239e98b2d702.jpeg', '', '');
+(1, 'Teste', 'teste', 90, 'teste@gmail.com', 'SeleÃ§Ã£o', 'Ativado', '9e84c71d12eded12b904242f06b50e9a.png'),
+(2, 'Teste', 'teste', 90, 'teste@gmail.com', 'SeleÃ§Ã£o', 'Ativado', 'f87be80dc7dbe6212f6add9c0969df4a.png'),
+(3, 'Teste', 'teste', 90, 'teste@gmail.com', 'SeleÃ§Ã£o', 'Ativado', 'ccc5fec9ed30d5c2e7302228f62762dc.png'),
+(4, 'jota', 'jota', 90, 'jotaNovisk@gmail.com', 'SeleÃ§Ã£o', 'Ativado', '52da9d06b09f6d340925a0f5aea27234.jpeg'),
+(5, 'jota 2', 'jota 2', 90, 'jotaNovisk@gmail.com', 'SeleÃ§Ã£o', 'Ativado', 'db149b4a8d4e8ef7d4b5a7c791a1d91c.jpeg'),
+(6, 'blabla', 'blala', 199, 'digital@monetiza.com.br', 'Aberto', 'Ativado', '9541566c86d2a4eea43cc0652323c431.jpeg');
 
 -- --------------------------------------------------------
 
@@ -95,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `login` varchar(60) NOT NULL,
   `senha` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `usuario`
@@ -103,6 +89,16 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 INSERT INTO `usuario` (`id`, `login`, `senha`) VALUES
 (1, 'secult', '12345');
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `anexos`
+--
+ALTER TABLE `anexos`
+  ADD CONSTRAINT `fk_anexo_postagem` FOREIGN KEY (`id_postagem`) REFERENCES `postagem` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
