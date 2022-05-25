@@ -120,17 +120,19 @@ class postagem{
       $sql->bindValue(':f', $dadosPost['flags']);
       $sql->bindValue(':ar', $dadosPost['arquivo'] = $novo_nome);
       $sql->execute();
-
+     
       
       for($i=0; $i<count($link);$i++)
       {
-        $sql2 = $con->prepare('INSERT INTO anexos (id_anexo,link, texto) VALUES (LAST_INSERT_ID(), :li, :te)');     
+        $con->exec($sql);
+        $last_id = $con->lastInsertId();
+        $sql2 = $con->prepare('INSERT INTO anexos (link, texto, id_postagem) VALUES (:li, :te, :la)');    
         $sql2->bindValue(':li', $link[$i]);
         $sql2->bindValue(':te', $texto[$i]);
-        
-        $sql2->execute();
+        $sql2->bindValue(':la', $last_id);
+        $result = $sql2->execute();
+        return $result;
       }    
-
      
     }    
     return true;
