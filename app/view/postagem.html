@@ -135,31 +135,31 @@
                         <!--Macha, sem esse tipo de enctype não dá pra trabalhar com imagens, apenas adiconei aqui-->
                         <div class="row g-3">
                             <div class="col-12">
-                                Nome:
+                                Nome: *
                                 <input type="text" name="nome" class="form-control border-1 bg-light px-4"
                                     placeholder="Edital exemplo" style="height: 55px;" required>
                             </div>
 
                             <div class="col-12">
-                                Etapas:
+                                Etapas: *
                                 <textarea name="etapas" class="form-control border-1 bg-light px-4 py-4" rows="4"
                                     placeholder="Inscrições de 00/00/000 até 00/00/0000" required></textarea>
                             </div>
 
                             <div class="col-12">
-                                Valor:
+                                Valor: *
                                 <input type="text" name="valor" class="form-control border-1 bg-light px-4"
                                     placeholder="R$: 00.00,00" style="height: 55px;" onkeypress="return numerais()" ;>
                             </div>
 
                             <div class="col-12">
-                                Contato:
+                                Contato: *
                                 <input type="email" name="contatos" class="form-control border-1 bg-light px-4"
                                     placeholder="editais@gmail.com" style="height: 55px;">
                             </div>
 
                             <div class="col-12">
-                                <label>Selecione uma categoria: </label><br />
+                                <label>Selecione uma categoria: *</label><br />
                                 <select name="categorias" class="form-control border-1 bg-light px-4"
                                     style="opacity: calc(1)">
                                     <p style="opacity: calc(0.5)">
@@ -172,7 +172,7 @@
                             </div>
 
                             <div class="col-12">
-                                <label>Status do Edital: </label><br />
+                                <label>Status do Edital: *</label><br />
                                 <select name="flags" class="form-control border-1 bg-light px-4"
                                     style="opacity: calc(1)">
                                     <p style="opacity: calc(0.5)">
@@ -183,18 +183,18 @@
                                 </select>
                             </div>
                             <div class="col-12">
-                                Selecione uma imagem para o edital
+                                Selecione uma imagem para o edital *
                                 <input type="file" name="arquivo" accept="image/png,image/jpg, image/jpeg"
                                     class="form-control border-1 bg-light px-4">
                             </div>
 
                             <div id="formulario">
                                 <div class="col-lg-12 form-group">
-                                    <label>Link: </label>
+                                    <label>Link: *</label>
                                     <input type="text" name="link[]" placeholder="www.cultura/documento.PDF"
                                         class=" border-1 bg-light px-4">
 
-                                    <label>Texto: </label>
+                                    <label>Texto: *</label>
                                     <input type="text" name="texto[]" placeholder="Documento da secretaria"
                                         class='border-1 bg-light px-4'>
 

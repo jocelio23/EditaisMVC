@@ -28,15 +28,12 @@ class UnicoController{
 
     public function listarUnico($paramId){
         $paramId = intval($paramId['id'][0]);
+        var_dump($paramId); die();
         $loader = new \Twig\Loader\FilesystemLoader('app/View');
         $twig = new \Twig\Environment($loader);
         $template = $twig->load('unico.html');
 
-        //pensar em uma forma de pegar o id da postagem a ser alterada
-        $post = Listagem::selecionaPorId($paramId);
-
-      //var_dump($post);
-
+       /*  $post = Listagem::selecionaPorId($paramId);
         $parameters = array();
         $parameters['id'] = $post->id;
         $parameters['nome'] = $post->nome;
@@ -45,11 +42,16 @@ class UnicoController{
         $parameters['contatos'] = $post->contatos;
         $parameters['categoria'] = $post->categoria;
         $parameters['flag'] = $post->flag;
-      
-        $parameters['arquivo'] = $post->arquivo;
+        $parameters['arquivo'] = $post->arquivo; */
 
-        //$conteudo = $template->render($parameters);
-        return $template->render($parameters);
+        $anexos = Listagem::selecionaAnexos($paramId);
+        $novos = array();
+        $novos['id'] = $anexos->id;
+        $novos['link'] = $anexos->link;
+        $novos['texto'] = $anexos->texto;
+
+        return $template->render($novos);
+        
     }
      public function alterar(){
         header('Location: http://localhost/EditaisMVC/atualizacao');   

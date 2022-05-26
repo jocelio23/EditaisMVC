@@ -1,10 +1,6 @@
 <?php
-
 use bd\Connection;
-
-
 class Listagem{
-
     //função para listar todos os posts no banco
     public static function selectAll(){
         $con =  Connection::getConn();
@@ -17,11 +13,6 @@ class Listagem{
 
         while ($row = $sql->fetchObject('Postagem')) {
             $resultado[] = $row;
-        }
-
-        if (!$resultado) {
-           // echo '<script>location.href="http://localhost/EditaisMVC/single/single"</script>';	
-           // throw new Exception("Não foi encontrado nenhum registro no banco");	
         }
         return $resultado;
     }
@@ -38,15 +29,8 @@ class Listagem{
         while ($row = $sql->fetchObject('Postagem')) {
             $resultado[] = $row;
         }
-
-        if (!$resultado) {
-           // echo '<script>location.href="http://localhost/EditaisMVC/single/single"</script>';	
-           // throw new Exception("Não foi encontrado nenhum registro no banco");	
-        }
         return $resultado;
     }
-
-
 
     public static function selecionaPorId($idPost){
 		$con = Connection::getConn();
@@ -67,8 +51,26 @@ class Listagem{
 	}
 
 
-    public function contarLinhas() {
+    public static function selecionaAnexos($idPost){
+		$con = Connection::getConn();
+		//$sql = "SELECT * FROM postagem WHERE id = 4";
+        $sql = "SELECT * FROM anexos INNER JOIN postagem ON anexos.id_postagem = $idPost";
+		$sql = $con->prepare($sql);
+		$sql->bindValue(':id', $idPost, PDO::PARAM_INT);
+		$sql->execute();
 
+		$resultado = $sql->fetchObject('postagem');
+        //var_dump($resultado); die();
+
+		if (!$resultado) {
+			throw new Exception("Não foi encontrado nenhum registro no banco");	
+		} else {
+			$resultado->comentarios = Postagem::selecionarPostagem($resultado->id);
+		}
+		return $resultado;
+	}
+
+    public function contarLinhas() {
         $con = Connection::getConn();
         $sql = "SELECT COUNT(*) FROM teste";
         $sql = $con->prepare($sql);
