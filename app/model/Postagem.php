@@ -125,6 +125,28 @@ class postagem{
 		}
 		return true;
 	}
+
+  public static function update($params){
+    $con = Connection::getConn();
+
+    $sql = "UPDATE postagem SET nome = :n, etapas = :e, valor = :v, contatos = :co, categoria = :ca, flag = :f WHERE id = :id";
+    $sql = $con->prepare($sql);
+    $sql->bindValue(':id', $params['id']);
+    $sql->bindValue(':n', $params['nome']);
+    $sql->bindValue(':e', $params['etapas']);
+    $sql->bindValue(':v', $params['valor']);
+    $sql->bindValue(':co', $params['contatos']);
+    $sql->bindValue(':ca', $params['categorias']);
+    $sql->bindValue(':f', $params['flags']);
+  
+    $resultado = $sql->execute();
+
+    if ($resultado == 0) {
+      throw new Exception("Falha ao alterar publicação");
+      return false;
+    }
+    return true;
+  } 
 /* ESSA FUNÇÃO NÃO PODE SER UTILIZADA PORQUE NESTE MOMENTO NOS TEMOS RELAÇÕES ENTRE TABELAS*/
     
 }
@@ -159,25 +181,5 @@ class postagem{
     return true;
   }
 
-  
-  public static function update($params){
-    $con = Connection::getConn();
+  */
 
-    $sql = "UPDATE postagem SET nome = :n, etapas = :e, valor = :v, contatos = :co, categoria = :ca, flag = :f WHERE id = :id";
-    $sql = $con->prepare($sql);
-    $sql->bindValue(':id', $params['id']);
-    $sql->bindValue(':n', $params['nome']);
-    $sql->bindValue(':e', $params['etapas']);
-    $sql->bindValue(':v', $params['valor']);
-    $sql->bindValue(':co', $params['contatos']);
-    $sql->bindValue(':ca', $params['categorias']);
-    $sql->bindValue(':f', $params['flags']);
-  
-    $resultado = $sql->execute();
-
-    if ($resultado == 0) {
-      throw new Exception("Falha ao alterar publicação");
-      return false;
-    }
-    return true;
-  } */

@@ -152,8 +152,10 @@
                 <div class="row g-5">
                     <div class="col-12 wow zoomIn" data-wow-delay="0.4s">
                         <h4>Publicações do Edital</h4>
-                         <p class="mb-0"><li id="file-3625034" class="widget-list-item"><a title="Cadastrado em 07/02/2022 ás 23:07:14" href="{{link}}" target="_blank"><span>{{texto}}</span></a></li></p>                    </div>
-                    
+                        {% for post in anexos %}
+                            <li><a href="{{post.link}}" target="_blank"> {{post.texto}}</a><br></li>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>  
            

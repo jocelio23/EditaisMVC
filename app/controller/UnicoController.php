@@ -28,12 +28,19 @@ class UnicoController{
 
     public function listarUnico($paramId){
         $paramId = intval($paramId['id'][0]);
-        var_dump($paramId); die();
         $loader = new \Twig\Loader\FilesystemLoader('app/View');
         $twig = new \Twig\Environment($loader);
         $template = $twig->load('unico.html');
 
-       /*  $post = Listagem::selecionaPorId($paramId);
+        $post = Listagem::selecionaPorId($paramId);
+
+
+        $colecao = Listagem::selecionaAnexos($paramId);
+        $parametros = array();
+        $parametros['anexos'] = $colecao;
+
+        //var_dump($parametros); die();
+
         $parameters = array();
         $parameters['id'] = $post->id;
         $parameters['nome'] = $post->nome;
@@ -42,15 +49,10 @@ class UnicoController{
         $parameters['contatos'] = $post->contatos;
         $parameters['categoria'] = $post->categoria;
         $parameters['flag'] = $post->flag;
-        $parameters['arquivo'] = $post->arquivo; */
+        $parameters['arquivo'] = $post->arquivo;
+        $parameters['anexos'] = $colecao;
 
-        $anexos = Listagem::selecionaAnexos($paramId);
-        $novos = array();
-        $novos['id'] = $anexos->id;
-        $novos['link'] = $anexos->link;
-        $novos['texto'] = $anexos->texto;
-
-        return $template->render($novos);
+        return $template->render($parameters);
         
     }
      public function alterar(){

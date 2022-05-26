@@ -172,10 +172,9 @@
                         <div class="col-12 wow zoomIn" data-wow-delay="0.4s">
                             <h4>Publicações do Edital</h4>
                             <p class="mb-0">
-                                <li id="file-3625034" class="widget-list-item"><a title="" href="{{post.link}}"
-                                        target="_blank"><span>{{post.texto}}</span></a></li>
-                            </p>
-                            <p class="mb-0">
+                                {% for an in anexos %}
+                                    <li id="file-3625034" class="widget-list-item"><a title="" href="{{an.link}}" target="_blank"><span>{{an.texto}}</span></a></li></p><p class="mb-0">
+                                {% endfor %}        
                                 <li id="0" class="widget-list-item"><span>Novos links poderão ser adicionados</span>
                                 </li>
                             </p>
