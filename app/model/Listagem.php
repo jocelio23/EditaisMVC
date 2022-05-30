@@ -49,7 +49,6 @@ class Listagem{
 		}
 		return $resultado;
 	}
-
     public static function selecionaAnexos($idPost){
 		$con = Connection::getConn();
 		//$sql = "SELECT * FROM postagem WHERE id = 4";
@@ -67,6 +66,21 @@ class Listagem{
         //var_dump($resultado); die();
 		return $resultado;
 	}
+
+    public static function selectTodosAnexos(){
+        $con =  Connection::getConn();
+
+        $sql = "SELECT DISTINCT anexos.link, anexos.texto FROM anexos INNER JOIN postagem ON anexos.id_postagem = 1";
+        $sql = $con->prepare($sql);
+        $sql->execute();
+
+        $resultado = array();
+
+        while ($row = $sql->fetchObject('Postagem')) {
+            $resultado[] = $row;
+        }
+        return $resultado;
+    }
 
 /* 
     public static function selecionaAnexosLista(){

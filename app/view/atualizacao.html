@@ -34,12 +34,12 @@
 
      <!-- fim do javascript botão + -->
      <script>
-         var controleCampo = 1;
+        var controleCampo = 1;
         function adicionarCampo() {
             controleCampo++;
             //console.log(controleCampo);
 
-            document.getElementById('formulario').insertAdjacentHTML('beforeend', '<div class="col-lg-12 form-group" id="campo' + controleCampo + '"><label>Link: </label><input type="text" name="link[]" placeholder="www.cultura/documento.PDF" class=" border-1 bg-light px-4" ><label>Texto: </label><input type="text" name="texto[]" placeholder="Documento da secretaria" class="border-1 bg-light px-4"</br> <button type="button" id="' + controleCampo + '" onclick="removerCampo(' + controleCampo + ')" <label style="background-color: rgb(246, 8, 8);"> Clique para remover campos</label></button></div>');
+            document.getElementById('formulario').insertAdjacentHTML('beforeend', '<div class="col-lg-12 form-group" id="campo' + controleCampo + '"><label>Digite um texto para associar ao link: </label><input type="text" name="texto[]" placeholder="Documento da secretaria" class="border-1 bg-light px-4"</br><label>Link: </label><input type="text" name="link[]" placeholder="www.cultura/documento.PDF" class=" border-1 bg-light px-4" > <button type="button" id="' + controleCampo + '" onclick="removerCampo(' + controleCampo + ')" <label style="background-color: rgb(246, 8, 8);"> Clique para remover campos</label></button></div>');
         }
 
         function removerCampo(idCampo) {
@@ -51,7 +51,6 @@
             var node1 = document.getElementById('destino');
             node1.removeChild(node1.childNodes[0]);
         }
-
 
 
         function numerais(evt) {
@@ -66,7 +65,8 @@
                 alert("Apenas números podem ser inseridos");
             }
         }
-        </script>
+
+    </script>
         <!--fim do javascript botão + -->
 </head>
 
@@ -147,6 +147,13 @@
                                  Contato:
                                 <input type="email" name="contatos" class="form-control border-1 bg-light px-4" value="{{contatos}}" style="height: 55px;" >
                             </div>
+
+                            <div class="col-12">
+                                Telefone: *
+                                <input type="tel" name="telefone" class="form-control border-1 bg-light px-4" value="{{telefone}}"
+                                    placeholder="(00) 9 - 0000-0000" style="height: 55px;">
+                            </div>
+
                             <div class="col-12">
                                 <label>Selecione uma categoria: </label><br/>
                                     <select name="categorias" class="form-control border-1 bg-light px-4" style="opacity: calc(1)">
@@ -174,20 +181,14 @@
 
                             <div id="formulario">
                                 <div class="col-lg-12 form-group">
-                                    <label>Link: </label>
-                                    <input type="text" name="link[]" placeholder="www.cultura/documento.PDF"
+                                    {% for post in anexos %}
+                                    <label>Digite um texto para associar ao link: * </label>
+                                    <input type="text" name="texto[]" value="{{post.texto}}" class='border-1 bg-light px-4'> 
+
+                                    <label>Link: *</label>
+                                    <input type="text" name="link[]" value="{{post.link}}"
                                         class=" border-1 bg-light px-4">
-
-                                    <label>Texto: </label>
-                                    <input type="text" name="texto[]" placeholder="Documento da secretaria"
-                                        class='border-1 bg-light px-4'>
-
-
-
-                                    <!--<button class="col-lg-1" type="button" style="background-color: rgb(52, 173, 84);" onclick="duplicarCampos()">+</button>&nbsp;-->
-                                    <!--<button class="col-lg-1" type="button" style="background-color: rgb(191, 14, 14);" onclick="removerCampos(this)">-</button>-->
-
-
+                                    {% endfor %}
                                 </div>
                             </div>
                             <label> Clique nos botões abaixo para adicionar novos campos</label>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 25-Maio-2022 às 11:30
+-- Generation Time: 27-Maio-2022 às 19:01
 -- Versão do servidor: 5.7.26
 -- versão do PHP: 7.2.18
 
@@ -36,7 +36,16 @@ CREATE TABLE IF NOT EXISTS `anexos` (
   `id_postagem` int(11) NOT NULL,
   PRIMARY KEY (`id_anexo`),
   KEY `fk_anexo_postagem` (`id_postagem`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `anexos`
+--
+
+INSERT INTO `anexos` (`id_anexo`, `link`, `texto`, `id_postagem`) VALUES
+(1, 'https://mapacultural.secult.ce.gov.br/files/opportunity/3725/xiv_edital_cear%C3%81_de_cinema_e_v%C3%8Ddeo_-_difus%C3%83o,_forma%C3%87%C3%83o_e_pesquisa_-_ap%C3%93s_1%C2%B0_aditivo_(1).pdf', 'Edital retificado apÃ³s o aditivo', 1),
+(2, 'https://mapacultural.secult.ce.gov.br/oportunidade/3725/', 'Ficha de inscriÃ§Ã£o no Mapa', 1),
+(3, 'https://mapacultural.secult.ce.gov.br/files/opportunity/3725/xiv_edital_cear%C3%81_de_cinema_e_v%C3%8Ddeo_-_difus%C3%83o,_forma%C3%87%C3%83o_e_pesquisa.pdf', 'XIV EDITAL CEARÃ DE CINEMA E VÃDEO - DIFUSÃƒO, FORMAÃ‡ÃƒO E PESQUISA', 1);
 
 -- --------------------------------------------------------
 
@@ -55,19 +64,14 @@ CREATE TABLE IF NOT EXISTS `postagem` (
   `flag` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `arquivo` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Extraindo dados da tabela `postagem`
 --
 
 INSERT INTO `postagem` (`id`, `nome`, `etapas`, `valor`, `contatos`, `categoria`, `flag`, `arquivo`) VALUES
-(1, 'Teste', 'teste', 90, 'teste@gmail.com', 'SeleÃ§Ã£o', 'Ativado', '9e84c71d12eded12b904242f06b50e9a.png'),
-(2, 'Teste', 'teste', 90, 'teste@gmail.com', 'SeleÃ§Ã£o', 'Ativado', 'f87be80dc7dbe6212f6add9c0969df4a.png'),
-(3, 'Teste', 'teste', 90, 'teste@gmail.com', 'SeleÃ§Ã£o', 'Ativado', 'ccc5fec9ed30d5c2e7302228f62762dc.png'),
-(4, 'jota', 'jota', 90, 'jotaNovisk@gmail.com', 'SeleÃ§Ã£o', 'Ativado', '52da9d06b09f6d340925a0f5aea27234.jpeg'),
-(5, 'jota 2', 'jota 2', 90, 'jotaNovisk@gmail.com', 'SeleÃ§Ã£o', 'Ativado', 'db149b4a8d4e8ef7d4b5a7c791a1d91c.jpeg'),
-(6, 'blabla', 'blala', 199, 'digital@monetiza.com.br', 'Aberto', 'Ativado', '9541566c86d2a4eea43cc0652323c431.jpeg');
+(1, 'XIV EDITAL CEARÃ DE CINEMA E VÃDEO - DIFUSÃƒO, FORMAÃ‡ÃƒO E PESQUISA', 'InscriÃ§Ãµes | 03/05/2022 a 09/06/2022', 330000000, 'mapas@secult.ce.gov.br', 'Aberto', 'Ativado', '7a6bb7ec5a0583bdfa305bf99bb4bfc3.jpeg');
 
 -- --------------------------------------------------------
 
@@ -98,7 +102,7 @@ INSERT INTO `usuario` (`id`, `login`, `senha`) VALUES
 -- Limitadores para a tabela `anexos`
 --
 ALTER TABLE `anexos`
-  ADD CONSTRAINT `fk_anexo_postagem` FOREIGN KEY (`id_postagem`) REFERENCES `postagem` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_anexos` FOREIGN KEY (`id_postagem`) REFERENCES `postagem` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

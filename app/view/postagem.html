@@ -68,6 +68,31 @@
             }
         }
 
+        function mascara(o,f){
+            v_obj=o
+            v_fun=f
+            setTimeout("execmascara()",1)
+            }
+        function execmascara(){
+            v_obj.value=v_fun(v_obj.value)
+        }
+        function mtel(v){
+            v=v.replace(/\D/g,""); //Remove tudo o que não é dígito
+            v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+            v=v.replace(/(\d)(\d{4})$/,"$1-$2"); //Coloca hífen entre o quarto e o quinto dígitos
+            return v;
+        }
+        function id( el ){
+            return document.getElementById( el );
+        }
+        window.onload = function(){
+            id('telefone').onkeyup = function(){
+                mascara( this, mtel );
+            }
+        }
+
+        
+
     </script>
 </head>
 
@@ -147,15 +172,20 @@
                             </div>
 
                             <div class="col-12">
-                                Valor: *
-                                <input type="text" name="valor" class="form-control border-1 bg-light px-4"
-                                    placeholder="R$: 00.00,00" style="height: 55px;" onkeypress="return numerais()" ;>
+                                Valor: * 
+                                <input type="text" name="valor" class="form-control border-1 bg-light px-4" onpaste="return false" ondrop="return false"
+                                    placeholder="R$: 00.00,00" style="height: 55px;" onkeypress="return numerais()"; required>
                             </div>
 
                             <div class="col-12">
                                 Contato: *
                                 <input type="email" name="contatos" class="form-control border-1 bg-light px-4"
                                     placeholder="editais@gmail.com" style="height: 55px;">
+                            </div>
+
+                            <div class="col-12">
+                                Telefone: *
+                                <input type="tel" name="telefone" id="telefone" class="form-control border-1 bg-light px-4" placeholder="(00) 9 - 0000-0000" style="height: 55px;">
                             </div>
 
                             <div class="col-12">

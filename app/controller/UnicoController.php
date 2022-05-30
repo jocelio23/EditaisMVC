@@ -47,6 +47,7 @@ class UnicoController{
         $parameters['etapas'] = $post->etapas;
         $parameters['valor'] = $post->valor;
         $parameters['contatos'] = $post->contatos;
+        $parameters['telefone'] = $post->telefone;
         $parameters['categoria'] = $post->categoria;
         $parameters['flag'] = $post->flag;
         $parameters['arquivo'] = $post->arquivo;

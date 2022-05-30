@@ -23,7 +23,6 @@ class AtualizacaoController
     public function update(){
         try {
             Postagem::update($_POST);
-            
             echo '<script>alert("Publicação alterada com sucesso!");</script>';
 			echo '<script>location.href="http://localhost/EditaisMVC/listagem"</script>';
 		} catch(Exception $e) {
@@ -41,21 +40,23 @@ class AtualizacaoController
         //pensar em uma forma de pegar o id da postagem a ser alterada
         $post = Listagem::selecionaPorId($paramId);
 
-      //var_dump($post);
-
+        //var_dump($post);
+        $colecao = Listagem::selecionaAnexos($paramId);
+        $parametros = array();
+        $parametros['anexos'] = $colecao;
+    
         $parameters = array();
         $parameters['id'] = $post->id;
         $parameters['nome'] = $post->nome;
         $parameters['etapas'] = $post->etapas;
         $parameters['valor'] = $post->valor;
         $parameters['contatos'] = $post->contatos;
+        $parameters['telefone'] = $post->telefone;
         $parameters['categoria'] = $post->categoria;
         $parameters['flag'] = $post->flag;
-        //$parameters['link'] = $post->link;
-        //$parameters['texto'] = $post->texto;
         $parameters['arquivo'] = $post->arquivo;
+        $parameters['anexos'] = $colecao;
 
-        //$conteudo = $template->render($parameters);
         return $template->render($parameters);
     }
      public function alterar(){

@@ -157,6 +157,8 @@
                             </p>
                             <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Contato:{{post.contatos}}
                             </p>
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Telefone:{{post.telefone}}
+                            </p>
                             <p class="mb-0"><i
                                     class="fa fa-arrow-right text-primary me-3"></i>Categoria:{{post.categoria}}</p>
                             <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>status:{{post.flag}}</p>
@@ -172,8 +174,8 @@
                         <div class="col-12 wow zoomIn" data-wow-delay="0.4s">
                             <h4>Publicações do Edital</h4>
                             <p class="mb-0">
-                                {% for an in anexos %}
-                                    <li id="file-3625034" class="widget-list-item"><a title="" href="{{an.link}}" target="_blank"><span>{{an.texto}}</span></a></li></p><p class="mb-0">
+                                {% for post in anexos %}
+                                    <li id="file-3625034" class="widget-list-item"><a title="" href="{{post.link}}" target="_blank"><span>{{post.texto}}</span></a></li></p><p class="mb-0">
                                 {% endfor %}        
                                 <li id="0" class="widget-list-item"><span>Novos links poderão ser adicionados</span>
                                 </li>
