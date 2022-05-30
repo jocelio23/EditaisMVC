@@ -42,6 +42,8 @@ class AtualizacaoController
 
         //var_dump($post);
         $colecao = Listagem::selecionaAnexos($paramId);
+
+      
         $parametros = array();
         $parametros['anexos'] = $colecao;
     

@@ -13,17 +13,17 @@ class ListagemController{
 
             $template = $twig->load('listagem.html');
         
-
-            $anexo = Listagem::selectTodosAnexos($paramId);
-            $paramId = 2;
-            //var_dump($anexo); die();
-            //array de anexos 
-            $parametros = array();
-            $parametros['anexos'] = $anexo;
-
              //array de postagens
             $parametros = array();
             $parametros['postagens'] = $colecao;
+           //var_dump($parametros); die();
+
+        
+            //esse valor deve ser conforme o id da postagem para retornar os anexos
+            $paramId = 1;
+
+       
+            $anexo = Listagem::selecionaAnexos($paramId);
             $parametros['anexos'] = $anexo;
            
             return $template->render($parametros);

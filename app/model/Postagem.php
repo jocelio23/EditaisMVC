@@ -67,12 +67,32 @@ class postagem{
   
     $resultado = $sql->execute();
     
-  
-
     if ($resultado == 0) {
       throw new Exception("Falha ao alterar publicação");
       return false;
     }
+    return true;
+  } 
+
+
+  public static function updateComlinks($params){
+    $con = Connection::getConn();
+    $link = $params['link'];
+      $texto = $params['texto'];
+
+    $sql = "UPDATE postagem SET nome = :n, etapas = :e, valor = :v, contatos = :co, telefone = :te, categoria = :ca, flag = :f WHERE id = :id";
+    $sql = $con->prepare($sql);
+    $sql->bindValue(':id', $params['id']);
+    $sql->bindValue(':n', $params['nome']);
+    $sql->bindValue(':e', $params['etapas']);
+    $sql->bindValue(':v', $params['valor']);
+    $sql->bindValue(':co', $params['contatos']);
+    $sql->bindValue(':te', $params['telefone']);
+    $sql->bindValue(':ca', $params['categorias']);
+    $sql->bindValue(':f', $params['flags']);
+  
+    $resultado = $sql->execute();
+    
     return true;
   } 
 
@@ -117,25 +137,6 @@ class postagem{
         }
         return true;
     }
-
-/* ESSA FUNÇÃO NÃO PODE SER UTILIZADA PORQUE NESTE MOMENTO NOS TEMOS RELAÇÕES ENTRE TABELAS*/
-    public static function delete($id){
-		$con = Connection::getConn();
-
-		$sql = "DELETE FROM postagem WHERE id = :id";
-		$sql = $con->prepare($sql);
-		$sql->bindValue(':id', $id);
-		$resultado = $sql->execute();
-
-		if ($resultado == 0) {
-		  throw new Exception("Falha ao deletar publicação");
-				return false;
-		}
-		return true;
-	}
-
-
-    
 }
 
   

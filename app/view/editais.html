@@ -206,18 +206,19 @@
                 {% for post in postagens %} 
                     {% if post.categoria == 'Aberto' %}
                         {% if post.flag == 'Ativado' %}
-                        <div class="col-lg-3  wow zoomIn" data-wow-delay="0.9s" style="min-height: 350px;">
-                            <div class="blog-item bg-light rounded overflow-hidden">
-                                <div class="blog-img position-relative overflow-hidden">
-                                    <img class="img-fluid" src="img/imagensEditais/{{post.arquivo}}" alt="">
-                                    <div
-                                        class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4">
-                                        Edital aberto</div>
+                        <div class="col-lg-3  wow zoomIn" data-wow-delay="0.1s" style="min-height: 350px;">
+                            <div class="col-lg-10 col-md-6 wow zoomIn" data-wow-delay="0.3s">
+                                <div class="blog-item bg-light rounded overflow-hidden">
+                                    <div class="blog-img position-relative overflow-hidden">
+                                        <img class="img-fluid" src="img/imagensEditais/{{post.arquivo}}" alt="" >
+                                        <div
+                                            class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4">
+                                            Edital aberto</div>
+                                    </div>
+                                    <div class="p-4">
+                                        <a class="text-width-g " href="http://localhost/EditaisMVC/unico/listarUnico/{{post.id}}">Inscreva-se<i class="bi bi-arrow-right"></i></a>
+                                    </div>
                                 </div>
-                                <div class="p-4">
-                                    <a class="text-width-g " href="http://localhost/EditaisMVC/unico/listarUnico/{{post.id}}">Inscreva-se<i class="bi bi-arrow-right"></i></a>
-                                </div>
-        
                             </div>
                         </div>
                         {% endif %}
