@@ -174,10 +174,8 @@
                         <div class="col-12 wow zoomIn" data-wow-delay="0.4s">
                             <h4>Publicações do Edital</h4>
                             <p class="mb-0">
-                                {% for post in anexos %}
-                                    <li id="file-3625034" class="widget-list-item"><a title="" href="{{post.link}}" target="_blank"><span>{{post.texto}}</span></a></li></p><p class="mb-0">
-                                {% endfor %}        
-                                <li id="0" class="widget-list-item"><span>Novos links poderão ser adicionados</span>
+                                    <!-- <li id="file-3625034" class="widget-list-item"><a title="" href="{{post.link}}" target="_blank"><span>{{post.texto}}</span></a></li></p><p class="mb-0">     -->
+                                <li id="0" class="widget-list-item"><span><a href="http://localhost/EditaisMVC/links/listaDeLinks/{{post.id}}"> Lista de Links</a></span>
                                 </li>
                             </p>
                         </div>
@@ -202,6 +200,14 @@
     {% endfor %}
 
 
+    <!-- Espacamento caso não exista nada na listagem de editais-->
+    {% for post in postagens %}
+        {% if post.flag == 'Desativado' %}
+            <br><br><br>
+            <br><br><br>
+            <br><br><br>
+        {% endif %}
+    {% endfor %}
     <!--
 
 <h2>Teste para listagem de editais que estão ativos</h2>

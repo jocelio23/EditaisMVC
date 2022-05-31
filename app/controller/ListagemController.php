@@ -4,6 +4,7 @@ class ListagemController{
     public function index($paramId){
         try{
             $colecao =  Listagem::selectAll();
+            
             $loader = new \Twig\Loader\FilesystemLoader('app/view/');
             $twig = new \Twig\Environment($loader, [
                 'cache' => '/path/to/compilation_cache',
@@ -20,11 +21,7 @@ class ListagemController{
 
         
             //esse valor deve ser conforme o id da postagem para retornar os anexos
-            $paramId = 1;
-
-       
-            $anexo = Listagem::selecionaAnexos($paramId);
-            $parametros['anexos'] = $anexo;
+           
            
             return $template->render($parametros);
 

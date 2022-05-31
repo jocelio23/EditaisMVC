@@ -1,9 +1,8 @@
 <?php
 
-class AtualizacaoController
-{
+class LinksController{
     public function index(){
-        try {
+        try{
             $loader = new \Twig\Loader\FilesystemLoader('app/view/');
             $twig = new \Twig\Environment($loader, [
                 'cache' => '/path/to/compilation_cache',
@@ -11,43 +10,32 @@ class AtualizacaoController
                 'auto_reload' => true,
             ]);
 
-            $template = $twig->load('atualizacao.html');
+            $template = $twig->load('links.html');
+            //pega valor e verifica se existe
+            //$parameters['nome_usuario'] = $_SESSION['usr']['usuario'];
 
-            $parameters['nome_usuario'] = $_SESSION['usr']['usuario'];
-            return $template->render($parameters);
-        } catch (Exception $e) {
+            $parametros = array();
+            return $template->render($parametros);
+
+        }catch(Exception $e){
             echo $e->getMessage();
         }
     }
 
-    public function update(){
-        try {
-            Postagem::update($_POST);
-            //var_dump($_POST); die();
-            echo '<script>alert("Publicação alterada com sucesso!");</script>';
-			echo '<script>location.href="http://localhost/EditaisMVC/listagem"</script>';
-		} catch(Exception $e) {
-			echo '<script>alert("'.$e->getMessage().'");</script>';
-			echo '<script>location.href="http://localhost/EditaisMVC"</script>';
-		}
-    }
-
-    public function change($paramId){
+    public function listaDeLinks($paramId){
         $paramId = intval($paramId['id'][0]);
         $loader = new \Twig\Loader\FilesystemLoader('app/View');
         $twig = new \Twig\Environment($loader);
-        $template = $twig->load('atualizacao.html');
+        $template = $twig->load('links.html');
 
-        //pensar em uma forma de pegar o id da postagem a ser alterada
         $post = Listagem::selecionaPorId($paramId);
 
-        //var_dump($post);
         $colecao = Listagem::selecionaAnexos($paramId);
-
-      
         $parametros = array();
         $parametros['anexos'] = $colecao;
-    
+
+        //var_dump($parametros); die();
+
         $parameters = array();
         $parameters['id'] = $post->id;
         $parameters['nome'] = $post->nome;
@@ -61,10 +49,11 @@ class AtualizacaoController
         $parameters['anexos'] = $colecao;
 
         return $template->render($parameters);
-    }
-     public function alterar(){
-        header('Location: http://localhost/EditaisMVC/atualizacao');   
+        
     }
 
-    
+    public function lista(){
+        header('Location: http://localhost/EditaisMVC/links');   
+    }
+
 }

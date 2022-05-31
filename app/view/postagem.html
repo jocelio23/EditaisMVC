@@ -49,10 +49,7 @@
             document.getElementById('campo' + idCampo).remove();
         }
 
-        function removerCampos(id) {
-            var node1 = document.getElementById('destino');
-            node1.removeChild(node1.childNodes[0]);
-        }
+    
 
 
         function numerais(evt) {
@@ -72,7 +69,7 @@
             v_obj=o
             v_fun=f
             setTimeout("execmascara()",1)
-            }
+        }
         function execmascara(){
             v_obj.value=v_fun(v_obj.value)
         }
@@ -90,8 +87,6 @@
                 mascara( this, mtel );
             }
         }
-
-        
 
     </script>
 </head>
@@ -133,9 +128,6 @@
                 </div>
             </div>
         </nav>
-
-
-
     </div>
     <br>
 
@@ -158,6 +150,10 @@
                     <form method="POST" action="http://localhost/EditaisMVC/postagem/insert"
                         enctype="multipart/form-data">
                         <!--Macha, sem esse tipo de enctype não dá pra trabalhar com imagens, apenas adiconei aqui-->
+                        
+                        <div class="col-12">
+                            <h6>Campos com * são obrigatórios;</h6>
+                        </div>
                         <div class="row g-3">
                             <div class="col-12">
                                 Nome: *
@@ -178,23 +174,22 @@
                             </div>
 
                             <div class="col-12">
-                                Contato: *
+                                Contato: 
                                 <input type="email" name="contatos" class="form-control border-1 bg-light px-4"
                                     placeholder="editais@gmail.com" style="height: 55px;">
                             </div>
 
                             <div class="col-12">
-                                Telefone: *
+                                Telefone: 
                                 <input type="tel" name="telefone" id="telefone" class="form-control border-1 bg-light px-4" placeholder="(00) 9 - 0000-0000" style="height: 55px;">
                             </div>
 
                             <div class="col-12">
                                 <label>Selecione uma categoria: *</label><br />
                                 <select name="categorias" class="form-control border-1 bg-light px-4"
-                                    style="opacity: calc(1)">
+                                    style="opacity: calc(1)" required>
                                     <p style="opacity: calc(0.5)">
-                                        <option value="" disable selected hidden>Escolha uma categoria</option>
-                                    </p>
+                                        <option value="" disable selected hidden>Escolha uma categoria</option></p>
                                     <option value="Aberto">Inscrições abertas</option>
                                     <option value="Público">Conhecimento público</option>
                                     <option value="Seleção">Processo de seleção</option>
@@ -203,9 +198,8 @@
 
                             <div class="col-12">
                                 <label>Status do Edital: *</label><br />
-                                <select name="flags" class="form-control border-1 bg-light px-4"
-                                    style="opacity: calc(1)">
-                                    <p style="opacity: calc(0.5)">
+                                <select name="flags" class="form-control border-1 bg-light px-4" style="opacity: calc(1)">
+                                    <p style="opacity: calc(0.5)" >
                                         <option value="" disable selected hidden>Escolha o status do edital</option>
                                     </p>
                                     <option value="Ativado" selected>Ativado</option>
@@ -215,18 +209,18 @@
                             <div class="col-12">
                                 Selecione uma imagem para o edital *
                                 <input type="file" name="arquivo" accept="image/png,image/jpg, image/jpeg"
-                                    class="form-control border-1 bg-light px-4">
+                                    class="form-control border-1 bg-light px-4" required>
                             </div>
 
                             <div id="formulario">
                                 <div class="col-lg-12 form-group">
                                     <label>Digite um texto para associar ao link: *</label>
                                     <input type="text" name="texto[]" placeholder="Documento da secretaria"
-                                        class='border-1 bg-light px-4'>
+                                        class='border-1 bg-light px-4' required>
 
                                         <label>Link: *</label>
-                                        <input type="text" name="link[]" placeholder="www.cultura/documento.PDF"
-                                            class=" border-1 bg-light px-4">
+                                        <input type="url" name="link[]" placeholder="www.cultura/documento.PDF"
+                                            class=" border-1 bg-light px-4" required>
 
 
                                     <!--<button class="col-lg-1" type="button" style="background-color: rgb(52, 173, 84);" onclick="duplicarCampos()">+</button>&nbsp;-->

@@ -11,7 +11,6 @@
     require_once 'app/model/Listagem.php';
 
 
-    require_once 'app/controller/SingleController.php';
     require_once 'app/controller/LoginController.php';
     require_once 'app/controller/PostagemController.php';
     require_once 'app/controller/ListagemController.php';
@@ -23,6 +22,7 @@
     require_once 'app/controller/CeficController.php';
     require_once 'app/controller/ServicoController.php';
     require_once 'app/controller/DesativadosController.php';
+    require_once 'app/controller/LinksController.php';
 
 
 

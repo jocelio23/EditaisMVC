@@ -49,6 +49,43 @@ class postagem{
     return true;
   }
 
+  
+  public static function updateComLinks($params){
+    $con = Connection::getConn();
+
+    $link = $params['link'];
+    $texto = $params['texto'];
+
+    $sql = "UPDATE postagem SET nome = :n, etapas = :e, valor = :v, contatos = :co, telefone = :te, categoria = :ca, flag = :f WHERE id = :id";
+    $sql = $con->prepare($sql);
+    $sql->bindValue(':id', $params['id']);
+    $sql->bindValue(':n', $params['nome']);
+    $sql->bindValue(':e', $params['etapas']);
+    $sql->bindValue(':v', $params['valor']);
+    $sql->bindValue(':co', $params['contatos']);
+    $sql->bindValue(':te', $params['telefone']);
+    $sql->bindValue(':ca', $params['categorias']);
+    $sql->bindValue(':f', $params['flags']);
+
+    $sql->execute();
+
+    //$last_id = $con->lastInsertId();
+    
+      //$con->exec($sql);
+      $sql2 = "UPDATE anexos set  link = :li, texto =: te WHERE id = :id_postagem";    
+      $sql2 = $con->prepare($sql2);
+      $sql2->bindValue(':id', ['id']);
+      $sql2->bindValue(':li', $params['link']);
+      $sql2->bindValue(':te', $params['texto']);
+      
+      $result = $sql2->execute();
+      //return $result;
+  
+    
+ 
+    return true;
+  } 
+
 
   public static function update($params){
     $con = Connection::getConn();
@@ -63,9 +100,10 @@ class postagem{
     $sql->bindValue(':te', $params['telefone']);
     $sql->bindValue(':ca', $params['categorias']);
     $sql->bindValue(':f', $params['flags']);
-    
-  
+
     $resultado = $sql->execute();
+
+    //$sql = "UPDATE anexos SET link = :li, texto = :te WHERE  anexos.id_postagem = $params";
     
     if ($resultado == 0) {
       throw new Exception("Falha ao alterar publicação");
@@ -74,27 +112,6 @@ class postagem{
     return true;
   } 
 
-
-  public static function updateComlinks($params){
-    $con = Connection::getConn();
-    $link = $params['link'];
-      $texto = $params['texto'];
-
-    $sql = "UPDATE postagem SET nome = :n, etapas = :e, valor = :v, contatos = :co, telefone = :te, categoria = :ca, flag = :f WHERE id = :id";
-    $sql = $con->prepare($sql);
-    $sql->bindValue(':id', $params['id']);
-    $sql->bindValue(':n', $params['nome']);
-    $sql->bindValue(':e', $params['etapas']);
-    $sql->bindValue(':v', $params['valor']);
-    $sql->bindValue(':co', $params['contatos']);
-    $sql->bindValue(':te', $params['telefone']);
-    $sql->bindValue(':ca', $params['categorias']);
-    $sql->bindValue(':f', $params['flags']);
-  
-    $resultado = $sql->execute();
-    
-    return true;
-  } 
 
 
   public static function selecionarPostagem($idPost){

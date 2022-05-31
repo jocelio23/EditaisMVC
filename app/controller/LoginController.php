@@ -28,7 +28,7 @@ class LoginController{
             header('Location: http://localhost/EditaisMVC/postagem.php');
         } catch (\Exception $e) {
             $_SESSION['msg_error'] = array('msg'=>$e->getMessage(), 'count'=> 0);
-            header('Location: http://localhost/EditaisMVC');
+            header('Location: http://localhost/EditaisMVC/login');
         }
         
     }
