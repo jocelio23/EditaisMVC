@@ -66,8 +66,10 @@
                     <a href="http://localhost/EditaisMVC/" class="nav-item nav-link active"><b>Início</b></a>
                     <a href="http://localhost/EditaisMVC/listagem/listaNova"
                         class="nav-item nav-link active"><b>Editais</b></a>
+                        <a href="http://localhost/EditaisMVC/desativados/desativados"
+                        class="nav-item nav-link active"><b>Encerrados</b></a>
                     <a href="http://localhost/EditaisMVC/postagem/logout"
-                        class="nav-item nav-link active"><b>Sair</b></a>
+                        class="nav-item nav-link active "><b>Sair</b></a>
                 </div>
             </div>
         </nav>
@@ -109,7 +111,7 @@
 
     {% endif %}
 
-    {% set valor = false %}
+<!--     {% set valor = false %}
     {% for post in postagens %}
     {% if post.flag == 'Desativado' %}
     
@@ -119,10 +121,9 @@
 
     {% if valor == true %}
     <div class=" text-center  pb-3 mb-5 mx-auto" style="max-width: 600px;">
-        <h5><a href="http://localhost/EditaisMVC/desativados/desativados">Existe(m) alguma(s) postagem(ens) que está(ão)
-                desativada(as)<img src="img/logo/indicador.png" width="40"> </a></h5>
+        <h5><a href="http://localhost/EditaisMVC/desativados/desativados">Algum(ns) edital(is) está(ão) encerrado(as)<img src="img/logo/indicador.png" width="40"> </a></h5>
     </div>
-    {% endif %}
+    {% endif %} -->
 
     {% for post in postagens %}
     {% if post.flag == 'Ativado' %}
@@ -175,8 +176,9 @@
                             <h4>Publicações do Edital</h4>
                             <p class="mb-0">
                                     <!-- <li id="file-3625034" class="widget-list-item"><a title="" href="{{post.link}}" target="_blank"><span>{{post.texto}}</span></a></li></p><p class="mb-0">     -->
-                                <li id="0" class="widget-list-item"><span><a href="http://localhost/EditaisMVC/links/listaDeLinks/{{post.id}}"> Lista de Links</a></span>
+                                <li id="0" class="widget-list-item"><span><a href="http://localhost/EditaisMVC/links/listaDeLinks/{{post.id}}"> Lista de Links</a></span><img src="img/logo/mouse.png" width="20">
                                 </li>
+                                
                             </p>
                         </div>
 
@@ -186,7 +188,7 @@
                                     tabindex="1">Alterar</button></a>
                             <a href="http://localhost/EditaisMVC/desativados/desativa/{{post.id}}"> <button
                                     name="action" value="enterAccountId" class="button-continuar" type="submit"
-                                    tabindex="1" style="background: rgb(251, 138, 8);">Desativar</button> </a>
+                                    tabindex="1" style="background: rgb(251, 138, 8);">Encerrar</button> </a>
                         </div>
                     </div>
                 </div>

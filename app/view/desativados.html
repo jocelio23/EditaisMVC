@@ -65,17 +65,21 @@
                     <a href="http://localhost/EditaisMVC/" class="nav-item nav-link active"><b>Início</b></a>
                     <a href="http://localhost/EditaisMVC/listagem/listaNova"
                         class="nav-item nav-link active"><b>Editais</b></a>
+                        <a href="http://localhost/EditaisMVC/desativados/desativados"
+                        class="nav-item nav-link active"><b>Encerrados</b></a>
                     <a href="http://localhost/EditaisMVC/postagem/logout"
-                        class="nav-item nav-link active"><b>Sair</b></a>
+                        class="nav-item nav-link active "><b>Sair</b></a>
                 </div>
             </div>
         </nav>
 
     </div>
+    <br>
     <!-- Menu de naegação Fim -->
+    <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+        <h5 class="fw-bold text-primary text-uppercase">Editais encerradOS</h5>
+    </div>
   
-    <!-- Conteúdo central -->
-    
 
     <!--Se não existir editais desativados mostre isso abaixo-->
 
@@ -89,7 +93,6 @@
 <br>
 {% if valor == false %}
     <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-        <h5 class="fw-bold text-primary text-uppercase">Editais Desativados</h5>
         <br><br>
         <br><br>
 
@@ -99,7 +102,7 @@
 
         <div class=" text-center position-relative pb-3 mb-5 mx-auto " style="max-width: 600px;">
             <label>
-                <h2>Não existe nenhum edital desativado</h2>
+                <h2>Não existe nenhum edital encerrado</h2>
             </label>
         </div>
     <!--Conteúdo central fim-->
