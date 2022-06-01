@@ -52,6 +52,18 @@ class LinksController{
         
     }
 
+    public function anexos(){
+		try {
+			Postagem::insertAnexos($_POST);
+
+			echo '<script>alert("anexo inserido com sucesso!");</script>';
+			echo '<script>location.href="http://localhost/EditaisMVC/"</script>';
+		} catch(Exception $e) {
+			echo '<script>alert("'.$e->getMessage().'");</script>';
+			echo '<script>location.href="http://localhost/EditaisMVC"</script>';
+		}	
+	} 
+
     public function lista(){
         header('Location: http://localhost/EditaisMVC/links');   
     }

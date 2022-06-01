@@ -45,11 +45,11 @@ class postagem{
         //return $result;
       }   
      
+     
     }
     return true;
   }
 
-  
   public static function updateComLinks($params){
     $con = Connection::getConn();
 
@@ -80,14 +80,11 @@ class postagem{
       
       $result = $sql2->execute();
       //return $result;
-  
-    
- 
     return true;
   } 
 
 
-  public static function update($params){
+   public static function update($params){
     $con = Connection::getConn();
 
     $sql = "UPDATE postagem SET nome = :n, etapas = :e, valor = :v, contatos = :co, telefone = :te, categoria = :ca, flag = :f WHERE id = :id";
@@ -110,9 +107,32 @@ class postagem{
       return false;
     }
     return true;
-  } 
+  }  
 
+  
+  public static function insertAnexos($dadosPost){
+    $con = Connection::getConn();
+        
+    $link = $dadosPost['link'];
+    $texto = $dadosPost['texto'];
 
+    //pegando id da postagem
+    $id_postagem = intval($dadosPost['id']);
+
+    //var_dump($dadosPost); die();
+      for($i=0; $i<count($link);$i++)
+      {
+        //$con->exec($sql);
+        $sql2 = $con->prepare('INSERT INTO anexos (link, texto, id_postagem) VALUES (:li, :te, :la)');    
+        $sql2->bindValue(':li', $link[$i]);
+        $sql2->bindValue(':te', $texto[$i]);
+        $sql2->bindValue(':la', $id_postagem);
+        $result = $sql2->execute();
+        //return $result;
+      } 
+        
+    return true;
+  }
 
   public static function selecionarPostagem($idPost){
     $con = Connection::getConn();

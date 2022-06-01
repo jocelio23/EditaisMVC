@@ -34,7 +34,7 @@ class PostagemController{
 		}	
 	}  
 
-    public function del($paramId){
+  /*   public function del($paramId){
 		try {
 
             $paramId = intval($paramId['id'][0]);
@@ -46,7 +46,7 @@ class PostagemController{
 			echo '<script>alert("'.$e->getMessage().'");</script>';
 			echo '<script>location.href="http://localhost/EditaisMVC"</script>';
 		}
-    }
+    } */
 
 
  }
