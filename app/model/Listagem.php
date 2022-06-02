@@ -75,7 +75,7 @@ public static function selecionaAllComAnexos(){
     public static function selecionaAnexos($idPost){
 		$con = Connection::getConn();
 		//$sql = "SELECT * FROM postagem WHERE id = 4";
-        $sql = "SELECT DISTINCT anexos.link, anexos.texto FROM anexos INNER JOIN postagem ON anexos.id_postagem = $idPost";
+        $sql = "SELECT DISTINCT anexos.id, anexos.link, anexos.texto FROM anexos INNER JOIN postagem ON anexos.id_postagem = $idPost";
 		$sql = $con->prepare($sql);
 		$sql->bindValue(':id', $idPost, PDO::PARAM_INT);
 		$sql->execute();
@@ -84,6 +84,30 @@ public static function selecionaAllComAnexos(){
 
         while ($row = $sql->fetchObject('Postagem')) {
             $resultado[] = $row;
+
+            ///var_dump($resultado); die();
+        }
+
+        //var_dump($resultado); die();
+		return $resultado;
+	}
+
+    public static function AnexosPorId($idPost){
+
+        //$idPost =1 ;
+		$con = Connection::getConn();
+		//$sql = "SELECT * FROM postagem WHERE id = 4";
+        $sql = "SELECT * FROM anexos WHERE id = $idPost";
+		$sql = $con->prepare($sql);
+		$sql->bindValue(':id', $idPost, PDO::PARAM_INT);
+		$sql->execute();
+
+        $resultado = array();
+
+        while ($row = $sql->fetchObject('Postagem')) {
+            $resultado[] = $row;
+
+            //var_dump($resultado); die();
         }
 
         //var_dump($resultado); die();

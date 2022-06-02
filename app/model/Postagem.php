@@ -50,7 +50,7 @@ class postagem{
     return true;
   }
 
-  public static function updateComLinks($params){
+ /*  public static function updateComLinks($params){
     $con = Connection::getConn();
 
     $link = $params['link'];
@@ -81,7 +81,7 @@ class postagem{
       $result = $sql2->execute();
       //return $result;
     return true;
-  } 
+  }  */
 
 
    public static function update($params){
@@ -128,8 +128,11 @@ class postagem{
         $sql2->bindValue(':te', $texto[$i]);
         $sql2->bindValue(':la', $id_postagem);
         $result = $sql2->execute();
+        
         //return $result;
       } 
+
+      
         
     return true;
   }

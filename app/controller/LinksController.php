@@ -52,12 +52,30 @@ class LinksController{
         
     }
 
+
+    //Esta pagina esta sendo deseolvida para permitir a mudança de links individuais
+    public function atualizaAnexo($paramId){
+        $paramId = intval($paramId['id'][0]);
+
+        $loader = new \Twig\Loader\FilesystemLoader('app/View');
+        $twig = new \Twig\Environment($loader);
+        $template = $twig->load('anexo.html');
+
+        $post = Listagem::AnexosPorId($paramId);
+        
+        $parametros = array();
+        //$parametros['link'] = $post->link;
+
+        return $template->render($parametros);
+    }
+
+
     public function anexos(){
 		try {
 			Postagem::insertAnexos($_POST);
 
 			echo '<script>alert("anexo inserido com sucesso!");</script>';
-			echo '<script>location.href="http://localhost/EditaisMVC/"</script>';
+			echo '<script>location.href="http://localhost/EditaisMVC/listagem"</script>';
 		} catch(Exception $e) {
 			echo '<script>alert("'.$e->getMessage().'");</script>';
 			echo '<script>location.href="http://localhost/EditaisMVC"</script>';

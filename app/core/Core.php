@@ -52,7 +52,7 @@ class Core{
             }
         }else{
             //se não volte para a index
-            $permissao = ['LoginController','UnicoController','EditaisController', 'EquipamentosController', 'CeficController','ServicoController'];
+            $permissao = ['LoginController','UnicoController','EditaisController', 'EquipamentosController', 'CeficController','ServicoController','FaqController'];
 
             if(!isset($this->controller) || !in_array($this->controller, $permissao)){
                 $this->controller = 'EditaisController';
