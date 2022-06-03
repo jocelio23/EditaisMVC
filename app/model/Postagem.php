@@ -50,6 +50,46 @@ class postagem{
     return true;
   }
 
+  public static function updateComLinks($params)
+    { 
+        $con = Connection::getConn();
+        $get_id=$_REQUEST['id'];
+
+       // var_dump($get_id);
+        die();
+
+        if (isset($_FILES['arquivo']))
+        {
+        move_uploaded_file($_FILES["arquivo"]["tmp_name"],"img/imagensEditais/".$_FILES["arquivo"]["name"]);			
+        $location1=$_FILES["arquivo"]["name"];
+
+        $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sqlImagem = "UPDATE postagem SET arquivo ='$location1' WHERE id = '$get_id' ";    
+
+        $con->exec($sqlImagem);
+        echo "<script>alert('Successfully Updated!!!');'</script>";
+
+        $sql = "UPDATE postagem SET nome = :n, etapas = :e, valor = :v, contatos = :co, telefone = :te, categoria = :ca, flag = :f WHERE id = :id";
+        $sql = $con->prepare($sql);
+        $sql->bindValue(':id', $params['id']);
+        $sql->bindValue(':n', $params['nome']);
+        $sql->bindValue(':e', $params['etapas']);
+        $sql->bindValue(':v', $params['valor']);
+        $sql->bindValue(':co', $params['contatos']);
+        $sql->bindValue(':te', $params['telefone']);
+        $sql->bindValue(':ca', $params['categorias']);
+        $sql->bindValue(':f', $params['flags']);    
+    
+        $resultado = $sql->execute();
+        }
+        var_dump($params);    
+        /* if ($resultado == 0) 
+        {
+        throw new Exception("Falha ao alterar publicação");
+        return false;
+        }*/
+        return true;
+    }
 
    public static function update($params){
     $con = Connection::getConn();

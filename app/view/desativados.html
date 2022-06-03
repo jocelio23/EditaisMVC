@@ -70,11 +70,32 @@
                     <a href="http://localhost/EditaisMVC/postagem/logout"
                         class="nav-item nav-link  "><b>Sair</b></a>
                 </div>
+                <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
+
             </div>
         </nav>
     </div>
     <br>
-    <!-- Menu de naegação Fim -->
+
+     <!-- Campo de busca -->
+     <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content" style="background: rgba(26, 166, 26, 0.413);">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex align-items-center justify-content-center">
+                    <div class="input-group" style="max-width: 400px;">
+                        <input type="text" class="form-control  border-white p-3" placeholder="Digite o nome do edital que deseja">
+                        <button class="btn btn-secondary px-4"><a href="#"> <i class="bi bi-search"></a></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fim do campo de busca -->
+
+    <!-- Menu de navegação Fim -->
     <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
         <h5 class="fw-bold text-primary text-uppercase">Editais encerradOS</h5>
     </div>
@@ -180,69 +201,6 @@
     </div>
     {% endif %}
 {% endfor %}
-
-
-    <!--
-
-<h2>Teste para listagem de editais que estão ativos</h2>
-{% for post in postagens %} 
-    {% if post.flag == 'Ativado' %}
-    <div class="col-12 wow zoomIn" data-wow-delay="0.6s">
-        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Nº:{{post.id}}</p>
-        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Nome:{{post.nome}}</p>
-        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Valor R$:{{post.valor}}</p>
-        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Contato:{{post.contatos}}</p>
-        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Categoria:{{post.categoria}}</p>
-        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>status:{{post.flag}}</p>
-        <h3>--------</h3>
-    </div> 
-    {% endif %}
-{% endfor %}
-<hr>
-
-<h2>Teste para listagem de editais por categoria</h2>
-{% for post in postagens %} 
-    {% if post.categoria == 'Público' %}
-    <div class="col-12 wow zoomIn" data-wow-delay="0.6s">
-        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Nº:{{post.id}}</p>
-        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Nome:{{post.nome}}</p>
-        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Valor R$:{{post.valor}}</p>
-        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Contato:{{post.contatos}}</p>
-        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Categoria:{{post.categoria}}</p>
-        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>status:{{post.flag}}</p>
-
-    </div> 
-    <h3>--------</h3>
-    {% endif %}
-{% endfor %}
--->
-
-    <!-- Conteudo central Fim -->
-
-    <!--acesso rapido start-->
-    <!--
-    <section class="AcessoRapido">
-        <div class="wrapper">
-            <div class="row">
-                <h4 class="mb-1">Acesso Rápido</h4>
-                <nav class="MenuAcessos">
-                    <div class="acesso-rapido">
-                        <ul id="menu-acesso-rapido-footer" class="menu">
-                            <li id="menu-item-870" class="portal menu-item menu-item-type-custom menu-item-object-custom menu-item-870"><a href="https://cearatransparente.ce.gov.br" target="_blank"><i class="PortalTransparencia"></i>Ceará<br> Transparente</a></li>
-                            <li id="menu-item-871" class="acesso menu-item menu-item-type-custom menu-item-object-custom menu-item-871"><a href="http://cartadeservicos.ce.gov.br/" target="_blank"><i class="AcessoCidadao"></i>Carta de Serviços<br>do Cidadão</a></li>
-                            <li id="menu-item-872" class="lei menu-item menu-item-type-custom menu-item-object-custom menu-item-872"><a href="https://cearatransparente.ce.gov.br/portal-da-transparencia/acesso-a-informacao?locale=pt-BR" target="_blank"><i class="AcessoInformacao"></i>Lei geral de<br> acesso à informação</a></li>
-                            <li id="menu-item-873" class="diario menu-item menu-item-type-custom menu-item-object-custom menu-item-873"><a href="http://pesquisa.doe.seplag.ce.gov.br/" target="_blank"><i class="DiarioOficial"></i>Diário<br> Oficial</a></li>
-                            <li id="menu-item-874" class="legislacao menu-item menu-item-type-custom menu-item-object-custom menu-item-874"><a href="https://www.al.ce.gov.br/" target="_blank"><i class="Legislacao"></i>Legislação<br> Estadual</a></li>
-                            <li id="menu-item-61919" class="acoes menu-item menu-item-type-post_type menu-item-object-page menu-item-61919"><a href="http://www.ceara.gov.br/governo/"><i class="AcoesGoverno"></i>Ações de<br> Governo</a></li>
-                        </ul>
-                    </div>                    
-                </nav>
-    
-            </div>
-        </div>
-    </section>
-    -->
-    <!--acesso rapido end-->
 
     <!-- Rodapé -->
     <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">

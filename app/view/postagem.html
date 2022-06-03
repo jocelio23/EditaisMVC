@@ -128,9 +128,28 @@
                 <a href="http://localhost/EditaisMVC/postagem/logout"
                     class="nav-item nav-link  "><b>Sair</b></a>
             </div>
+            <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
         </div>
     </nav>
 </div>
+
+ <!-- Campo de busca -->
+ <div class="modal fade" id="searchModal" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content" style="background: rgba(26, 166, 26, 0.413);">
+            <div class="modal-header border-0">
+                <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex align-items-center justify-content-center">
+                <div class="input-group" style="max-width: 400px;">
+                    <input type="text" class="form-control  border-white p-3" placeholder="Digite o nome do edital que deseja">
+                    <button class="btn btn-secondary px-4"><a href="#"> <i class="bi bi-search"></a></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fim do campo de busca -->
 
     <!-- Conteúdo central -->
     <br>
