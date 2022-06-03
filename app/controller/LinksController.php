@@ -34,8 +34,6 @@ class LinksController{
         $parametros = array();
         $parametros['anexos'] = $colecao;
 
-        //var_dump($parametros); die();
-
         $parameters = array();
         $parameters['id'] = $post->id;
         $parameters['nome'] = $post->nome;
@@ -52,9 +50,22 @@ class LinksController{
         
     }
 
+    public function atualizaAnexo(){
+        //$paramId = intval($paramId['id'][0]);
+        
+		try {
+			Postagem::novoAnexo($_POST);
+           // var_dump($_POST); die();
 
-    //Esta pagina esta sendo deseolvida para permitir a mudança de links individuais
-    public function atualizaAnexo($paramId){
+			echo '<script>alert("Anexo atualizado com sucesso!");</script>';
+			echo '<script>location.href="http://localhost/EditaisMVC/listagem"</script>';
+		} catch(Exception $e) {
+			echo '<script>alert("'.$e->getMessage().'");</script>';
+			echo '<script>location.href="http://localhost/EditaisMVC"</script>';
+		}	
+	}  
+
+    public function carregaAnexo($paramId){
         $paramId = intval($paramId['id'][0]);
 
         $loader = new \Twig\Loader\FilesystemLoader('app/View');
@@ -62,9 +73,12 @@ class LinksController{
         $template = $twig->load('anexo.html');
 
         $post = Listagem::AnexosPorId($paramId);
-        
         $parametros = array();
-        //$parametros['link'] = $post->link;
+        $parametros['id'] = $post->id;
+        $parametros['link'] = $post->link;
+        $parametros['texto'] = $post->texto;
+        $parametros['id_postagem'] = $post->id_postagem;
+        //var_dump($post); die();
 
         return $template->render($parametros);
     }

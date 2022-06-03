@@ -68,7 +68,7 @@ public static function selecionaAllComAnexos(){
 		if (!$resultado) {
 			throw new Exception("Não foi encontrado nenhum registro no banco");	
 		} else {
-			$resultado->comentarios = Postagem::selecionarPostagem($resultado->id);
+			$resultado->anexos = Postagem::selecionarPostagem($resultado->id);
 		}
 		return $resultado;
 	}
@@ -102,15 +102,15 @@ public static function selecionaAllComAnexos(){
 		$sql->bindValue(':id', $idPost, PDO::PARAM_INT);
 		$sql->execute();
 
-        $resultado = array();
-
-        while ($row = $sql->fetchObject('Postagem')) {
-            $resultado[] = $row;
-
-            //var_dump($resultado); die();
-        }
+        $resultado = $sql->fetchObject('Postagem');
 
         //var_dump($resultado); die();
+
+		if (!$resultado) {
+			throw new Exception("Não foi encontrado nenhum registro no banco");	
+		} else {
+			$resultado->anexos = Postagem::selecionarAnexo($resultado->id);
+		}
 		return $resultado;
 	}
 

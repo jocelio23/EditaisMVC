@@ -141,21 +141,37 @@
     <br>
 
     <div class=" text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-        <h5 class="fw-bold text-primary text-uppercase">Atualização de link</h5>
-        <form method="POST" action="http://localhost/EditaisMVC/#/#">
+        <h5 class="fw-bold text-primary text-uppercase">Atualização de link nº:{{id}}</h5>
+        <form method="POST" action="http://localhost/EditaisMVC/links/atualizaAnexo/{{id}}">
             <div class="col-lg-12 form-group">
                 <br>
                 <input type="hidden" name="id" value="{{id}}">
+                <label>Digite um texto para associar ao link: *</label>
                 <input type="text" name="texto" placeholder="Documento da secretaria" class='border-1 bg-light px-4'
-                    required value="{{link}}"> <label><br></label>
+                    required value="{{texto}}"> <label><br></label>
+                    <label>link: *</label>
                 <input type="url" name="link" placeholder="www.cultura/documento.PDF" class=" border-1 bg-light px-4"
-                    required value="{{texto}}">
+                    required value="{{link}}">
             </div>
             <br>
             <button class="btn btn-secondary w-100 py-3" type="submit" name="submit">Atualizar</button>
     </div>
+
     </form>
+
+
     </div>
+
+    <div class=" text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+      
+        <div class="col-lg-2">
+            <div class="row g-4">
+                <input type='button' value='Voltar' onclick='history.go(-1)' />
+            </div>
+        </div>
+    </div>
+
+
 
 
 

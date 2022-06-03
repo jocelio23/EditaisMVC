@@ -40,10 +40,7 @@ class AtualizacaoController
 
         //pensar em uma forma de pegar o id da postagem a ser alterada
         $post = Listagem::selecionaPorId($paramId);
-
-        //var_dump($post);
         $colecao = Listagem::selecionaAnexos($paramId);
-
       
         $parametros = array();
         $parametros['anexos'] = $colecao;
