@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Listagem</title>
+    <title>Encerrados</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Governo Do Estado Do Ceará" name="keywords">
     <meta content="Governo Do Estado Do Ceará" name="description">
@@ -65,142 +65,137 @@
                     <a href="http://localhost/EditaisMVC/" class="nav-item nav-link"><b>Início</b></a>
                     <a href="http://localhost/EditaisMVC/listagem/listaNova"
                         class="nav-item nav-link "><b>Editais</b></a>
-                        <a href="http://localhost/EditaisMVC/desativados/desativados"
+                    <a href="http://localhost/EditaisMVC/desativados/desativados"
                         class="nav-item nav-link active"><b>Encerrados</b></a>
-                    <a href="http://localhost/EditaisMVC/postagem/logout"
-                        class="nav-item nav-link  "><b>Sair</b></a>
+                    <a href="http://localhost/EditaisMVC/postagem/logout" class="nav-item nav-link  "><b>Sair</b></a>
                 </div>
-                <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
-
             </div>
         </nav>
     </div>
-    <br>
-
-     <!-- Campo de busca -->
-     <div class="modal fade" id="searchModal" tabindex="-1">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content" style="background: rgba(26, 166, 26, 0.413);">
-                <div class="modal-header border-0">
-                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body d-flex align-items-center justify-content-center">
-                    <div class="input-group" style="max-width: 400px;">
-                        <input type="text" class="form-control  border-white p-3" placeholder="Digite o nome do edital que deseja">
-                        <button class="btn btn-secondary px-4"><a href="#"> <i class="bi bi-search"></a></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Fim do campo de busca -->
+    <br><br>
 
     <!-- Menu de navegação Fim -->
-    <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-        <h5 class="fw-bold text-primary text-uppercase">Editais encerradOS</h5>
-    </div>
-  
-
-    <!--Se não existir editais desativados mostre isso abaixo-->
-
-{% set valor = false %}
-{% for post in postagens %} 
-    {% if post.flag == 'Desativado' %}
-         
-        {% set valor = true %}
-    {% endif %}
-{% endfor %}
-<br>
-{% if valor == false %}
-    <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-        <br><br>
-        <br><br>
-
-        <div class="text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-            <img src="img/logo/logotipo.png" width="180">
-        </div>
-
-        <div class=" text-center position-relative pb-3 mb-5 mx-auto " style="max-width: 600px;">
-            <label>
-                <h2>Não existe nenhum edital encerrado</h2>
-            </label>
-        </div>
-    <!--Conteúdo central fim-->
-    </div>
-    <br><br>
-    <br><br>
-{% endif %}
-
-
-{% for post in postagens %}
-    {% if post.flag == 'Desativado' %}
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3  wow zoomIn" data-wow-delay="0.9s" style="min-height: 350px;">
-                    <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/imagensEditais/{{post.arquivo}}" alt="">
-                            <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4">Edital aberto</div>
-                        </div>
-                        
-                    </div>
-                </div>
-                
-                <div class="col-lg-4">
-                    <div class="row g-5">
-                        <div class="col-12 wow zoomIn" data-wow-delay="0.2s">
-                            <h4>{{post.nome}}</h4>
 
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Etapas: {{post.etapas}}
-                            </p>
-                        </div>
-                        <div class="col-12 wow zoomIn" data-wow-delay="0.6s">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Nº:{{post.id}}</p>
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Nome:{{post.nome}}</p>
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Valor R$:{{post.valor|number_format(2, '.', ',')}}
-                            </p>
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Contato:{{post.contatos}}
-                            </p>
-                            <p class="mb-0"><i
-                                    class="fa fa-arrow-right text-primary me-3"></i>Categoria:{{post.categoria}}</p>
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>status:{{post.flag}}</p>
-
-                            <br>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="row g-5">
-                        <div class="col-12 wow zoomIn" data-wow-delay="0.4s">
-                            <h4>Publicações do Edital</h4>
-                            
-                            <p class="mb-0">
-                                <li id="0" class="widget-list-item"><span>Novos links poderão ser adicionados</span>
-                                </li>
-                            </p>
-                        </div>
-
-                        <div id="login-button-panel" class="col-lg-12">
-                            <a href="http://localhost/EditaisMVC/atualizacao/change/{{post.id}}"> <button name="action"
-                                    value="enterAccountId" class="button-continuar" type="submit"
-                                    tabindex="1"  style="background: rgb(102, 99, 96)" disabled>Alterar</button></a>
-                            <a href="http://localhost/EditaisMVC/desativados/ativa/{{post.id}}"> <button name="action"
-                                    value="enterAccountId" class="button-continuar" type="submit" tabindex="1"
-                                    style="background: rgb(34, 175, 15);">Reativar</button> </a>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            </div>
+        <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+            <h5 class="fw-bold text-primary text-uppercase">Editais encerrados</h5>
         </div>
 
+        <!--Se não existir editais desativados mostre isso abaixo-->
+        {% set valor = false %}
+        {% for post in postagens %}
+        {% if post.flag == 'Desativado' %}
+
+        {% set valor = true %}
+        {% endif %}
+        {% endfor %}
+
+        {% if valor == false %}
+        <div class=" text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+            <br><br>
+
+            <div class="text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+                <img src="img/logo/logotipo.png" width="180">
+            </div>
+
+            <div class=" text-center position-relative pb-3 mb-5 mx-auto " style="max-width: 600px;">
+                <label>
+                    <h2>Não existe nenhum edital encerrado</h2>
+                </label>
+            </div>
+
+        </div>
+
+        {% endif %}
+
+        <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <!--Conteúdo central fim-->
+
+                {% for post in postagens %}
+                {% if post.flag == 'Desativado' %}
+                <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="container py-5">
+                        <div class="row g-5">
+                            <div class="col-lg-3  wow zoomIn" data-wow-delay="0.9s" style="min-height: 350px;">
+                                <div class="blog-item bg-light rounded overflow-hidden">
+                                    <div class="blog-img position-relative overflow-hidden">
+                                        <img class="img-fluid" src="img/imagensEditais/{{post.arquivo}}" alt="">
+                                        <div
+                                            class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4">
+                                            Edital encerrado</div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="row g-5">
+                                    <div class="col-12 wow zoomIn" data-wow-delay="0.2s">
+                                        <h4>{{post.nome}}</h4>
+
+                                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Etapas:
+                                            {{post.etapas}}
+                                        </p>
+                                    </div>
+                                    <div class="col-12 wow zoomIn" data-wow-delay="0.6s">
+                                        <p class="mb-0"><i
+                                                class="fa fa-arrow-right text-primary me-3"></i>Nº:{{post.id}}</p>
+                                        <p class="mb-0"><i
+                                                class="fa fa-arrow-right text-primary me-3"></i>Nome:{{post.nome}}</p>
+                                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Valor
+                                            R$:{{post.valor|number_format(2, '.', ',')}}
+                                        </p>
+                                        <p class="mb-0"><i
+                                                class="fa fa-arrow-right text-primary me-3"></i>Contato:{{post.contatos}}
+                                        </p>
+                                        <p class="mb-0"><i
+                                                class="fa fa-arrow-right text-primary me-3"></i>Categoria:{{post.categoria}}
+                                        </p>
+                                        <p class="mb-0"><i
+                                                class="fa fa-arrow-right text-primary me-3"></i>status:{{post.flag}}</p>
+
+                                        <br>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="row g-5">
+                                    <div class="col-12 wow zoomIn" data-wow-delay="0.4s">
+                                        <h4>Publicações do Edital</h4>
+
+                                        <p class="mb-0">
+                                            <li id="0" class="widget-list-item"><span>Somente editais ativos podem ser
+                                                    atualizados</span>
+                                            </li>
+                                        </p>
+                                    </div>
+
+                                    <div id="login-button-panel" class="col-lg-12">
+                                        <a href="http://localhost/EditaisMVC/atualizacao/change/{{post.id}}"> <button
+                                                name="action" value="enterAccountId" class="button-continuar"
+                                                type="submit" tabindex="1" style="background: rgb(102, 99, 96)"
+                                                disabled>Alterar</button></a>
+                                        <a href="http://localhost/EditaisMVC/desativados/ativa/{{post.id}}"> <button
+                                                name="action" value="enterAccountId" class="button-continuar"
+                                                type="submit" tabindex="1"
+                                                style="background: rgb(34, 175, 15);">Reativar</button> </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
     </div>
     </div>
-    {% endif %}
-{% endfor %}
 
     <!-- Rodapé -->
     <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">

@@ -44,53 +44,64 @@ class postagem{
         $result = $sql2->execute();
         //return $result;
       }   
-     
-     
     }
     return true;
   }
 
   public static function updateComLinks($params)
-    { 
+    {
         $con = Connection::getConn();
-        $get_id=$_REQUEST['id'];
+        $get_id = $_POST['id'];
+        $arquivo = $_FILES['arquivo'];
+        $arqTemp = $_FILES['arquivo']['tmp_name'];
+        $arquivoArray= implode(".", $arquivo);        
 
-       // var_dump($get_id);
-        die();
-
-        if (isset($_FILES['arquivo']))
+        if($arqTemp !="")
         {
-        move_uploaded_file($_FILES["arquivo"]["tmp_name"],"img/imagensEditais/".$_FILES["arquivo"]["name"]);			
-        $location1=$_FILES["arquivo"]["name"];
+            $buscaImagem = $con->prepare("SELECT arquivo FROM postagem WHERE id = $get_id");
+            $buscaImagem->bindValue(':id', $get_id);
+            $buscaImagem->execute();
+            $linha = $buscaImagem->fetchAll(PDO::FETCH_ASSOC);
 
-        $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sqlImagem = "UPDATE postagem SET arquivo ='$location1' WHERE id = '$get_id' ";    
-
-        $con->exec($sqlImagem);
-        echo "<script>alert('Successfully Updated!!!');'</script>";
-
-        $sql = "UPDATE postagem SET nome = :n, etapas = :e, valor = :v, contatos = :co, telefone = :te, categoria = :ca, flag = :f WHERE id = :id";
-        $sql = $con->prepare($sql);
-        $sql->bindValue(':id', $params['id']);
-        $sql->bindValue(':n', $params['nome']);
-        $sql->bindValue(':e', $params['etapas']);
-        $sql->bindValue(':v', $params['valor']);
-        $sql->bindValue(':co', $params['contatos']);
-        $sql->bindValue(':te', $params['telefone']);
-        $sql->bindValue(':ca', $params['categorias']);
-        $sql->bindValue(':f', $params['flags']);    
-    
-        $resultado = $sql->execute();
+            $arquivo = isset($_FILES['arquivo']) ? $_FILES['arquivo'] : "";
+            $arquivo = $_FILES['arquivo'];            
+            // aqui onde faz o update da imagem, dando novo nome e movendo para a pasta de upload
+            if (isset($_FILES['arquivo'])) 
+            {
+                $extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
+                $novo_nome = md5(time())."." . $extensao;
+                $diretorio = "img/imagensEditais/";
+               
+                if (file_exists($diretorio.$linha[0]['arquivo'])) 
+                {
+                     //var_dump("antigo ".$diretorio.$linha[0]['arquivo']);
+                     unlink($diretorio.$linha[0]['arquivo']);
+                }
+                if (move_uploaded_file($arqTemp, $diretorio . $novo_nome)) 
+                {
+                    echo "sucesso";
+                }   
+            }
+            $sql = $con->prepare("UPDATE postagem SET arquivo = '$novo_nome' WHERE id= '$get_id' ");            
+            $consulta = $sql->execute();
         }
-        var_dump($params);    
-        /* if ($resultado == 0) 
+        else
         {
-        throw new Exception("Falha ao alterar publicação");
-        return false;
-        }*/
-        return true;
-    }
+            $sql2 = "UPDATE postagem SET nome = :n, etapas = :e, valor = :v, contatos = :co, telefone = :te, categoria = :ca, flag = :f WHERE id = :id";
+            $sql2 = $con->prepare($sql2);
+            $sql2->bindValue(':id', $params['id']);
+            $sql2->bindValue(':n', $params['nome']);
+            $sql2->bindValue(':e', $params['etapas']);
+            $sql2->bindValue(':v', $params['valor']);
+            $sql2->bindValue(':co', $params['contatos']);
+            $sql2->bindValue(':te', $params['telefone']);
+            $sql2->bindValue(':ca', $params['categorias']);
+            $sql2->bindValue(':f', $params['flags']);
 
+            $sql2->execute();
+        }
+    }
+/* 
    public static function update($params){
     $con = Connection::getConn();
 
@@ -114,7 +125,7 @@ class postagem{
       return false;
     }
     return true;
-  }  
+  } */  
 
   public static function insertAnexos($dadosPost){
     $con = Connection::getConn();
@@ -124,8 +135,6 @@ class postagem{
 
     //pegando id da postagem
     $id_postagem = intval($dadosPost['id']);
-
-    //var_dump($dadosPost); die();
       for($i=0; $i<count($link);$i++)
       {
         //$con->exec($sql);
@@ -133,29 +142,20 @@ class postagem{
         $sql2->bindValue(':li', $link[$i]);
         $sql2->bindValue(':te', $texto[$i]);
         $sql2->bindValue(':la', $id_postagem);
-        $result = $sql2->execute();
-        
-        //return $result;
+        $sql2->execute();
       } 
     return true;
   }
 
   public static function novoAnexo($params){
     $con = Connection::getConn();
-
-    //var_dump($params); die();
-
     $sql = "UPDATE anexos SET link = :l, texto = :te WHERE id = :id";
     $sql = $con->prepare($sql);
     $sql->bindValue(':id', $params['id']);
     $sql->bindValue(':l', $params['link']);
     $sql->bindValue(':te', $params['texto']);
-   // $sql->bindValue(':e', $params['etapas']);
 
-    $resultado = $sql->execute();
-
-
-
+    $sql->execute();
     return true;
   }
 
@@ -172,11 +172,10 @@ class postagem{
     while ($row = $sql->fetchObject('postagem')) {
       $resultado[] = $row;
     }
-
     return $resultado;
   }
 
-  //Função para testes de atualização de anexos//
+  //Função usada na atualização de anexos//
   public static function selecionarAnexo($idPost){
     $con = Connection::getConn();
 
@@ -192,8 +191,6 @@ class postagem{
     }
     return $resultado;
   }
-
-  //Função para testes de atualização de anexos//
 
   public static function DesativarPostagem($num){
     $con = Connection::getConn();

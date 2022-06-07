@@ -6,14 +6,10 @@ class UnicoController{
             $loader = new \Twig\Loader\FilesystemLoader('app/view/');
             $twig = new \Twig\Environment($loader, [
                 'cache' => '/path/to/compilation_cache',
-                //renderiza sempre que houver mudanças
                 'auto_reload' => true,
             ]);
 
             $template = $twig->load('unico.html');
-            //pega valor e verifica se existe
-            //$parameters['nome_usuario'] = $_SESSION['usr']['usuario'];
-
             $parametros = array();
             return $template->render($parametros);
 
@@ -38,9 +34,6 @@ class UnicoController{
         $colecao = Listagem::selecionaAnexos($paramId);
         $parametros = array();
         $parametros['anexos'] = $colecao;
-
-        //var_dump($parametros); die();
-
         $parameters = array();
         $parameters['id'] = $post->id;
         $parameters['nome'] = $post->nome;
@@ -60,5 +53,4 @@ class UnicoController{
         header('Location: http://localhost/EditaisMVC/atualizacao');   
     }
 
-    
 }

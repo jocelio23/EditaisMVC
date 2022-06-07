@@ -20,7 +20,6 @@ class Core{
                 unset($_SESSION['msg_error']);
             }
         }
-
     }
 
     public function start($request){

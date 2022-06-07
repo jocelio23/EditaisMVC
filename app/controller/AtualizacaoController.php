@@ -7,7 +7,6 @@ class AtualizacaoController
             $loader = new \Twig\Loader\FilesystemLoader('app/view/');
             $twig = new \Twig\Environment($loader, [
                 'cache' => '/path/to/compilation_cache',
-                //renderiza sempre que houver mudanças
                 'auto_reload' => true,
             ]);
 
@@ -22,8 +21,7 @@ class AtualizacaoController
 
     public function update(){
         try {
-            Postagem::update($_POST);
-            //var_dump($_POST); die();
+            Postagem::updateComLinks($_POST);
             echo '<script>alert("Publicação alterada com sucesso!");</script>';
 			echo '<script>location.href="http://localhost/EditaisMVC/listagem"</script>';
 		} catch(Exception $e) {
@@ -37,14 +35,8 @@ class AtualizacaoController
         $loader = new \Twig\Loader\FilesystemLoader('app/View');
         $twig = new \Twig\Environment($loader);
         $template = $twig->load('atualizacao.html');
-
-        //pensar em uma forma de pegar o id da postagem a ser alterada
         $post = Listagem::selecionaPorId($paramId);
-        $colecao = Listagem::selecionaAnexos($paramId);
-      
-        $parametros = array();
-        $parametros['anexos'] = $colecao;
-    
+
         $parameters = array();
         $parameters['id'] = $post->id;
         $parameters['nome'] = $post->nome;
@@ -55,8 +47,7 @@ class AtualizacaoController
         $parameters['categoria'] = $post->categoria;
         $parameters['flag'] = $post->flag;
         $parameters['arquivo'] = $post->arquivo;
-        $parameters['anexos'] = $colecao;
-
+    
         return $template->render($parameters);
     }
      public function alterar(){

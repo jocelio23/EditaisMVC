@@ -49,7 +49,7 @@
             document.getElementById('campo' + idCampo).remove();
         }
 
-    
+
 
 
         function numerais(evt) {
@@ -65,26 +65,26 @@
             }
         }
 
-        function mascara(o,f){
-            v_obj=o
-            v_fun=f
-            setTimeout("execmascara()",1)
+        function mascara(o, f) {
+            v_obj = o
+            v_fun = f
+            setTimeout("execmascara()", 1)
         }
-        function execmascara(){
-            v_obj.value=v_fun(v_obj.value)
+        function execmascara() {
+            v_obj.value = v_fun(v_obj.value)
         }
-        function mtel(v){
-            v=v.replace(/\D/g,""); //Remove tudo o que não é dígito
-            v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
-            v=v.replace(/(\d)(\d{4})$/,"$1-$2"); //Coloca hífen entre o quarto e o quinto dígitos
+        function mtel(v) {
+            v = v.replace(/\D/g, ""); //Remove tudo o que não é dígito
+            v = v.replace(/^(\d{2})(\d)/g, "($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+            v = v.replace(/(\d)(\d{4})$/, "$1-$2"); //Coloca hífen entre o quarto e o quinto dígitos
             return v;
         }
-        function id( el ){
-            return document.getElementById( el );
+        function id(el) {
+            return document.getElementById(el);
         }
-        window.onload = function(){
-            id('telefone').onkeyup = function(){
-                mascara( this, mtel );
+        window.onload = function () {
+            id('telefone').onkeyup = function () {
+                mascara(this, mtel);
             }
         }
 
@@ -92,9 +92,6 @@
 </head>
 
 <body>
-
-
-
     <!-- Topo -->
     <div class="container-fluid bg-secondary px-5 d-none d-lg-block">
         <div class="row gx-0">
@@ -113,184 +110,140 @@
     </div>
     <!-- Topo Fim -->
 
-<div class="container-fluid position-relative p-0">
-    <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="fa fa-bars"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto py-0">
-                <a href="http://localhost/EditaisMVC/" class="nav-item nav-link active"><b>Início</b></a>
-                <a href="http://localhost/EditaisMVC/listagem/listaNova"
-                    class="nav-item nav-link "><b>Editais</b></a>
+    <div class="container-fluid position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="http://localhost/EditaisMVC/" class="nav-item nav-link active"><b>Início</b></a>
+                    <a href="http://localhost/EditaisMVC/listagem/listaNova"
+                        class="nav-item nav-link "><b>Editais</b></a>
                     <a href="http://localhost/EditaisMVC/desativados/desativados"
-                    class="nav-item nav-link "><b>Encerrados</b></a>
-                <a href="http://localhost/EditaisMVC/postagem/logout"
-                    class="nav-item nav-link  "><b>Sair</b></a>
-            </div>
-            <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
-        </div>
-    </nav>
-</div>
-
- <!-- Campo de busca -->
- <div class="modal fade" id="searchModal" tabindex="-1">
-    <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content" style="background: rgba(26, 166, 26, 0.413);">
-            <div class="modal-header border-0">
-                <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body d-flex align-items-center justify-content-center">
-                <div class="input-group" style="max-width: 400px;">
-                    <input type="text" class="form-control  border-white p-3" placeholder="Digite o nome do edital que deseja">
-                    <button class="btn btn-secondary px-4"><a href="#"> <i class="bi bi-search"></a></i></button>
+                        class="nav-item nav-link "><b>Encerrados</b></a>
+                    <a href="http://localhost/EditaisMVC/postagem/logout" class="nav-item nav-link  "><b>Sair</b></a>
                 </div>
             </div>
-        </div>
+        </nav>
     </div>
-</div>
-<!-- Fim do campo de busca -->
 
     <!-- Conteúdo central -->
-    <br>
-    <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-        <h5 class="fw-bold text-primary text-uppercase">Cadastros</h5>
-    </div>
-
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-6 wow slideInUp" data-wow-delay="0.3s">
-                    <iframe class="position-relative rounded w-100 h-100"
-                        src="img/logo/Secretaria-da-Cultura-INVERTIDA-WEB-branca-2.png" width="120" frameborder="0"
-                        style="min-height: 30px; border:0;" aria-hidden="false" tabindex="0">
-                    </iframe>
-                </div>
+        <br>
+        <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+            <h5 class="fw-bold text-primary text-uppercase">Cadastros</h5>
+        </div>
 
-                <div class="col-lg-6 wow slideInUp" data-wow-delay="0.6s">
-                    <form method="POST" action="http://localhost/EditaisMVC/postagem/insert"
-                        enctype="multipart/form-data">
-                        <!--Macha, sem esse tipo de enctype não dá pra trabalhar com imagens, apenas adiconei aqui-->
-                        
-                        <div class="col-12">
-                            <h6>Campos com * (asterisco) são obrigatórios;</h6>
-                        </div>
-                        <div class="row g-3">
-                            <div class="col-12">
-                                Nome: *
-                                <input type="text" name="nome" class="form-control border-1 bg-light px-4"
-                                    placeholder="Ex: Edital Secult" style="height: 55px;" required>
-                            </div>
+        <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-6 wow slideInUp" data-wow-delay="0.3s">
+                        <iframe class="position-relative rounded w-100 h-100"
+                            src="img/logo/Secretaria-da-Cultura-INVERTIDA-WEB-branca-2.png" width="120" frameborder="0"
+                            style="min-height: 30px; border:0;" aria-hidden="false" tabindex="0">
+                        </iframe>
+                    </div>
+
+                    <div class="col-lg-6 wow slideInUp" data-wow-delay="0.6s">
+                        <form method="POST" action="http://localhost/EditaisMVC/postagem/insert"
+                            enctype="multipart/form-data">
+                            <!--Macha, sem esse tipo de enctype não dá pra trabalhar com imagens, apenas adiconei aqui-->
 
                             <div class="col-12">
-                                Etapas: *
-                                <textarea name="etapas" class="form-control border-1 bg-light px-4 py-4" rows="4"
-                                    placeholder="Ex: Inscrições de 00/00/000 até 00/00/0000" required></textarea>
+                                <h6>Campos com * (asterisco) são obrigatórios;</h6>
                             </div>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    Nome: *
+                                    <input type="text" name="nome" class="form-control border-1 bg-light px-4"
+                                        placeholder="Ex: Edital Secult" style="height: 55px;" required>
+                                </div>
 
-                            <div class="col-12">
-                                Valor: * 
-                                <input type="text" name="valor" class="form-control border-1 bg-light px-4" onpaste="return false" ondrop="return false"
-                                    placeholder="EX: R$: 00.00,00" style="height: 55px;" onkeypress="return numerais()"; required>
-                            </div>
+                                <div class="col-12">
+                                    Etapas: *
+                                    <textarea name="etapas" class="form-control border-1 bg-light px-4 py-4" rows="4"
+                                        placeholder="Ex: Inscrições de 00/00/000 até 00/00/0000" required></textarea>
+                                </div>
 
-                            <div class="col-12">
-                                E-mail: 
-                                <input type="email" name="contatos" class="form-control border-1 bg-light px-4"
-                                    placeholder="Ex: editais@gmail.com" style="height: 55px;">
-                            </div>
+                                <div class="col-12">
+                                    Valor: *
+                                    <input type="text" name="valor" class="form-control border-1 bg-light px-4"
+                                        onpaste="return false" ondrop="return false" placeholder="EX: R$: 00.00,00"
+                                        style="height: 55px;" onkeypress="return numerais()" ; required>
+                                </div>
 
-                            <div class="col-12">
-                                Telefone: 
-                                <input type="tel" name="telefone" id="telefone" class="form-control border-1 bg-light px-4" placeholder="Ex: (00) 0 - 0000-0000" style="height: 55px;">
-                            </div>
+                                <div class="col-12">
+                                    E-mail:
+                                    <input type="email" name="contatos" class="form-control border-1 bg-light px-4"
+                                        placeholder="Ex: editais@gmail.com" style="height: 55px;">
+                                </div>
 
-                            <div class="col-12">
-                                <label>Selecione uma categoria: *</label><br />
-                                <select name="categorias" class="form-control border-1 bg-light px-4"
-                                    style="opacity: calc(1)" required>
-                                    <p style="opacity: calc(0.5)">
-                                        <option value="" disable selected hidden>Escolha uma categoria</option></p>
-                                    <option value="Aberto">Inscrições abertas</option>
-                                    <option value="Público">Conhecimento público</option>
-                                    <option value="Seleção">Processo de seleção</option>
-                                </select>
-                            </div>
+                                <div class="col-12">
+                                    Telefone:
+                                    <input type="tel" name="telefone" id="telefone"
+                                        class="form-control border-1 bg-light px-4" placeholder="Ex: (00) 0 - 0000-0000"
+                                        style="height: 55px;">
+                                </div>
 
-                            <div class="col-12">
-                                <label>Status do Edital: *</label><br />
-                                <select name="flags" class="form-control border-1 bg-light px-4" style="opacity: calc(1)">
-                                    <p style="opacity: calc(0.5)" >
-                                        <option value="" disable selected hidden>Escolha o status do edital</option>
-                                    </p>
-                                    <option value="Ativado" selected>Ativado</option>
-                                    <option value="Desativado">Desativado</option>
-                                </select>
-                            </div>
-                            <div class="col-12">
-                                Selecione uma imagem para o edital *
-                                <input type="file" name="arquivo" accept="image/png,image/jpg, image/jpeg"
-                                    class="form-control border-1 bg-light px-4" required>
-                            </div>
+                                <div class="col-12">
+                                    <label>Selecione uma categoria: *</label><br />
+                                    <select name="categorias" class="form-control border-1 bg-light px-4"
+                                        style="opacity: calc(1)" required>
+                                        <p style="opacity: calc(0.5)">
+                                            <option value="" disable selected hidden>Escolha uma categoria</option>
+                                        </p>
+                                        <option value="Aberto">Inscrições abertas</option>
+                                        <option value="Público">Conhecimento público</option>
+                                        <option value="Seleção">Processo de seleção</option>
+                                    </select>
+                                </div>
 
-                            <div id="formulario">
-                                <div class="col-lg-12 form-group">
-                                    <label>Digite um texto para associar ao link: *</label>
-                                    <input type="text" name="texto[]" placeholder="Ex: Link de inscrições"
-                                        class='border-1 bg-light px-4' required>
+                                <div class="col-12">
+                                    <label>Status do Edital: *</label><br />
+                                    <select name="flags" class="form-control border-1 bg-light px-4"
+                                        style="opacity: calc(1)">
+                                        <p style="opacity: calc(0.5)">
+                                            <option value="" disable selected hidden>Escolha o status do edital</option>
+                                        </p>
+                                        <option value="Ativado" selected>Ativado</option>
+                                        <option value="Desativado">Desativado</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    Selecione uma imagem para o edital *
+                                    <input type="file" name="arquivo" accept="image/png,image/jpg, image/jpeg"
+                                        class="form-control border-1 bg-light px-4" required>
+                                </div>
+
+                                <div id="formulario">
+                                    <div class="col-lg-12 form-group">
+                                        <label>Digite um texto para associar ao link: *</label>
+                                        <input type="text" name="texto[]" placeholder="Ex: Link de inscrições"
+                                            class='border-1 bg-light px-4' required>
 
                                         <label>Link: *</label>
                                         <input type="url" name="link[]" placeholder="Ex: www.culturaCE/inscricoes"
                                             class=" border-1 bg-light px-4" required>
-
-
-                                    <!--<button class="col-lg-1" type="button" style="background-color: rgb(52, 173, 84);" onclick="duplicarCampos()">+</button>&nbsp;-->
-                                    <!--<button class="col-lg-1" type="button" style="background-color: rgb(191, 14, 14);" onclick="removerCampos(this)">-</button>-->
-
-
+                                    </div>
                                 </div>
+                                <label> Clique no botão abaixo para adicionar novos campos</label>
+
+                                <button class="col-lg-1" type="button" style="background-color: rgb(52, 173, 84);"
+                                    onclick="adicionarCampo()">+</button>&nbsp;
+                                <!--<button class="col-lg-1" type="button" style="background-color: rgb(246, 8, 8);" onclick="removerCampo()">-</button>;-->
+
+                                <button class="btn btn-secondary w-100 py-3" type="submit" name="submit">Adicionar
+                                    edital</button>
                             </div>
-                            <label> Clique no botão abaixo para adicionar novos campos</label>
+                        </form>
+                        <br>
+                    </div>
 
-                            <button class="col-lg-1" type="button" style="background-color: rgb(52, 173, 84);"
-                                onclick="adicionarCampo()">+</button>&nbsp;
-                            <!--<button class="col-lg-1" type="button" style="background-color: rgb(246, 8, 8);" onclick="removerCampo()">-</button>;-->
-
-                            <button class="btn btn-secondary w-100 py-3" type="submit" name="submit">Adicionar
-                                edital</button>
-                        </div>
-                    </form>
-                    <br>
                 </div>
-
             </div>
         </div>
     </div>
-    <!-- Conteudo central Fim -->
-
-    <!--acesso rapido start-->
-
-    <!-- <section class="AcessoRapido">
-        <div class="wrapper">
-            <div class="row">
-                <h4 class="mb-1">Acesso Rápido</h4>
-                <nav class="MenuAcessos">
-                    <div class="acesso-rapido">
-                        <ul id="menu-acesso-rapido-footer" class="menu">
-                            <li id="menu-item-870" class="portal menu-item menu-item-type-custom menu-item-object-custom menu-item-870"><a href="https://cearatransparente.ce.gov.br" target="_blank"><i class="PortalTransparencia"></i>Ceará<br> Transparente</a></li>
-                            <li id="menu-item-871" class="acesso menu-item menu-item-type-custom menu-item-object-custom menu-item-871"><a href="http://cartadeservicos.ce.gov.br/" target="_blank"><i class="AcessoCidadao"></i>Carta de Serviços<br>do Cidadão</a></li>
-                            <li id="menu-item-872" class="lei menu-item menu-item-type-custom menu-item-object-custom menu-item-872"><a href="https://cearatransparente.ce.gov.br/portal-da-transparencia/acesso-a-informacao?locale=pt-BR" target="_blank"><i class="AcessoInformacao"></i>Lei geral de<br> acesso à informação</a></li>
-                            <li id="menu-item-873" class="diario menu-item menu-item-type-custom menu-item-object-custom menu-item-873"><a href="http://pesquisa.doe.seplag.ce.gov.br/" target="_blank"><i class="DiarioOficial"></i>Diário<br> Oficial</a></li>
-                            <li id="menu-item-874" class="legislacao menu-item menu-item-type-custom menu-item-object-custom menu-item-874"><a href="https://www.al.ce.gov.br/" target="_blank"><i class="Legislacao"></i>Legislação<br> Estadual</a></li>
-                            <li id="menu-item-61919" class="acoes menu-item menu-item-type-post_type menu-item-object-page menu-item-61919"><a href="http://www.ceara.gov.br/governo/"><i class="AcoesGoverno"></i>Ações de<br> Governo</a></li>
-                        </ul>
-                    </div>                    
-                </nav>
-    
-            </div>
-        </div>
-    </section>
-    -->
 
     <!--acesso rapido end-->
 

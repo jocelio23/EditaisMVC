@@ -6,14 +6,10 @@ class LinksController{
             $loader = new \Twig\Loader\FilesystemLoader('app/view/');
             $twig = new \Twig\Environment($loader, [
                 'cache' => '/path/to/compilation_cache',
-                //renderiza sempre que houver mudanças
                 'auto_reload' => true,
             ]);
 
             $template = $twig->load('links.html');
-            //pega valor e verifica se existe
-            //$parameters['nome_usuario'] = $_SESSION['usr']['usuario'];
-
             $parametros = array();
             return $template->render($parametros);
 
@@ -29,7 +25,6 @@ class LinksController{
         $template = $twig->load('links.html');
 
         $post = Listagem::selecionaPorId($paramId);
-
         $colecao = Listagem::selecionaAnexos($paramId);
         $parametros = array();
         $parametros['anexos'] = $colecao;
@@ -51,12 +46,8 @@ class LinksController{
     }
 
     public function atualizaAnexo(){
-        //$paramId = intval($paramId['id'][0]);
-        
 		try {
 			Postagem::novoAnexo($_POST);
-           // var_dump($_POST); die();
-
 			echo '<script>alert("Anexo atualizado com sucesso!");</script>';
 			echo '<script>location.href="http://localhost/EditaisMVC/listagem"</script>';
 		} catch(Exception $e) {
@@ -78,8 +69,6 @@ class LinksController{
         $parametros['link'] = $post->link;
         $parametros['texto'] = $post->texto;
         $parametros['id_postagem'] = $post->id_postagem;
-        //var_dump($post); die();
-
         return $template->render($parametros);
     }
 

@@ -7,14 +7,10 @@ class FaqController{
             $loader = new \Twig\Loader\FilesystemLoader('app/view/');
             $twig = new \Twig\Environment($loader, [
                 'cache' => '/path/to/compilation_cache',
-                //renderiza sempre que houver mudanças
                 'auto_reload' => true,
             ]);
 
             $template = $twig->load('faq.html');
-            //pega valor e verifica se existe
-            //$parameters['nome_usuario'] = $_SESSION['usr']['usuario'];
-
             $parametros = array();
             $parametros['postagens'] = $colecao;
 
