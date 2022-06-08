@@ -139,32 +139,33 @@
     <!-- Full Screen Search End -->
 
     <br>
-
-    <div class=" text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-        <h5 class="fw-bold text-primary text-uppercase">Atualização de link nº:{{id}}</h5>
-        <form method="POST" action="http://localhost/EditaisMVC/links/atualizaAnexo/{{id}}">
-            <div class="col-lg-12 form-group">
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class=" text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+            <h5 class="fw-bold text-primary text-uppercase">Atualização de link nº:{{id}}</h5>
+            <form method="POST" action="http://localhost/EditaisMVC/links/atualizaAnexo/{{id}}">
+                <div class="col-lg-12 form-group">
+                    <br>
+                    <input type="hidden" name="id" value="{{id}}">
+                    <input type="text" name="texto" placeholder="Documento da secretaria" class='border-1 bg-light px-4'
+                        required value="{{texto}}"> <label><br></label>
+                    <input type="url" name="link" placeholder="www.cultura/documento.PDF"
+                        class=" border-1 bg-light px-4" required value="{{link}}">
+                </div>
                 <br>
-                <input type="hidden" name="id" value="{{id}}">
-                <input type="text" name="texto" placeholder="Documento da secretaria" class='border-1 bg-light px-4'
-                    required value="{{texto}}"> <label><br></label>
-                <input type="url" name="link" placeholder="www.cultura/documento.PDF" class=" border-1 bg-light px-4"
-                    required value="{{link}}">
-            </div>
-            <br>
-            <button class="btn btn-secondary w-100 py-3" type="submit" name="submit">Atualizar</button>
+                <button class="btn btn-secondary w-100 py-3" type="submit" name="submit">Atualizar</button>
+
+            </form>
+        </div>
     </div>
-
-    </form>
-
 
     </div>
 
-    <div class=" text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-      
-        <div class="col-lg-2">
-            <div class="row g-4">
-                <input type='button' value='Voltar' onclick='history.go(-1)' />
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class=" text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+            <div class="col-lg-2">
+                <div class="row g-4">
+                    <input type='button' value='Voltar' onclick='history.go(-1)' />
+                </div>
             </div>
         </div>
     </div>

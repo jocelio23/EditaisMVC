@@ -202,8 +202,10 @@
     {% set valor = false %}
     {% for post in postagens %}
     {% if post.categoria == 'Público' %}
+    {% if post.flag == 'Ativado' %}
 
     {% set valor = true %}
+    {% endif %}
     {% endif %}
     {% endfor %}
 
@@ -223,7 +225,9 @@
                 <div class="col-lg-10 col-md-6 wow zoomIn" data-wow-delay="0.3s">
                     <div class="blog-item bg-light rounded overflow-hidden">
                         <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/imagensEditais/{{post.arquivo}}" alt="">
+                            <div class="nova">
+                                <img id="dimensao" src="img/imagensEditais/{{post.arquivo}}">
+                            </div>
                             <div
                                 class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4">
                                 Edital aberto</div>
@@ -251,8 +255,10 @@
     {% set valor = false %}
     {% for post in postagens %}
     {% if post.categoria == 'Aberto' %}
+    {% if post.flag == 'Ativado' %}
 
     {% set valor = true %}
+    {% endif %}
     {% endif %}
     {% endfor %}
 
@@ -272,7 +278,9 @@
                 <div class="col-lg-10 col-md-6 wow zoomIn" data-wow-delay="0.3s">
                     <div class="blog-item bg-light rounded overflow-hidden">
                         <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/imagensEditais/{{post.arquivo}}" alt="">
+                            <div class="nova">
+                                <img id="dimensao" src="img/imagensEditais/{{post.arquivo}}">
+                            </div>
                             <div
                                 class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4">
                                 Edital aberto</div>
@@ -298,7 +306,10 @@
     {% set valor = false %}
     {% for post in postagens %}
     {% if post.categoria == 'Seleção' %}
+    {% if post.flag == 'Ativado' %}
+
     {% set valor = true %}
+    {% endif %}
     {% endif %}
     {% endfor %}
     <br>
@@ -311,16 +322,20 @@
     </div>
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
-            <div class="row g-5">
-                {% for post in postagens %}
-                {% if post.categoria == 'Seleção' %}
-                {% if post.flag == 'Ativado' %}
-                <div class="col-lg-3 wow slideInUp" data-wow-delay="0.1s">
+            {% if postagens %}
+            {% for post in postagens %}
+            {% if post.categoria == 'Seleção' %}
+            {% if post.flag == 'Ativado' %}
+            <div class="col-lg-3  wow zoomIn" data-wow-delay="0.1s" style="min-height: 350px;">
+                <div class="col-lg-10 col-md-6 wow zoomIn" data-wow-delay="0.3s">
                     <div class="blog-item bg-light rounded overflow-hidden">
                         <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/imagensEditais/{{post.arquivo}}" alt="">
-                            <div class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4"
-                                href="edital-junino-ce.html">Em seleção</div>
+                            <div class="nova">
+                                <img id="dimensao" src="img/imagensEditais/{{post.arquivo}}">
+                            </div>
+                            <div
+                                class="position-absolute top-0 start-0 bg-secondary text-white rounded-end mt-5 py-2 px-4">
+                                Edital aberto</div>
                         </div>
                         <div class="p-4">
                             <a class="text-width-g "
@@ -328,18 +343,50 @@
                                     class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
-                </div>
-                {% endif %}
-                {% endif %}
-                {% endfor %}
-
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
-
-                </div>
+                </div><br>
             </div>
+
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            {% endif %}
         </div>
     </div>
     {% endif %}
+
+
+    <!-- Caso não exista nenhum edital
+    
+    {% set valor = false %}
+    {% for post in postagens %}
+    {% if post.categoria == 'Seleção' %}
+    {% if post.flag == 'Desativado' %}
+    {% if post.categoria == 'Público' %}
+    {% if post.flag == 'Desativado' %}
+    {% if post.categoria == 'Seleção' %}
+    {% if post.flag == 'Desativado' %}
+
+    {% set valor = true %}
+
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    <br> -->
+    <!--Mostre isso 
+    {% if valor == true %}-->
+    <!-- Editais em Processo de Seleção 
+    <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+        <h5 class="fw-bold text-dark text-uppercase">Aguarde só mais um pouco!</h5>
+        <h1 class="mb-0">Editais ainda não foram lançados esse período</h1>
+    </div>
+    
+    </div>
+    {% endif %} -->
+
 
     <!-- Rodapé   -->
     <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">

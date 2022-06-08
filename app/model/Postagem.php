@@ -54,7 +54,7 @@ class postagem{
         $get_id = $_POST['id'];
         $arquivo = $_FILES['arquivo'];
         $arqTemp = $_FILES['arquivo']['tmp_name'];
-        $arquivoArray= implode(".", $arquivo);        
+       // $arquivoArray= implode(".", $arquivo);        
 
         if($arqTemp !="")
         {
@@ -79,7 +79,7 @@ class postagem{
                 }
                 if (move_uploaded_file($arqTemp, $diretorio . $novo_nome)) 
                 {
-                    echo "sucesso";
+                   // echo "sucesso";
                 }   
             }
             $sql = $con->prepare("UPDATE postagem SET arquivo = '$novo_nome' WHERE id= '$get_id' ");            
