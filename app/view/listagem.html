@@ -104,6 +104,9 @@
             {% endif %}
         </div>
 
+        <br>
+
+        <!-- Criando páginação de editais -->
         {% for post in postagens %}
         {% if post.flag == 'Ativado' %}
         <div class="container py-6">
@@ -136,8 +139,8 @@
                             <div class="col-12 wow zoomIn" data-wow-delay="0.6s">
                                 <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Nº:{{post.id}}
                                 </p>
-                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Nome:{{post.nome}}
-                                </p>
+                                <!-- <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Nome:{{post.nome}}
+                                </p> -->
                                 <p class="mb-0"><i class="fa fa-arrow-right text-primary me-3"></i>Valor
                                     R$:{{post.valor|number_format(2, '.', ',')}}
                                 </p>
@@ -218,6 +221,16 @@
     </div>
     </div>
     {% endif %}
+
+    <nav aria-label="Navegação de página exemplo">
+        <ul class="pagination" style="justify-content:center">
+            <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
+        </ul>
+    </nav>
 
 
     <!-- Rodapé -->

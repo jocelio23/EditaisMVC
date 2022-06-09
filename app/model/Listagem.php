@@ -17,21 +17,6 @@ class Listagem{
         return $resultado;
     }
 
-/* public static function selecionaAllComAnexos(){
-    $con = Connection::getConn();
-    $sql = "SELECT DISTINCT * FROM postagem INNER JOIN anexos";
-    $sql = $con->prepare($sql);
-    $sql->execute();
-
-
-    $resultado = array();
-
-    while ($row = $sql->fetchObject('Postagem')) {
-        $resultado[] = $row;
-    }
-    return $resultado;
-} */
-
     public static function selectDisabled(){
         $con =  Connection::getConn();
 
