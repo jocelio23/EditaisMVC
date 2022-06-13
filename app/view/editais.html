@@ -355,26 +355,39 @@
     {% endif %}
 
 
-    <!-- Caso não exista nenhum edital-->
-   <!--  {% set verificador = true %}
+    <!-- Caso não exista nenhum edital
+    
+    {% set valor = false %}
     {% for post in postagens %}
+    {% if post.categoria == 'Seleção' %}
+    {% if post.flag == 'Desativado' %}
+    {% if post.categoria == 'Público' %}
+    {% if post.flag == 'Desativado' %}
+    {% if post.categoria == 'Seleção' %}
     {% if post.flag == 'Desativado' %}
 
-    {% set verificador = false %}
+    {% set valor = true %}
+
     {% endif %}
-    {% endfor %} -->
-
-    <!-- Mostre isso -->
-
-    <!-- {% if verificador == false %}
-    <div class=" text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-        <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-            <h5 class="fw-bold text-dark text-uppercase">Aguarde só mais um pouco!</h5>
-            <h1 class="mb-0">Editais ainda não foram lançados esse período</h1>
-        </div>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    <br> -->
+    <!--Mostre isso 
+    {% if valor == true %}-->
+    <!-- Editais em Processo de Seleção 
+    <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+        <h5 class="fw-bold text-dark text-uppercase">Aguarde só mais um pouco!</h5>
+        <h1 class="mb-0">Editais ainda não foram lançados esse período</h1>
+    </div>
+    
     </div>
     {% endif %} -->
-    
+
+
     <!-- Rodapé   -->
     <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">

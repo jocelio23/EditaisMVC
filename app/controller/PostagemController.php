@@ -5,7 +5,7 @@ class PostagemController{
 
        $loader = new \Twig\Loader\FilesystemLoader('app/view/');
        $twig = new \Twig\Environment($loader, [
-            'cache' => false,
+        'cache' => false,
            'auto_reload' => true,
        ]);
        $template = $twig->load('postagem.html');
