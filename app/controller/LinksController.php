@@ -5,7 +5,7 @@ class LinksController{
         try{
             $loader = new \Twig\Loader\FilesystemLoader('app/view/');
             $twig = new \Twig\Environment($loader, [
-                'cache' => '/path/to/compilation_cache',
+                'cache' => false,
                 'auto_reload' => true,
             ]);
 
